@@ -91,13 +91,16 @@
                     </div>
                     <hr>
                 </div>
+                <br>
 
                 <fieldset class="form-group">
                     <div class="row"
                          style="display: flex;flex-direction: row;margin-left: 20px;margin-top: 10px">
+
                         <h4>Driver Status</h4>
 
                         <div class="col-3">
+                            <br>
                             <div class="form-check">
                                 <input checked class="form-check-input" id="withDriverID" name="A"
                                        type="radio" value="option1">
@@ -107,6 +110,7 @@
                             </div>
 
                             <div class="form-check">
+
                                 <input class="form-check-input" id="withoutDriverID" name="A" type="radio"
                                        value="option2">
                                 <label class="form-check-label" for="withoutDriverID">
@@ -115,7 +119,9 @@
                             </div>
 
                         </div>
-                        <div class="col-4" id="txtWithOutdiver" style="margin-top: -20px">
+
+                        <div class="col-4" id="txtWithOutdiver">
+                            <br>
                             <label for="inputDriverID">
                                 Your Driver Name
                             </label>
@@ -123,6 +129,20 @@
                         </div>
                     </div>
                 </fieldset>
+                <br>
+                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
+
+                    <div class="form-group col-md-5" style="margin-right: 10px">
+                        <label for="inputImageLWF">Image Of Lose Waive Receipt</label>
+                        <input class="form-control" id="inputImageLWF" type="text">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="inputTotalLWF">Total Fee</label>
+                        <input class="form-control" id="inputTotalLWF" type="text">
+                    </div>
+
+                </div>
+
                 <button class="btn btn-success" id="btnPlaceOrder" style="margin-left: 182px;width: 114px;margin-top: 16px;"
                         type="button">Place Request
                 </button>
@@ -152,35 +172,35 @@
                 </tbody>
             </table>
 
-            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
+<!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
 
-                <div class="form-group col-md-6" style=" margin-right: 10px;" >
-                    <label for="inputCarIDRent">  Car ID</label>
-                    <input class="form-control" id="inputCarIDRent" type="text">
-                </div>
-                <div class="form-group col-md-6" style=" margin-right: 10px;" >
-                    <label for="inputCarCarNameRent"> Car Name</label>
-                    <input class="form-control" id="inputCarCarNameRent" type="text">
-                </div>
+<!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+<!--                    <label for="inputCarIDRent">  Car ID</label>-->
+<!--                    <input class="form-control" id="inputCarIDRent" type="text">-->
+<!--                </div>-->
+<!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+<!--                    <label for="inputCarCarNameRent"> Car Name</label>-->
+<!--                    <input class="form-control" id="inputCarCarNameRent" type="text">-->
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
 
-            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
+<!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
 
-                <div class="form-group col-md-6" style=" margin-right: 10px;" >
-                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>
-                    <input class="form-control" id="inputCarLoseFeeRent" type="text">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputCarPassengerRent"> Passengers</label>
-                    <input class="form-control" id="inputCarPassengerRent" type="text">
-                </div>
+<!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+<!--                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>-->
+<!--                    <input class="form-control" id="inputCarLoseFeeRent" type="text">-->
+<!--                </div>-->
+<!--                <div class="form-group col-md-6">-->
+<!--                    <label for="inputCarPassengerRent"> Passengers</label>-->
+<!--                    <input class="form-control" id="inputCarPassengerRent" type="text">-->
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
 
-            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
-                    type="button">Search Car
-            </button>
+<!--            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
+<!--                    type="button">Search Car-->
+<!--            </button>-->
 
             <table class="table" id="carDetailsAddCars">
                 <thead>
@@ -196,6 +216,9 @@
                 </tbody>
             </table>
 
+                        <button class="btn btn-info" id="btnRemoveCar" style="margin-left: 182px;width: 114px;margin-top: 16px;"
+                                type="button">Remove Car
+                        </button>
         </div>
 
 
@@ -233,7 +256,7 @@
                     let carType = res.data[i].carType;
                     let carColor = res.data[i].carColor;
                     let carTransmissionType = res.data[i].carTransmissionType;
-                    let carStatus = res.data[i].carStatus;
+                    let carStatus = res.data[i].rentLosWaiver;
                     let passengers = res.data[i].passenger;
 
 
@@ -266,7 +289,7 @@
 
                 console.log(response);
 
-
+                let RentDetID = $('#inputRentDet').val();
                 let carName = response.data.carModel;
                 let carLoseFee = response.data.rentLosWaiver;
                 let passenger = response.data.passenger;
@@ -275,14 +298,15 @@
                 $('#inputCarLoseFeeRent').val(carLoseFee);
                 $('#inputCarPassengerRent').val(passenger);
 
+                var row = `<tr><td>${RentDetID}</td><td>${getcar}</td><td>${carName}</td><td>${carLoseFee}</td><td> ${passenger}</td><td>`
 
+                $('#tblAddCar').append(row);
             }
         })
 
     }
 
     $('#btnSearchCarID').click(function () {
-
 
         // $('#carDetailsAddCars').empty();
 

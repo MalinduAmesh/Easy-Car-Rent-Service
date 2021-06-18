@@ -14,6 +14,8 @@ public class RentDetailsDTO {
 
     private String rentDetailID;
     private String rentLosWaiver;
+    private String rentLosWaiverRecipt;
+    private String rentTotal;
     private Rent rID;
     private Vehicle cID;
     private Driver dNIC;

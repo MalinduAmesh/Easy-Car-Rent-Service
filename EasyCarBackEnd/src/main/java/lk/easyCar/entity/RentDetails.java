@@ -21,6 +21,9 @@ public class RentDetails {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String rentDetailID;
     private String rentLosWaiver;
+    private String rentLosWaiverRecipt;
+    private String rentTotal;
+
 
     @ManyToOne
     @JoinColumn(name = "rID",referencedColumnName = "rentID")

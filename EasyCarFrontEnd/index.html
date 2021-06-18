@@ -5,11 +5,27 @@
     <title>Easy Car Rental</title>
     <link rel="stylesheet" href="Assest/css/main.css">
     <link rel="stylesheet" href="Assest/css/bootstrap.min.css">
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- END Google Fonts  -->
+
 </head>
 <body>
 
 <div class="wrp">
     <nav class="navbar-nav">
+        <div class="navbar-width"></div>
         <div class="logo">
             <img alt="logo" class="icon" src="asserts/icons/icon%20-%20hut.png">
             <h1 class="header-title">Easy Car <span>Rental</span></h1>
@@ -44,14 +60,13 @@
     </nav>
 </div>
 
-<div style="display: block;margin-left: 268px;" class="col-10" id="adminHome"
-     style=" position: relative;top: 61px; display: block;margin-left: 284px">
+<div class="col-10" id="adminHome" >
     <h2>DashBoad</h2>
     <hr>
-    <div class="col-12" style="display: flex;flex-direction: row;margin-top: 49px;margin-bottom: 20px">
+    <div class="col-12 adminHomeBoxModel">
 
-        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 20px;border-radius: 10px">
-            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Number Of Registed
+        <div>
+            <h3>Number Of Registed
                 Users</h3>
             <hr style="margin-top: 5px;margin-bottom: -15px">
 
@@ -59,8 +74,8 @@
                 style="    margin-top: 28px; text-align: right;margin-right: 30px"></h1>
         </div>
 
-        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
-            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Total Booking For
+        <div>
+            <h3 >Total Booking For
                 Today</h3>
             <hr style="margin-top: 5px;margin-bottom: -15px">
 
@@ -69,8 +84,8 @@
                 10</h1>
         </div>
 
-        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
-            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Pendding
+        <div>
+            <h3 >Pendding
                 Request</h3>
             <hr style="margin-top: 5px;margin-bottom: -15px">
 
@@ -79,8 +94,8 @@
                 06</h1>
         </div>
 
-        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
-            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Number Of Free
+        <div>
+            <h3>Number Of Free
                 Drivers</h3>
             <hr style="margin-top: 5px;margin-bottom: -15px">
 
@@ -90,8 +105,10 @@
     </div>
 </div>
 
-<section style="width: 80vw;margin-left: 23em;">
+<section class="carDetailsFormSec">
+
     <div id="carDetailsForm" class="container" style="display: none">
+
         <div class="col-10" style="display: flex;flex-direction: row;">
 
             <button class="btn btn-danger" id="btnSearchCarID" style="margin-left:20px;width: 150px"
@@ -113,6 +130,7 @@
                 <table class="table" id="carDetailsAdminTable">
                     <thead>
                     <tr>
+
                         <th scope="col">Car ID</th>
                         <th scope="col">Car Model</th>
                         <th scope="col">Car Type</th>
@@ -120,6 +138,7 @@
                         <th scope="col">Car TransmissionType</th>
                         <th scope="col">Car Status</th>
                         <th scope="col">Passengers</th>
+
                     </tr>
                     </thead>
                     <tbody id="tblCarDetails">
@@ -134,8 +153,8 @@
     </div>
 </section>
 
-<section class="container">
-    <div class="updateCar2" id="UpdateCar" style="display: none">
+<section class="container" id="UpdateCar" style="display: none">
+    <div class="updateCar2"  >
         <h3>Update Car</h3>
         <hr>
         <div class="updateForm">
@@ -355,15 +374,15 @@
 
 </section>
 
-<section>
+<section class="pendingReqFormAdmn">
     <div class="col-10" id="adminRequest"
-         style="background-color: white;margin-top: 100px;margin-left: 250px;display: none">
+         style="display: none">
 
-        <h2>Pendding Request Details</h2>
+        <h2>Pending Request Details</h2>
         <div class="col-4">
             <div class="ui fluid action input">
-                <input placeholder="Search..." type="text">
-                <div class="ui button"><i class="search icon"></i>Search</div>
+                <input class="input-2" placeholder="Search...">
+                <button class="btn-2">Search</button>
             </div>
         </div>
         <hr>
@@ -380,12 +399,12 @@
                         <th scope="col">Customer Contact</th>
                         <th scope="col">Request CarID</th>
                         <th scope="col">Request Car Name</th>
-                        <th scope="col">Driver Status</th>
                         <th scope="col">Driver ID</th>
+                        <th scope="col">Driver Status</th>
                         <th scope="col">PickUp Date</th>
                         <th scope="col">DropOff Date</th>
                         <th scope="col">Request Status</th>
-                        <th scope="col">Astimant Total</th>
+                        <th scope="col">Pending Requests</th>
 
                     </tr>
                     </thead>
@@ -410,7 +429,7 @@
         $('#carDetailsForm').css("display","none");
         $('#adminRequest').css("display", "none");
         $('#AddCar').css("display","none");
-
+        $('#UpdateCar').css("display", "none");
 
 
 
@@ -421,6 +440,8 @@
         $('#adminRequest').css("display", "none");
         $('#adminHome').css("display", "none");
         $('#AddCar').css("display","none");
+        $('#viewAllCars').css("display","block");
+
 
 
 
@@ -432,7 +453,7 @@
         $('#adminRequest').css("display", "none");
         $('#adminHome').css("display", "none");
         $('#carDetailsForm').css("display","none");
-
+        $('#UpdateCar').css("display", "none");
     })
 
 
@@ -449,7 +470,7 @@
         $('#carDetailsForm').css("display","none");
         $('#adminHome').css("display", "none");
         $('#AddCar').css("display","none");
-
+        $('#UpdateCar').css("display", "none");
 
 
 
@@ -502,8 +523,12 @@
         var carUpdate = ($(id).attr('id'));
         console.log(carUpdate)
 
-        $('#UpdateCar').css("display", "block");
-        $('#viewAllCars').css("display", "none");
+        $('#UpdateCar').css("display","block");
+        $('#viewAllCars').css("display","none");
+        $('#adminRequest').css("display","none");
+        $('#carDetailsForm').css("display","none");
+        $('#adminHome').css("display","none");
+        $('#AddCar').css("display","none");
 
         $("#inputCarIDUpdate").val(carUpdate);
 
