@@ -1,0 +1,334 @@
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/*Scroll bar Styling*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*----------------------------------------------*/
+{
+    transform: translateY(-15px)
+;
+    transition: all 0.6s ease
+;
+}
+body {
+    overflow-x: hidden;
+}
+
+.navbar-nav {
+    position: fixed;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background: #F5F5F5;
+    width: 267px;
+    min-height: 100vh;
+}
+
+.navbar-nav > .logo {
+    position: absolute;
+    top: 0;
+    height: 92px;
+    width: 100%;
+}
+
+.navbar-nav > .logo > img {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-nav > .logo > .header-title {
+    position: absolute;
+    max-width: max-content;
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.navbar-nav > .logo > .header-title > span {
+    color: #1abc9c;
+}
+
+.navbar-nav > .side-nav {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 92px);
+    top: 92px;
+}
+
+.navbar-nav > .side-nav > button {
+    position: absolute;
+    cursor: pointer;
+    width: 240px;
+    height: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 36px;
+    border: none;
+    transition: all 0.6s ease;
+}
+
+.navbar-nav > .side-nav > button:hover {
+    transition: all 0.6s ease;
+}
+
+.navbar-nav > .side-nav > button:focus {
+    outline: none !important;
+}
+
+.navbar-nav > .side-nav > #btn-manage-home {
+    top: 0;
+    background: #F5F5F5;
+    margin-top: 70px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+}
+
+.navbar-nav > .side-nav > #btn-manage-home:hover {
+    background: #95a5a6;
+}
+
+.navbar-nav > .side-nav > #btn-manage-home:hover > a {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-home:hover > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-carDetails{
+    top: 70px;
+    background: #F5F5F5;
+    margin-top: 70px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+}
+
+.navbar-nav > .side-nav > #btn-manage-carDetails:hover {
+    background: #95a5a6;
+
+}
+
+.navbar-nav > .side-nav > #btn-manage-carDetails:hover > a {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-carDetails:hover > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-customers {
+    top: 140px;
+    background: #F5F5F5;
+    margin-top: 70px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+}
+
+.navbar-nav > .side-nav > #btn-manage-customers:hover {
+    background: #95a5a6;
+}
+
+.navbar-nav > .side-nav > #btn-manage-customers:hover > a {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-customers:hover > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-driverDet{
+    top: 210px;
+    background: #F5F5F5;
+    margin-top: 70px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+}
+
+.navbar-nav > .side-nav > #btn-manage-driverDet:hover {
+    background: #95a5a6;
+
+}
+
+.navbar-nav > .side-nav > #btn-manage-driverDet:hover > a {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-driverDet:hover > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-pendingReq{
+    top: 279px;
+    background: #F5F5F5;
+    margin-top: 70px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+}
+
+.navbar-nav > .side-nav > #btn-manage-pendingReq:hover {
+    background: #95a5a6;
+
+}
+
+.navbar-nav > .side-nav > #btn-manage-pendingReq:hover > a {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-pendingReq:hover > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-Payment{
+    top: 347px;
+    background: #F5F5F5;
+    margin-top: 70px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+}
+
+.navbar-nav > .side-nav > #btn-manage-Payment:hover {
+    background: #95a5a6;
+
+}
+
+.navbar-nav > .side-nav > #btn-manage-Payment:hover > a {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-manage-Payment:hover > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-new-order {
+    top: 350px;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    background: #E41151;
+}
+
+.navbar-nav > .side-nav > #btn-new-order:hover {
+    background: #FFB001;
+    transform: scale(1.2);
+}
+
+.navbar-nav > .side-nav > #btn-new-order:hover > a {
+    color: black;
+}
+
+.navbar-nav > .side-nav > #btn-new-order > i {
+    color: white;
+}
+
+.navbar-nav > .side-nav > #btn-new-order:hover > i {
+    color: black;
+}
+
+.navbar-nav > .side-nav > #btn-settings {
+    bottom: 70px;
+    background: #F5F5F5;
+    margin-bottom: 30px;
+}
+
+.navbar-nav > .side-nav > #btn-about {
+    bottom: 0;
+    background: #F5F5F5;
+    margin-bottom: 30px;
+}
+
+.navbar-nav > .side-nav > button > i {
+    position: absolute;
+    font-size: 20px;
+    color: black;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navbar-nav > .side-nav > button > a {
+    position: absolute;
+    text-decoration: none;
+    color: black;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navbar-nav > .side-nav > #btn-new-order > a {
+    color: white;
+}
+
+.navbar-nav > .menu-list {
+    position: absolute;
+    display: none;
+    list-style: none;
+    right: 50px;
+    padding: 0;
+    top: 50%;
+}
+
+.navbar-nav > .menu-list > li {
+    display: inline;
+    transition: all 0.6s ease;
+}
+
+.navbar-nav > .menu-list > li:not(:last-child) {
+    padding-right: 40px;
+}
+
+/*.navbar-nav > .menu-list > li:hover > a > i {*/
+/*    color: #E41151;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+.navbar-nav > .menu-list > li > a > i {
+    font-size: 20px;
+    color: black;
+}
+
+/*----------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+.addCar>input{
+    margin-right: 10px;
+}
+
+.updateCar2{
+    position: relative;
+    width: 66vw;
+    margin-left: 165px;
+    top: 3em;
+
+}
+
+.updateForm{
+
+}

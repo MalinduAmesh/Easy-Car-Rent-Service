@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer register</title>
+
+    <link rel="stylesheet" href="Assest/css/bootstrap.min.css">
+    <link rel="stylesheet" href="">
+
+    <style>
+        .loginPanel{
+            position: relative;
+            margin-left: 268px;
+            margin-top: -28px;
+            width: 67vw;
+        }
+    </style>
+</head>
+<body>
+
+
+<section class="loginPanel" id="secCreateAccount">
+    <div class="container" style="margin-top: 100px;border: white 3px solid">
+        <div class="row">
+            <div class="col-7">
+                <h1>Create Account</h1>
+                <form id="frmCreateAccount">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtCreateAccountUserName">User Name</label>
+                            <input class="form-control" id="txtCreateAccountUserName" type="text">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtCreateAccountEmail">Email</label>
+                            <input class="form-control" id="txtCreateAccountEmail" type="email">
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtCreateAccountAddress">Address</label>
+                        <input class="form-control" id="txtCreateAccountAddress" type="text">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtCreateAccountPassword">Password</label>
+                            <input class="form-control" id="txtCreateAccountPassword" type="password">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label for="inputNICImageCreateAccount"> Image Of Your NIC</label>
+                                <input class="form-control-file" id="inputNICImageCreateAccount" type="text">
+                                <input class="form-control" id="txtCreateAccountNIC" style="margin-top: 10px"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label for="inputLICImageCreateAccount">  Image Of Your
+                                    Driving License</label>
+                                <input class="form-control-file" id="inputLICImageCreateAccount" type="text">
+                                <input class="form-control" id="txtCreateAccountDriving" style="margin-top: 10px"
+                                       type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtCreateAccountContact"> Contact Number</label>
+                            <input class="form-control" id="txtCreateAccountContact" type="text">
+                        </div>
+                    </div>
+
+                    <button id="btnCreateNewAccount" class="btn btn-primary" style="margin-left: 10px;margin-bottom: 10px " type="button">
+                        <p  style="color: white;text-decoration: none">Create Account </p></button>
+
+                </form>
+            </div>
+            <div class="col-4">
+                <img style=" margin-left: -146px;margin-top: 137px;" alt="" height="auto" src="Assest/images/wallhaven-5wjqy1.jpg"  width="650px">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="Assest/js/jquery-3.6.0.min.js"></script>
+<script src="Assest/js/bootstrap.min.js"></script>
+
+<script>
+
+    $('#btnCreateNewAccount').click(function () {
+
+        console.log("helloo");
+
+        let customerName = $('#txtCreateAccountUserName').val();
+        let customerAddress = $('#txtCreateAccountAddress').val();
+        let email = $('#txtCreateAccountEmail').val();
+        let customerPassword = $('#txtCreateAccountPassword').val();
+        let NICImage = $('#inputNICImageCreateAccount').val();
+        let NICNumber = $('#txtCreateAccountNIC').val();
+        let LICImage = $('#inputLICImageCreateAccount').val();
+        let LICNumber = $('#txtCreateAccountDriving').val();
+        let contact = $('#txtCreateAccountContact').val();
+
+
+        $.ajax({
+            method:"post",
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/customer",
+            contentType:"application/json",
+            data:JSON.stringify({
+                "cusNicID" : NICNumber,
+                "name": customerName,
+                "address" : customerAddress,
+                "email" : email,
+                "password" : customerPassword,
+                "nicImage" : NICImage,
+                "licImage" : LICImage,
+                "licNo" : LICNumber,
+                "contact" : contact
+            }),
+            success:function (res) {
+                if (res.message==='Success'){
+                    alert("Your account Created");
+
+                    console.log(res)
+                }else {
+                    console.log("Error");
+                    console.log(res)
+                }
+            }
+        })
+
+
+    })
+
+
+
+</script>
+</body>
+</html>
