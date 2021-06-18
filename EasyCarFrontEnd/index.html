@@ -8,18 +8,18 @@
 </head>
 <body>
 
-<div class="wrp" >
+<div class="wrp">
     <nav class="navbar-nav">
         <div class="logo">
             <img alt="logo" class="icon" src="asserts/icons/icon%20-%20hut.png">
             <h1 class="header-title">Easy Car <span>Rental</span></h1>
         </div>
         <nav class="side-nav">
-            <button id="btn-manage-home" onclick="showManageItemForm()">
+            <button id="btn-manage-home" onclick="showAdminDashboardForm()">
                 <i class="fas fa-hamburger"></i>
                 <a href="#">Home</a>
             </button>
-            <button id="btn-manage-carDetails">
+            <button id="btn-manage-carDetails" onclick="showCarDetailsForm()">
                 <i class="fas fa-cart-arrow-down"></i>
                 <a href="#">Car Details</a>
             </button>
@@ -27,129 +27,123 @@
                 <i class="fas fa-user"></i>
                 <a href="#">Customer Details</a>
             </button>
-            <button id="btn-manage-driverDet" onclick="">
+            <button id="btn-manage-driverDet" onclick="showDriverForm()">
                 <i class="fas fa-user"></i>
                 <a href="#">Driver Details</a>
             </button>
-            <button id="btn-manage-pendingReq" onclick="">
+            <button id="btn-manage-pendingReq" onclick="loadPendingRequestForm()">
                 <i class="fas fa-user"></i>
                 <a href="#">Pending Requests</a>
             </button>
-            <button id="btn-manage-Payment" onclick="">
+            <button id="btn-manage-Payment" onclick="showPaymentForm()">
                 <i class="fas fa-user"></i>
                 <a href="#"> Payment</a>
             </button>
 
         </nav>
-        <ul class="menu-list">
-            <li id="list-manage-items" onclick="showManageItemForm()"><a href="#"><i class="fas fa-hamburger"></i></a></li>
-            <li id="list-manage-orders"><a href="#"><i class="fas fa-cart-arrow-down"></i></a></li>
-            <li id="list-manage-customers" onclick="showManageCustomerForm()"><a href="#"><i class="fas fa-user"></i></a></li>
-            <li id="list-new-order" onclick="showPlaceOrderForm()"><a href="#"><i class="fas fa-plus"></i></a></li>
-            <li id="list-settings"><a href="#"><i class="fas fa-cog"></i></a></li>
-            <li id="list-about"><a href="#"><i class="fas fa-info-circle"></i></a></li>
-        </ul>
     </nav>
 </div>
 
-<div style="display: none" class="col-10" id="adminHome"  style=" position: relative;top: 61px; display: block;margin-left: 284px">
+<div style="display: block;margin-left: 268px;" class="col-10" id="adminHome"
+     style=" position: relative;top: 61px; display: block;margin-left: 284px">
     <h2>DashBoad</h2>
     <hr>
-<div class="col-12" style="display: flex;flex-direction: row;margin-top: 49px;margin-bottom: 20px">
+    <div class="col-12" style="display: flex;flex-direction: row;margin-top: 49px;margin-bottom: 20px">
 
-    <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 20px;border-radius: 10px">
-        <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Number Of Registed
-            Users</h3>
-        <hr style="margin-top: 5px;margin-bottom: -15px">
+        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 20px;border-radius: 10px">
+            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Number Of Registed
+                Users</h3>
+            <hr style="margin-top: 5px;margin-bottom: -15px">
 
-        <h1 id="numberOfRegisteredUsersCount" style="    margin-top: 28px; text-align: right;margin-right: 30px"></h1>
+            <h1 id="numberOfRegisteredUsersCount"
+                style="    margin-top: 28px; text-align: right;margin-right: 30px"></h1>
+        </div>
+
+        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
+            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Total Booking For
+                Today</h3>
+            <hr style="margin-top: 5px;margin-bottom: -15px">
+
+            <h1 style="     margin-top: 28px;text-align: right;margin-right: 30px"><i class="file alternate icon"
+                                                                                      style="color: #8a8a8a"></i>
+                10</h1>
+        </div>
+
+        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
+            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Pendding
+                Request</h3>
+            <hr style="margin-top: 5px;margin-bottom: -15px">
+
+            <h1 style=" text-align: right;margin-right: 30px;margin-top: 28px;"><i class="envelope open icon"
+                                                                                   style="color: #8a8a8a"></i>
+                06</h1>
+        </div>
+
+        <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
+            <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Number Of Free
+                Drivers</h3>
+            <hr style="margin-top: 5px;margin-bottom: -15px">
+
+            <h1 id="DashboadFreeDriversCount" style="margin-top: 28px;text-align: right;margin-right: 30px"></h1>
+        </div>
+
     </div>
-
-    <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
-        <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Total Booking For
-            Today</h3>
-        <hr style="margin-top: 5px;margin-bottom: -15px">
-
-        <h1 style="     margin-top: 28px;text-align: right;margin-right: 30px"><i class="file alternate icon"
-                                                             style="color: #8a8a8a"></i>
-            10</h1>
-    </div>
-
-    <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
-        <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Pendding
-            Request</h3>
-        <hr style="margin-top: 5px;margin-bottom: -15px">
-
-        <h1 style=" text-align: right;margin-right: 30px;margin-top: 28px;"><i class="envelope open icon"
-                                                             style="color: #8a8a8a"></i>
-            06</h1>
-    </div>
-
-    <div style="width:275px;height: 124px;border: #bbbac2 1px solid;margin-left: 40px;border-radius: 10px">
-        <h3 style="font-family: 'Roboto Light';margin-left: 10px;margin-top: 10px">Number Of Free
-            Drivers</h3>
-        <hr style="margin-top: 5px;margin-bottom: -15px">
-
-        <h1 id="DashboadFreeDriversCount" style="margin-top: 28px;text-align: right;margin-right: 30px"></h1>
-    </div>
-
-</div>
 </div>
 
 <section style="width: 80vw;margin-left: 23em;">
-    <div class="container" style="display: block">
-    <div class="col-10" style="display: flex;flex-direction: row;">
+    <div id="carDetailsForm" class="container" style="display: none">
+        <div class="col-10" style="display: flex;flex-direction: row;">
 
-        <button class="btn btn-danger" id="btnSearchCarID" style="margin-left:20px;width: 150px"
-                type="button">Search Car
-        </button>
+            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left:20px;width: 150px"
+                    type="button">Search Car
+            </button>
 
-        <input class="form-control" id="inputSearchCarId"
-               placeholder="Car ID" style="margin-left: 20px;margin-top: 10px"
-               type="text">
+            <input class="form-control" id="inputSearchCarId"
+                   placeholder="Car ID" style="margin-left: 20px;margin-top: 10px"
+                   type="text">
 
-        <button class="btn btn-info" id="AddCarNav" style="margin-left: 144px;width: 150px" type="button">Add
-            Car
-        </button>
+            <button class="btn btn-info" id="AddCarNav" style="margin-left: 144px;width: 150px" type="button">Add
+                Car
+            </button>
 
-    </div>
-
-    <div class="col-10" id="viewAllCars" style="margin-top: 64px;">
-        <div>
-            <table class="table" id="carDetailsAdminTable">
-                <thead>
-                <tr>
-                    <th scope="col">Car ID</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Car Type</th>
-                    <th scope="col">Car Color</th>
-                    <th scope="col">Car TransmissionType</th>
-                    <th scope="col">Car Status</th>
-                    <th scope="col">Passengers</th>
-                </tr>
-                </thead>
-                <tbody id="tblCarDetails">
-                <tr>
-                </tr>
-                </tbody>
-            </table>
         </div>
 
+        <div class="col-10" id="viewAllCars" style="margin-top: 64px;">
+            <div>
+                <table class="table" id="carDetailsAdminTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">Car ID</th>
+                        <th scope="col">Car Model</th>
+                        <th scope="col">Car Type</th>
+                        <th scope="col">Car Color</th>
+                        <th scope="col">Car TransmissionType</th>
+                        <th scope="col">Car Status</th>
+                        <th scope="col">Passengers</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblCarDetails">
+                    <tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    </div>
+
+        </div>
     </div>
 </section>
 
-<section class="container" >
-    <div class="updateCar2" id="UpdateCar" style="display: none" >
+<section class="container">
+    <div class="updateCar2" id="UpdateCar" style="display: none">
         <h3>Update Car</h3>
         <hr>
         <div class="updateForm">
             <form>
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: space-between">
+                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
                     <div class="form-group col-md-4" style=" margin-right: 10px;">
                         <label for="inputCarID">Car ID</label>
-                        <input class="form-control" id="inputCarIDUpdate" type="text" >
+                        <input class="form-control" id="inputCarIDUpdate" type="text">
                     </div>
                     <div class="form-group col-md-4" style=" margin-right: 10px;">
                         <label for="inputCarModel">Car Model</label>
@@ -160,7 +154,7 @@
                         <input class="form-control" id="inputcarTypeUpdate" type="text">
                     </div>
                 </div>
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
+                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
                     <div class="form-group col-md-3" style=" margin-right: 10px;">
                         <label for="inputcarTransmissionType">Car Transmission Type</label>
                         <input class="form-control" id="inputcarTransmissionTypeUpdate" type="text">
@@ -179,7 +173,7 @@
                     </div>
                 </div>
 
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
+                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
                     <div class="form-group col-md-3" style=" margin-right: 10px;">
                         <label for="inputcarDailyRate">Car Daily Rate</label>
                         <input class="form-control" id="inputcarDailyRateUpdate" type="text">
@@ -198,12 +192,12 @@
                     </div>
                 </div>
 
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
+                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
                     <div class="form-group col-md-5" style=" margin-right: 10px;">
                         <label for="inputcarPriceForExtraKM">Car Price For ExtraKM</label>
                         <input class="form-control" id="inputcarPriceForExtraKMUpdate" type="text">
                     </div>
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
+                    <div class="form-group col-md-5" style=" margin-right: 10px;">
                         <label for="inputCarLostWavierUpdate"> LostWavier Fee</label>
                         <input class="form-control" id="inputCarLostWavierUpdate" type="text">
                     </div>
@@ -244,121 +238,165 @@
     </div>
 </section>
 
-<section class="addCar" style="width: 80vw;display: block">
+<section class="addCar" style="width: 80vw;">
 
-<div style="margin-left: 294px;"  id="AddCar" class="container AddCar">
+    <div style="margin-left: 294px;display: none" id="AddCar" class="container AddCar">
 
-    <div class="row">
-        <div class=" col-md-9">
+        <div class="row">
+            <div class=" col-md-9">
 
-        <div id="pnlAddNewCar" style="">
-            <h3>Add New Car</h3>
-            <hr>
-            <div>
-                <div class="form-row addCar" style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
+                <div id="pnlAddNewCar" style="">
+                    <h3>Add New Car</h3>
+                    <hr>
+                    <div>
+                        <div class="form-row addCar"
+                             style="display: flex;flex-wrap: nowrap;justify-content: flex-start">
 
-                    <div style=" margin-right: 10px;"  class="form-group col-md-4">
-                        <label for="inputCarID"> ID</label>
-                        <input class="form-control" id="inputCarID" type="text">
-                    </div>
-                    <div class="form-group col-md-4" style=" margin-right: 10px;" >
-                        <label for="inputCarModel"> Model</label>
-                        <input class="form-control" id="inputCarModel" type="text">
-                    </div>
-                    <div class="form-group col-md-4" style=" margin-right: 10px;" >
-                        <label for="inputCarType"> Type</label>
-                        <input class="form-control" id="inputCarType" type="text">
-                    </div>
-                </div>
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputCarTransmissionType"> Transmission Type</label>
-                        <input class="form-control" id="inputCarTransmissionType" type="text">
-                    </div>
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputCarFuelType"> Fuel Type</label>
-                        <input class="form-control" id="inputCarFuelType" type="text">
-                    </div>
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputCarColor"> Color</label>
-                        <input class="form-control" id="inputCarColor" type="text">
-                    </div>
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputPassenger">passenger</label>
-                        <input class="form-control" id="inputPassenger" type="text">
-                    </div>
-                </div>
-
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputCarDailyRate"> Daily Rate</label>
-                        <input class="form-control" id="inputCarDailyRate" type="text">
-                    </div>
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputCarMonthlyRate"> Monthly Rate</label>
-                        <input class="form-control" id="inputCarMonthlyRate" type="text">
-                    </div>
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="inputCarFreeKmForADay"> Free Km For ADay</label>
-                        <input class="form-control" id="inputCarFreeKmForADay" type="text">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="carFreeKmForAMonth"> Free Km For A Month</label>
-                        <input class="form-control" id="carFreeKmForAMonth" type="text">
-                    </div>
-                </div>
-
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                        <label for="inputCarPriceForExtraKM"> Price For ExtraKM</label>
-                        <input class="form-control" id="inputCarPriceForExtraKM" type="text">
-                    </div>
-
-                        <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                            <label for="inputCarLostWavier"> LostWavier Fee</label>
-                            <input class="form-control" id="inputCarLostWavier" type="text">
+                            <div style=" margin-right: 10px;" class="form-group col-md-4">
+                                <label for="inputCarID"> ID</label>
+                                <input class="form-control" id="inputCarID" type="text">
+                            </div>
+                            <div class="form-group col-md-4" style=" margin-right: 10px;">
+                                <label for="inputCarModel"> Model</label>
+                                <input class="form-control" id="inputCarModel" type="text">
+                            </div>
+                            <div class="form-group col-md-4" style=" margin-right: 10px;">
+                                <label for="inputCarType"> Type</label>
+                                <input class="form-control" id="inputCarType" type="text">
+                            </div>
                         </div>
-                    <div class="form-group col-md-2" style=" margin-right: 10px;" >
-                        <label for="inputCarStatus"> Status</label>
-                        <input class="form-control" id="inputCarStatus" type="text">
+                        <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputCarTransmissionType"> Transmission Type</label>
+                                <input class="form-control" id="inputCarTransmissionType" type="text">
+                            </div>
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputCarFuelType"> Fuel Type</label>
+                                <input class="form-control" id="inputCarFuelType" type="text">
+                            </div>
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputCarColor"> Color</label>
+                                <input class="form-control" id="inputCarColor" type="text">
+                            </div>
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputPassenger">passenger</label>
+                                <input class="form-control" id="inputPassenger" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputCarDailyRate"> Daily Rate</label>
+                                <input class="form-control" id="inputCarDailyRate" type="text">
+                            </div>
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputCarMonthlyRate"> Monthly Rate</label>
+                                <input class="form-control" id="inputCarMonthlyRate" type="text">
+                            </div>
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="inputCarFreeKmForADay"> Free Km For ADay</label>
+                                <input class="form-control" id="inputCarFreeKmForADay" type="text">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="carFreeKmForAMonth"> Free Km For A Month</label>
+                                <input class="form-control" id="carFreeKmForAMonth" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                            <div class="form-group col-md-5" style=" margin-right: 10px;">
+                                <label for="inputCarPriceForExtraKM"> Price For ExtraKM</label>
+                                <input class="form-control" id="inputCarPriceForExtraKM" type="text">
+                            </div>
+
+                            <div class="form-group col-md-5" style=" margin-right: 10px;">
+                                <label for="inputCarLostWavier"> LostWavier Fee</label>
+                                <input class="form-control" id="inputCarLostWavier" type="text">
+                            </div>
+                            <div class="form-group col-md-2" style=" margin-right: 10px;">
+                                <label for="inputCarStatus"> Status</label>
+                                <input class="form-control" id="inputCarStatus" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+
+                            <div class="form-group col-md-3" style=" margin-right: 10px;">
+                                <label for="carImg02"> <i class="tags icon"></i> Front View Of Car</label>
+                                <input class="form-control" id="carImg01" type="text">
+                            </div>
+
+                            <div class="col-md-3" style=" margin-right: 10px;">
+                                <label for="carImg02"> <i class="tags icon"></i> Side View Of Car</label>
+                                <input class="form-control" id="carImg02" type="text">
+                            </div>
+                            <div class="col-md-3" style=" margin-right: 10px;">
+                                <label for="carImg03"> <i class="tags icon"></i> Back View Of Car</label>
+                                <input class="form-control" id="carImg03" type="text">
+                            </div>
+
+                            <div class="col-md-3" style=" margin-right: 10px;">
+                                <label for="carImg04"> <i class="tags icon"></i> Inside View Of Car</label>
+                                <input class="form-control" id="carImg04" type="text">
+                            </div>
+
+                        </div>
+                        <button class="btn btn-primary" id="btnFinalAddNewCar" style="margin-top: 10px" type="button">
+                            Add New Car
+                        </button>
+
                     </div>
+
+
                 </div>
-
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-
-                    <div class="form-group col-md-3" style=" margin-right: 10px;" >
-                        <label for="carImg02"> <i class="tags icon"></i> Front View Of Car</label>
-                        <input class="form-control" id="carImg01" type="text">
-                    </div>
-
-                    <div class="col-md-3" style=" margin-right: 10px;" >
-                        <label for="carImg02"> <i class="tags icon"></i> Side View Of Car</label>
-                        <input class="form-control" id="carImg02" type="text">
-                    </div>
-                    <div class="col-md-3" style=" margin-right: 10px;" >
-                        <label for="carImg03"> <i class="tags icon"></i> Back View Of Car</label>
-                        <input class="form-control" id="carImg03" type="text">
-                    </div>
-
-                    <div class="col-md-3" style=" margin-right: 10px;" >
-                        <label for="carImg04"> <i class="tags icon"></i> Inside View Of Car</label>
-                        <input class="form-control" id="carImg04" type="text">
-                    </div>
-
-                </div>
-                <button class="btn btn-primary" id="btnFinalAddNewCar" style="margin-top: 10px" type="button">
-                    Add New Car
-                </button>
-
             </div>
-
-
-
         </div>
-</div>
     </div>
-</div>
 
+</section>
+
+<section>
+    <div class="col-10" id="adminRequest"
+         style="background-color: white;margin-top: 100px;margin-left: 250px;display: none">
+
+        <h2>Pendding Request Details</h2>
+        <div class="col-4">
+            <div class="ui fluid action input">
+                <input placeholder="Search..." type="text">
+                <div class="ui button"><i class="search icon"></i>Search</div>
+            </div>
+        </div>
+        <hr>
+
+
+        <div id="viewAllRequests">
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Request ID</th>
+                        <th scope="col">Requested Date</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer Contact</th>
+                        <th scope="col">Request CarID</th>
+                        <th scope="col">Request Car Name</th>
+                        <th scope="col">Driver Status</th>
+                        <th scope="col">Driver ID</th>
+                        <th scope="col">PickUp Date</th>
+                        <th scope="col">DropOff Date</th>
+                        <th scope="col">Request Status</th>
+                        <th scope="col">Astimant Total</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="tblAllRequest">
+                    <tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
@@ -367,7 +405,59 @@
 <script src="controller/DashboardController.js"></script>
 
 <script>
+    function showAdminDashboardForm() {
+        $('#adminHome').css("display", "block");
+        $('#carDetailsForm').css("display","none");
+        $('#adminRequest').css("display", "none");
+        $('#AddCar').css("display","none");
 
+
+
+
+    }
+
+    function showCarDetailsForm() {
+        $('#carDetailsForm').css("display","block");
+        $('#adminRequest').css("display", "none");
+        $('#adminHome').css("display", "none");
+        $('#AddCar').css("display","none");
+
+
+
+    }
+
+    $('#AddCarNav').click(function () {
+
+        $('#AddCar').css("display","block");
+        $('#adminRequest').css("display", "none");
+        $('#adminHome').css("display", "none");
+        $('#carDetailsForm').css("display","none");
+
+    })
+
+
+    function showManageCustomerForm() {
+
+    }
+
+    function showDriverForm() {
+
+    }
+
+    function loadPendingRequestForm() {
+        $('#adminRequest').css("display", "block");
+        $('#carDetailsForm').css("display","none");
+        $('#adminHome').css("display", "none");
+        $('#AddCar').css("display","none");
+
+
+
+
+    }
+
+    function showPaymentForm() {
+
+    }
 
     $("#btn-manage-carDetails").click(function () {
 
@@ -376,10 +466,10 @@
             method: 'get',
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
             contentType: "application/json",
-            success:function (res) {
+            success: function (res) {
                 console.log(res)
 
-                for (var i in res.data){
+                for (var i in res.data) {
                     let carID = res.data[i].carID;
                     let carModel = res.data[i].carModel;
                     let carType = res.data[i].carType;
@@ -406,22 +496,22 @@
     //     console.log("updatessssssssss")
     // })
 
-    function updateDetailsCar(id){
+    function updateDetailsCar(id) {
         console.log("update")
 
-        var carUpdate =($(id).attr('id'));
+        var carUpdate = ($(id).attr('id'));
         console.log(carUpdate)
 
-        $('#UpdateCar').css("display","block");
-        $('#viewAllCars').css("display","none");
+        $('#UpdateCar').css("display", "block");
+        $('#viewAllCars').css("display", "none");
 
         $("#inputCarIDUpdate").val(carUpdate);
 
 
         $.ajax({
             method: 'get',
-            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/" + carUpdate,
-            success:function (res) {
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/" + carUpdate,
+            success: function (res) {
                 console.log(res)
 
                 let carModel = res.data.carModel;
@@ -472,70 +562,71 @@
         let updatecarPriceForExtraKM = $('#inputcarPriceForExtraKMUpdate').val();
 
 
-    $.ajax({
-        method:'put',
-        url:"http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
-        contentType: 'application/json',
-        data:JSON.stringify({
-            "carID": updatecarID,
-            "carModel": updatecarModel,
-            "carType": updatecarType,
-            "carImg1": updatecarImg01,
-            "carImg2": updatecarImg02,
-            "carImg3": updatecarImg03,
-            "carImg4": updatecarImg04,
-            "carTransmissionType": updatecarTransmissionType,
-            "rentLosWaiver":updateLostWavierFee,
-            "carFuelType": updatecarFuelType,
-            "carColor": updatecarColor,
-            "carStatus": updatecarStatus,
-            "passenger": updatepassenger,
-            "carDailyRate": updatecarDailyRate,
-            "carMonthlyRate": updatecarMonthlyRate,
-            "carFreeKmForADay": updatecarFreeKmForADay,
-            "carFreeKmForAMonth": updatecarFreeKmForAMonth,
-            "carPriceForExtraKM": updatecarPriceForExtraKM
-        }),
-        success:function (res) {
+        $.ajax({
+            method: 'put',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "carID": updatecarID,
+                "carModel": updatecarModel,
+                "carType": updatecarType,
+                "carImg1": updatecarImg01,
+                "carImg2": updatecarImg02,
+                "carImg3": updatecarImg03,
+                "carImg4": updatecarImg04,
+                "carTransmissionType": updatecarTransmissionType,
+                "rentLosWaiver": updateLostWavierFee,
+                "carFuelType": updatecarFuelType,
+                "carColor": updatecarColor,
+                "carStatus": updatecarStatus,
+                "passenger": updatepassenger,
+                "carDailyRate": updatecarDailyRate,
+                "carMonthlyRate": updatecarMonthlyRate,
+                "carFreeKmForADay": updatecarFreeKmForADay,
+                "carFreeKmForAMonth": updatecarFreeKmForAMonth,
+                "carPriceForExtraKM": updatecarPriceForExtraKM
+            }),
+            success: function (res) {
 
-            console.log(res);
-            alert("SuccessFully Updated !")
-        }
+                console.log(res);
+                alert("SuccessFully Updated !")
+            }
+        })
     })
+
+    /*-------------------------------------------------------------------   Delete Car ----------------------------------------------------------*/
+
+    function DeleteCar(id) {
+
+        var carDelete = ($(id).attr('id'));
+        console.log(carDelete)
+
+        $.ajax({
+            method: "delete",
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/delete/" + carDelete,
+
+
+            success: function (res) {
+
+                alert("car Deleted SuccessFully");
+
+                updateDetailsCar(id);
+
+            }
+        })
+    }
+
+    $('#btnSearchCarID').click(function () {
+
+        let searchCarID = $('#inputSearchCarId').val();
+
+        console.log(searchCarID)
+
+        $.ajax({
+            method: 'put',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/"
+        })
     })
-/*-------------------------------------------------------------------   Delete Car ----------------------------------------------------------*/
-
-function DeleteCar(id) {
-
-    var carDelete =($(id).attr('id'));
-    console.log(carDelete)
-
-    $.ajax({
-        method:"delete",
-        url:"http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/delete/" + carDelete,
-
-
-        success:function (res) {
-
-            alert("car Deleted SuccessFully");
-
-            updateDetailsCar(id);
-
-        }
-    })
-}
-
-$('#btnSearchCarID').click(function () {
-
-    let searchCarID =$('#inputSearchCarId').val();
-
-    console.log(searchCarID)
-
-    $.ajax({
-        method: 'put',
-        url : "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/"
-    })
-})
 
 </script>
 </body>

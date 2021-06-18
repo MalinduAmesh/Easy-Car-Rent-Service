@@ -42,7 +42,7 @@
             <hr>
             <div class="col-md-6">
                 <h4>Customer Details</h4>
-                <input class="inputRentCusID" placeholder="Search Your ID">
+                <input class="inputRentCusID" id="inputRentCusID" placeholder="Search Your ID">
                 &nbsp;&nbsp;
                 <button class="btn-1">Search</button>
 
@@ -193,8 +193,6 @@
                 </tr>
                 </thead>
                 <tbody id="tblAddCar">
-                <tr>
-                </tr>
                 </tbody>
             </table>
 
@@ -304,15 +302,85 @@
 
     $('#btnPlaceOrder').click(function () {
 
+        // Rent Values
         let rentID = $('#inputrentID').val();
         let rentDate = $('#inputPickUpDate').val();
         let rentReqStatus = $('#inputreqStatus').val();
+
         let rentCusID = $('#inputRentCusID').val();
 
-        let rentDetailID = $('#inputRentDet').val();
+
+        // Rent Details
+        // let rentDetailID = $('#inputRentDet').val();
         let rentDriverID = $('#inputDriverID').val();
 
+        // Get The Data in Car cart
+        let table = document.getElementById('tblAddCar');
+        let count = table.rows.length;
 
+
+        for(let i=0;i<count;i++){
+            var rentDetID = table.rows[i].cells[0].innerText;
+            var carID = table.rows[i].cells[1].innerText;
+            var lostWavFee = table.rows[i].cells[3].innerText;
+
+
+
+
+        }
+        console.log(rentID)
+        console.log(rentDate)
+        console.log(rentReqStatus)
+        console.log("menna ID "+rentCusID)
+        console.log(rentDriverID)
+        console.log(carID)
+        console.log(rentDetID)
+        console.log(lostWavFee)
+
+
+        $.ajax({
+            method:'post',
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+            contentType: "application/json",
+            data:JSON.stringify({
+                "rentID":rentID,
+                "rentDate":rentDate ,
+                "rentStatus" :rentReqStatus ,
+                "cusID": {
+                    "cusNicID":rentCusID,
+                },
+
+                "rentDetails":[{
+                    "rentDetailID":rentDetID,
+                    "rentLosWaiver": lostWavFee,
+
+                    // "rID": {
+                    //     "rentID": rentID,
+                    //     "rentLosWaiver": lostWavFee,
+                    //     "rentStatus": rentReqStatus,
+                    //
+                    //     "cusID": {
+                    //         "cusNicID": rentCusID,
+                    //     },
+                    // },
+                        "cID":{
+                            "carID":carID,
+                        },
+                        "dNIC":{
+                            "driver_NIC":rentDriverID,
+                        },
+
+
+                }
+                ]
+
+            }),
+
+            success:function (res) {
+                console.log(res)
+                    alert("SuccessFully You got the Vehicle !")
+            }
+        })
 
 
 

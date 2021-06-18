@@ -27,7 +27,4 @@ public class Driver {
     private String userName;
     private String password;
 
-//    @OneToMany(mappedBy = "dNIC",cascade = CascadeType.ALL)
-//    List<RentDetails>rentDetails = new ArrayList<>();
-
 }

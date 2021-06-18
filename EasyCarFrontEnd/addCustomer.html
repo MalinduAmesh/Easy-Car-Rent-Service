@@ -110,6 +110,7 @@
             method:"post",
             url:"http://localhost:8080/EasyCarBackEnd_war_exploded/customer",
             contentType:"application/json",
+            async:true,
             data:JSON.stringify({
                 "cusNicID" : NICNumber,
                 "name": customerName,
