@@ -21,8 +21,8 @@ public class RentDetails {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String rentDetailID;
     private String rentLosWaiver;
-    private String rentLosWaiverRecipt;
-    private String rentTotal;
+    private String rentDetReturn_date;
+
 
 
     @ManyToOne

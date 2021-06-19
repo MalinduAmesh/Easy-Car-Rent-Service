@@ -241,35 +241,39 @@
         console.log("Sjhow ID ")
         $.ajax({
             method: 'get',
-            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
             contentType: "application/json",
             async: true,
             success: function (res) {
 
-                console.log("Rent ID ");
+                for (var i in res.data){
+                    let rentID = res.data[i].carID
+                    console.log("Rent ID " +rentID);
+                    $('#inputrentID').val(rentID);
 
-                try {
 
-                let lastRentID = res.data.rentID
-                let newRentID = parseInt(lastRentID.substring(1, 4)) + 1;
-
-                if (newRentID < 10) {
-                    $('#inputrentID').text('#D00' + newRentID);
-                } else if (newRentID < 100) {
-                    $('#inputrentID').text('#D0' + newRentID);
-                } else {
-                    $('#inputrentID').text('#D' + newRentID);
                 }
-            }catch (e) {
-                    $("#inputrentID").text('#D001');
-                }
+            //     try {
+            //
+            //     let lastRentID = res.data.rentID
+            //     let newRentID = parseInt(lastRentID.substring(1, 4)) + 1;
+            //
+            //     if (newRentID < 10) {
+            //         $('#inputrentID').text('#D00' + newRentID);
+            //     } else if (newRentID < 100) {
+            //         $('#inputrentID').text('#D0' + newRentID);
+            //     } else {
+            //         $('#inputrentID').text('#D' + newRentID);
+            //     }
+            // }catch (e) {
+            //         $("#inputrentID").text('#D001');
+            //     }
         }
         })
     })
 
 
     $("#btn-manage-carDetails").click(function () {
-        genarateRentID();
         $('#tblCarDetails').empty();
         $.ajax({
             method: 'get',
@@ -440,6 +444,8 @@
         // Rent Details
         // let rentDetailID = $('#inputRentDet').val();
         let rentDriverID = $('#inputDriverID').val();
+        let rentLWDFee = $('#inputImageLWF').val();
+        let rentTotal = $('#inputTotalLWF').val();
 
         // Get The Data in Car cart
         let table = document.getElementById('tblAddCar');
@@ -450,8 +456,8 @@
             var carID = table.rows[i].cells[1].innerText;
             var lostWavFee = table.rows[i].cells[3].innerText;
 
-
         }
+
         console.log(rentID)
         console.log(rentDate)
         console.log(rentReqStatus)
@@ -460,8 +466,8 @@
         console.log(carID)
         console.log(rentDetID)
         console.log(lostWavFee)
-
-
+        console.log("total" + rentTotal)
+        console.log(rentLWDFee)
         $.ajax({
             method: 'post',
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
@@ -477,6 +483,8 @@
                 "rentDetails": [{
                     "rentDetailID": rentDetID,
                     "rentLosWaiver": lostWavFee,
+                    "rentLosWaiverRecipt": rentLWDFee,
+                    "rentTotal": rentTotal,
 
                     // "rID": {
                     //     "rentID": rentID,

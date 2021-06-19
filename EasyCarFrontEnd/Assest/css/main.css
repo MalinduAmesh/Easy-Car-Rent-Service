@@ -7,7 +7,17 @@
     padding: 0;
     margin: 0;
 }
-
+h1, h2, h3, h4, h5 {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+}
+h2{
+    font-size: 24px;
+}
+label{
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
 /*Scroll bar Styling*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -427,7 +437,14 @@ body {
 
 
 
+/*---------------------------------------------------Payment Form------------------------------------------------------------*/
 
+.adminPaymentForm{
+    display: none;
+    margin-left: 268px;
+    position: relative;
+    top: 91px;
+}
 
 
 

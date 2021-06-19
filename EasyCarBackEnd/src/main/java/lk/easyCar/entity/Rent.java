@@ -21,6 +21,8 @@ public class Rent {
     private String rentID;
     private String rentDate;
     private String rentStatus;
+    private String rentLosWaiverRecipt;
+    private String rentTotal;
 
     @ManyToOne
     @JoinColumn(name = "cusID",referencedColumnName = "cusNicID")

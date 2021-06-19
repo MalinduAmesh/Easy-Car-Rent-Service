@@ -18,6 +18,10 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
     <!-- END Google Fonts  -->
 
 </head>
@@ -418,6 +422,90 @@
     </div>
 </section>
 
+<section class="adminPaymentForm col-10" id="adminPayment">
+    <div class="">
+        <div id="addPaymentMain">
+            <h2 style="font-size: 24px;margin-left: 22px;font-weight: bold">Pay Your Bill</h2>
+            <hr>
+
+            <div class="col-9" style="    margin-left: 28px;">
+                <div class="form-row" style="display: flex;flex-direction: row;justify-content: space-between">
+                    <div class="form-group col-md-3">
+                        <label for="txtPaymentDate">Date of Payemnt</label>
+                        <input class="form-control" id="txtPaymentDate" type="date">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtSearchBookingID">Put Your Booking
+                            ID</label>
+                        <input class="form-control" id="txtSearchBookingID" type="text">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtFillEstimateTotal">Estimated
+                            Total
+                            when Your Booking</label>
+                        <input class="form-control" id="txtFillEstimateTotal" type="text">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <p>Those are your Extra Payment</p>
+                </div>
+                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
+                    <div class="form-group col-md-3">
+                        <label for="txtPayExtraKM">Extra KM</label>
+                        <input class="form-control" id="txtPayExtraKM" type="text">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="txtPriceForExtraKM">QTY of KM
+                        </label>
+                        <input class="form-control" id="txtQtyKM" type="number">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button class="btn btn-info" id="calExtraKM" style="margin-top: 27px;margin-left: 10px;height: 40px;    font-size: 14px;">
+                            Get Extra KM Price
+                        </button>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="txtPriceForExtraKM">Total Price For Extra KM
+                        </label>
+                        <input class="form-control" id="txtPriceForExtraKM" type="number">
+                    </div>
+
+                </div>
+                <div class="form-row" style="display: flex;    flex-direction: row;">
+                    <div class="form-group col-md-4" style="margin-right: 10px">
+                        <label for="txtDamageDesc">Damage Desc
+                        </label>
+                        <input class="form-control" id="txtDamageDesc" type="text">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtDamageTotal"> Damage Total</label>
+                        <input class="form-control" id="txtDamageTotal" type="number">
+                    </div>
+
+                </div>
+                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
+                    <div class="form-group col-md-5">
+                        <label for="txtFinalTotal"> Final Total</label>
+                        <input class="form-control" id="txtFinalTotal" type="number">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-8" style="display: flex;flex-direction: row;margin-left: 28px;margin-top: 10px">
+                <button class="btn btn-success" id="btnCalculatefinal">Calculate Final Payment</button>
+                <button class="btn btn-warning" id="btnPayBill" style="margin-left: 20px" type="button">Pay the
+                    Recipt
+                </button>
+                <button class="btn btn-info" id="btnViewAllPaymentDetails" style="margin-left: 20px" type="button">
+                    View All Payments
+                </button>
+
+            </div>
+        </div>
+        </div>
+</section>
+
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
 <script src="Assest/js/bootstrap.min.js"></script>
 <script src="Assest/js/main.js"></script>
@@ -430,6 +518,8 @@
         $('#adminRequest').css("display", "none");
         $('#AddCar').css("display","none");
         $('#UpdateCar').css("display", "none");
+        $('#adminPayment').css("display", "none");
+
 
 
 
@@ -441,6 +531,8 @@
         $('#adminHome').css("display", "none");
         $('#AddCar').css("display","none");
         $('#viewAllCars').css("display","block");
+        $('#adminPayment').css("display", "none");
+
 
 
 
@@ -454,6 +546,8 @@
         $('#adminHome').css("display", "none");
         $('#carDetailsForm').css("display","none");
         $('#UpdateCar').css("display", "none");
+        $('#adminPayment').css("display", "none");
+
     })
 
 
@@ -471,6 +565,8 @@
         $('#adminHome').css("display", "none");
         $('#AddCar').css("display","none");
         $('#UpdateCar').css("display", "none");
+        $('#adminPayment').css("display", "none");
+
 
 
 
@@ -478,6 +574,12 @@
 
     function showPaymentForm() {
 
+        $('#adminPayment').css("display", "block");
+        $('#adminRequest').css("display", "none");
+        $('#carDetailsForm').css("display","none");
+        $('#adminHome').css("display", "none");
+        $('#AddCar').css("display","none");
+        $('#UpdateCar').css("display", "none");
     }
 
     $("#btn-manage-carDetails").click(function () {
