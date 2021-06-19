@@ -9,7 +9,7 @@
 <body>
 
 
-<div class="wrp" >
+<div class="wrp">
     <nav class="navbar-nav">
         <div class="logo">
             <img alt="logo" class="icon" src="asserts">
@@ -34,205 +34,197 @@
 </div>
 
 
+<div class="container">
 
-    <div class="container">
+    <div class="row col-md-11" style="    margin-left: 175px;">
+        <h2>Rent Details</h2>
+        <hr>
+        <div class="col-md-6">
+            <h4>Customer Details</h4>
+            <input class="inputRentCusID" id="inputRentCusID" placeholder="Search Your ID">
+            &nbsp;&nbsp;
+            <button class="btn-1">Search</button>
 
-        <div class="row col-md-11" style="    margin-left: 175px;">
-            <h2>Rent Details</h2>
-            <hr>
-            <div class="col-md-6">
-                <h4>Customer Details</h4>
-                <input class="inputRentCusID" id="inputRentCusID" placeholder="Search Your ID">
-                &nbsp;&nbsp;
-                <button class="btn-1">Search</button>
-
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                        <label for="inputrentID">Rent ID </label>
-                        <input class="form-control" id="inputrentID" type="text">
-                    </div>
-
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                        <label for="inputRentDet"> Rent Details</label>
-                        <input class="form-control" id="inputRentDet" type="text">
-                    </div>
-
+            <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputrentID">Rent ID </label>
+                    <input class="form-control" id="inputrentID" type="text">
                 </div>
 
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                        <label for="inputCusName">Customer Name</label>
-                        <input class="form-control" id="inputCusName" type="text">
-                    </div>
-
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                        <label for="inputCusContact"> Customer Contact</label>
-                        <input class="form-control" id="inputCusContact" type="text">
-                    </div>
-
-                </div>
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-5" style=" margin-right: 10px;" >
-                        <label for="inputreqStatus">Req Status</label>
-                        <input class="form-control" id="inputreqStatus" type="text">
-                    </div>
-
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputRentDet"> Rent Details</label>
+                    <input class="form-control" id="inputRentDet" type="text">
                 </div>
 
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-                    <div class="form-group col-md-5" style=" margin-right: 10px;">
-                        <label for="inputPickUpDate">PickUp Date</label>
-                        <input class="form-control" id="inputPickUpDate" type="date">
-                    </div>
-
-                    <div class="form-group col-md-5" style=" margin-right: 10px;">
-                        <label for="inputDropOffDate">Drop Off Date</label>
-                        <input class="form-control" id="inputDropOffDate" type="date">
-                    </div>
-                    <hr>
-                </div>
-                <br>
-
-                <fieldset class="form-group">
-                    <div class="row"
-                         style="display: flex;flex-direction: row;margin-left: 20px;margin-top: 10px">
-
-                        <h4>Driver Status</h4>
-
-                        <div class="col-3">
-                            <br>
-                            <div class="form-check">
-                                <input checked class="form-check-input" id="withDriverID" name="A"
-                                       type="radio" value="option1">
-                                <label class="form-check-label" for="withDriverID">
-                                    with Driver
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-
-                                <input class="form-check-input" id="withoutDriverID" name="A" type="radio"
-                                       value="option2">
-                                <label class="form-check-label" for="withoutDriverID">
-                                    without Driver
-                                </label>
-                            </div>
-
-                        </div>
-
-                        <div class="col-4" id="txtWithOutdiver">
-                            <br>
-                            <label for="inputDriverID">
-                                Your Driver Name
-                            </label>
-                            <input class="form-control" id="inputDriverID" type="text">
-                        </div>
-                    </div>
-                </fieldset>
-                <br>
-                <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
-
-                    <div class="form-group col-md-5" style="margin-right: 10px">
-                        <label for="inputImageLWF">Image Of Lose Waive Receipt</label>
-                        <input class="form-control" id="inputImageLWF" type="text">
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label for="inputTotalLWF">Total Fee</label>
-                        <input class="form-control" id="inputTotalLWF" type="text">
-                    </div>
-
-                </div>
-
-                <button class="btn btn-success" id="btnPlaceOrder" style="margin-left: 182px;width: 114px;margin-top: 16px;"
-                        type="button">Place Request
-                </button>
             </div>
 
-    <div class="col-5" id="viewAllCars">
-        <h4>Car Details</h4>
-        <input class="input-2" placeholder="Search Your Car Type">
-        &nbsp;&nbsp;
-        <button class="btn-2">Search</button>
-        <div>
-            <table class="table" id="carDetailsAdminTable">
-                <thead>
-                <tr>
-                    <th scope="col">Car ID</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Car Type</th>
-                    <th scope="col">Car Color</th>
-                    <th scope="col">Car TransType</th>
-                    <th scope="col">Car LostWavier</th>
-                    <th scope="col">Passenger</th>
-                </tr>
-                </thead>
-                <tbody id="tblCarDetails">
-                <tr>
-                </tr>
-                </tbody>
-            </table>
+            <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputCusName">Customer Name</label>
+                    <input class="form-control" id="inputCusName" type="text">
+                </div>
 
-<!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputCusContact"> Customer Contact</label>
+                    <input class="form-control" id="inputCusContact" type="text">
+                </div>
 
-<!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
-<!--                    <label for="inputCarIDRent">  Car ID</label>-->
-<!--                    <input class="form-control" id="inputCarIDRent" type="text">-->
-<!--                </div>-->
-<!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
-<!--                    <label for="inputCarCarNameRent"> Car Name</label>-->
-<!--                    <input class="form-control" id="inputCarCarNameRent" type="text">-->
-<!--                </div>-->
+            </div>
+            <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputreqStatus">Req Status</label>
+                    <input class="form-control" id="inputreqStatus" type="text">
+                </div>
 
-<!--            </div>-->
+            </div>
 
-<!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
+            <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputPickUpDate">PickUp Date</label>
+                    <input class="form-control" id="inputPickUpDate" type="date">
+                </div>
 
-<!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
-<!--                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>-->
-<!--                    <input class="form-control" id="inputCarLoseFeeRent" type="text">-->
-<!--                </div>-->
-<!--                <div class="form-group col-md-6">-->
-<!--                    <label for="inputCarPassengerRent"> Passengers</label>-->
-<!--                    <input class="form-control" id="inputCarPassengerRent" type="text">-->
-<!--                </div>-->
+                <div class="form-group col-md-5" style=" margin-right: 10px;">
+                    <label for="inputDropOffDate">Drop Off Date</label>
+                    <input class="form-control" id="inputDropOffDate" type="date">
+                </div>
+                <hr>
+            </div>
+            <br>
 
-<!--            </div>-->
+            <fieldset class="form-group">
+                <div class="row"
+                     style="display: flex;flex-direction: row;margin-left: 20px;margin-top: 10px">
 
-<!--            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
-<!--                    type="button">Search Car-->
-<!--            </button>-->
+                    <h4>Driver Status</h4>
 
-            <table class="table" id="carDetailsAddCars">
-                <thead>
-                <tr>
-                    <th scope="col">Rent ID</th>
-                    <th scope="col">Car ID</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Car LostWavier</th>
-                    <th scope="col">Passenger</th>
-                </tr>
-                </thead>
-                <tbody id="tblAddCar">
-                </tbody>
-            </table>
+                    <div class="col-3">
+                        <br>
+                        <div class="form-check">
+                            <input checked class="form-check-input" id="withDriverID" name="A"
+                                   type="radio" value="option1">
+                            <label class="form-check-label" for="withDriverID">
+                                with Driver
+                            </label>
+                        </div>
 
-                        <button class="btn btn-info" id="btnRemoveCar" style="margin-left: 182px;width: 114px;margin-top: 16px;"
-                                type="button">Remove Car
-                        </button>
+                        <div class="form-check">
+
+                            <input class="form-check-input" id="withoutDriverID" name="A" type="radio"
+                                   value="option2">
+                            <label class="form-check-label" for="withoutDriverID">
+                                without Driver
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-4" id="txtWithOutdiver">
+                        <br>
+                        <label for="inputDriverID">
+                            Your Driver Name
+                        </label>
+                        <input class="form-control" id="inputDriverID" type="text">
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
+
+                <div class="form-group col-md-5" style="margin-right: 10px">
+                    <label for="inputImageLWF">Image Of Lose Waive Receipt</label>
+                    <input class="form-control" id="inputImageLWF" type="text">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputTotalLWF">Total Fee</label>
+                    <input class="form-control" id="inputTotalLWF" type="text">
+                </div>
+
+            </div>
+
+            <button class="btn btn-success" id="btnPlaceOrder" style="margin-left: 182px;width: 114px;margin-top: 16px;"
+                    type="button">Place Request
+            </button>
+        </div>
+
+        <div class="col-5" id="viewAllCars">
+            <h4>Car Details</h4>
+            <input class="input-2" placeholder="Search Your Car Type">
+            &nbsp;&nbsp;
+            <button class="btn-2">Search</button>
+            <div>
+                <table class="table" id="carDetailsAdminTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">Car ID</th>
+                        <th scope="col">Car Model</th>
+                        <th scope="col">Car Type</th>
+                        <th scope="col">Car Color</th>
+                        <th scope="col">Car TransType</th>
+                        <th scope="col">Car LostWavier</th>
+                        <th scope="col">Passenger</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblCarDetails">
+                    </tbody>
+                </table>
+
+                <!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
+
+                <!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+                <!--                    <label for="inputCarIDRent">  Car ID</label>-->
+                <!--                    <input class="form-control" id="inputCarIDRent" type="text">-->
+                <!--                </div>-->
+                <!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+                <!--                    <label for="inputCarCarNameRent"> Car Name</label>-->
+                <!--                    <input class="form-control" id="inputCarCarNameRent" type="text">-->
+                <!--                </div>-->
+
+                <!--            </div>-->
+
+                <!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
+
+                <!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+                <!--                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>-->
+                <!--                    <input class="form-control" id="inputCarLoseFeeRent" type="text">-->
+                <!--                </div>-->
+                <!--                <div class="form-group col-md-6">-->
+                <!--                    <label for="inputCarPassengerRent"> Passengers</label>-->
+                <!--                    <input class="form-control" id="inputCarPassengerRent" type="text">-->
+                <!--                </div>-->
+
+                <!--            </div>-->
+
+                <!--            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
+                <!--                    type="button">Search Car-->
+                <!--            </button>-->
+
+                <table class="table" id="carDetailsAddCars">
+                    <thead>
+                    <tr>
+                        <th scope="col">Rent ID</th>
+                        <th scope="col">Car ID</th>
+                        <th scope="col">Car Model</th>
+                        <th scope="col">Car LostWavier</th>
+                        <th scope="col">Passenger</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblAddCar">
+                    </tbody>
+                </table>
+            </div>
+
+
         </div>
 
 
+        <button class="btn btn-success" id="btnorderID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
+                type="button">ID
+        </button>
+
+
     </div>
-
-
-
-
-
-
-
-
-        </div>
-    </div>
+</div>
 
 
 <script src="Assest/js/bootstrap.min.js"></script>
@@ -240,17 +232,53 @@
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
 
 <script>
-    $("#btn-manage-carDetails").click(function () {
 
+    /*Genarate Auto Rent ID */
+
+    $('#btnorderID').click(function () {
+
+
+        console.log("Sjhow ID ")
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+            contentType: "application/json",
+            async: true,
+            success: function (res) {
+
+                console.log("Rent ID ");
+
+                try {
+
+                let lastRentID = res.data.rentID
+                let newRentID = parseInt(lastRentID.substring(1, 4)) + 1;
+
+                if (newRentID < 10) {
+                    $('#inputrentID').text('#D00' + newRentID);
+                } else if (newRentID < 100) {
+                    $('#inputrentID').text('#D0' + newRentID);
+                } else {
+                    $('#inputrentID').text('#D' + newRentID);
+                }
+            }catch (e) {
+                    $("#inputrentID").text('#D001');
+                }
+        }
+        })
+    })
+
+
+    $("#btn-manage-carDetails").click(function () {
+        genarateRentID();
         $('#tblCarDetails').empty();
         $.ajax({
             method: 'get',
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
             contentType: "application/json",
-            success:function (res) {
+            success: function (res) {
                 console.log(res)
 
-                for (var i in res.data){
+                for (var i in res.data) {
                     let carID = res.data[i].carID;
                     let carModel = res.data[i].carModel;
                     let carType = res.data[i].carType;
@@ -273,38 +301,113 @@
 
     });
 
+    // ---------------------------------------------Add To Cart----------------------------------------------------------
+
+
+    /*-----------------------------------------------Select Item already Exist in table -------------------------------------------------*/
+
+
+    $("#carDetailsAdminTable > tbody").on("click", "tr", function () {
+        $("#carDetailsAdminTable > tbody > tr").css({
+            "background-color": "initial",
+            "color": "initial"
+        });
+
+        let selectedRow = $(this).closest("tr");
+        $(this).css({
+            "background-color": "#a7a7a7",
+            "color": "white"
+        });
+
+    })
+
+
     function getcarDetails(id) {
-
-        console.log("gett Car")
-
+        console.log("fk the item")
         var getcar = ($(id).attr('id'));
-        console.log(getcar);
+        let check = isExist(getcar);
 
-        $('#inputCarIDRent').val(getcar);
+        if (!check) {
+            if (getcar !== undefined) {
 
-        $.ajax({
-            method: 'get',
-            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/" + getcar,
-            success:function (response) {
 
-                console.log(response);
+                $.ajax({
+                    method: 'get',
+                    url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/" + getcar,
+                    success: function (response) {
 
-                let RentDetID = $('#inputRentDet').val();
-                let carName = response.data.carModel;
-                let carLoseFee = response.data.rentLosWaiver;
-                let passenger = response.data.passenger;
+                        console.log(response);
 
-                $('#inputCarCarNameRent').val(carName);
-                $('#inputCarLoseFeeRent').val(carLoseFee);
-                $('#inputCarPassengerRent').val(passenger);
+                        let RentDetID = $('#inputRentDet').val();
+                        let carName = response.data.carModel;
+                        let carLoseFee = response.data.rentLosWaiver;
+                        let passenger = response.data.passenger;
 
-                var row = `<tr><td>${RentDetID}</td><td>${getcar}</td><td>${carName}</td><td>${carLoseFee}</td><td> ${passenger}</td><td>`
+                        $('#inputCarCarNameRent').val(carName);
+                        $('#inputCarLoseFeeRent').val(carLoseFee);
+                        $('#inputCarPassengerRent').val(passenger);
 
-                $('#tblAddCar').append(row);
+                        var row = `<tr><td>${RentDetID}</td><td>${getcar}</td><td>${carName}</td><td>${carLoseFee}</td><td> ${passenger}</td>
+                        <td><button  class="btn btn-danger fff" id="${getcar}" onclick="btnRemoveCarForm()">Delete</button></td><td>`
+
+                        $('#tblAddCar').append(row);
+
+                        let tot = 0;
+                        let table = document.getElementById('carDetailsAddCars');
+                        let count = table.rows.length;
+                        for (let i = 1; i < count; i++) {
+                            tot += parseInt(table.rows[i].cells[3].innerText);
+                        }
+                        $('#inputTotalLWF').val(tot);
+
+                    }
+                })
             }
-        })
+
+        } else {
+            alert("Car is already in Booking!");
+
+            $("#carDetailsAdminTable > tbody > tr").css({
+                "background-color": "initial",
+                "color": "initial"
+            });
+        }
+    }
+
+
+    const isExist = function (code) {
+
+        let table = document.getElementById('carDetailsAddCars');
+        let count = table.rows.length;
+
+        for (let i = 0; i < count; i++) {
+            if (table.rows[i].cells[1].innerText === code) {
+                console.log(code)
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Remove from the cart
+
+    function btnRemoveCarForm() {
+        selectedRowOfCart.remove();
+        alert("Successfully Remove !")
+
+
+        let tot = 0;
+        let table = document.getElementById('carDetailsAddCars');
+        let count = table.rows.length;
+        for (let i = 1; i < count; i++) {
+            tot += parseInt(table.rows[i].cells[3].innerText);
+        }
+        $('#inputTotalLWF').val(tot);
 
     }
+
+    /*-------------------------------------------------------------check the car already in the table ---------------------------------------- */
+
 
     $('#btnSearchCarID').click(function () {
 
@@ -342,20 +445,17 @@
         let table = document.getElementById('tblAddCar');
         let count = table.rows.length;
 
-
-        for(let i=0;i<count;i++){
+        for (let i = 0; i < count; i++) {
             var rentDetID = table.rows[i].cells[0].innerText;
             var carID = table.rows[i].cells[1].innerText;
             var lostWavFee = table.rows[i].cells[3].innerText;
-
-
 
 
         }
         console.log(rentID)
         console.log(rentDate)
         console.log(rentReqStatus)
-        console.log("menna ID "+rentCusID)
+        console.log("menna ID " + rentCusID)
         console.log(rentDriverID)
         console.log(carID)
         console.log(rentDetID)
@@ -363,19 +463,19 @@
 
 
         $.ajax({
-            method:'post',
-            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+            method: 'post',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
             contentType: "application/json",
-            data:JSON.stringify({
-                "rentID":rentID,
-                "rentDate":rentDate ,
-                "rentStatus" :rentReqStatus ,
+            data: JSON.stringify({
+                "rentID": rentID,
+                "rentDate": rentDate,
+                "rentStatus": rentReqStatus,
                 "cusID": {
-                    "cusNicID":rentCusID,
+                    "cusNicID": rentCusID,
                 },
 
-                "rentDetails":[{
-                    "rentDetailID":rentDetID,
+                "rentDetails": [{
+                    "rentDetailID": rentDetID,
                     "rentLosWaiver": lostWavFee,
 
                     // "rID": {
@@ -387,12 +487,12 @@
                     //         "cusNicID": rentCusID,
                     //     },
                     // },
-                        "cID":{
-                            "carID":carID,
-                        },
-                        "dNIC":{
-                            "driver_NIC":rentDriverID,
-                        },
+                    "cID": {
+                        "carID": carID,
+                    },
+                    "dNIC": {
+                        "driver_NIC": rentDriverID,
+                    },
 
 
                 }
@@ -400,16 +500,38 @@
 
             }),
 
-            success:function (res) {
+            success: function (res) {
                 console.log(res)
-                    alert("SuccessFully You got the Vehicle !")
+                alert("SuccessFully You got the Vehicle !")
             }
         })
 
 
+    });
 
+
+    /* -----------------------------------------------Delete an Item From the Cart ----------------------------------------------------------*/
+
+    let selectedRowOfCart;
+
+    $('#carDetailsAddCars > tbody').on("click", "tr", function () {
+        $("#carDetailsAddCars > tbody > tr").css({
+            "background-color": "initial",
+            "color": "initial"
+        });
+        selectedRowOfCart = $(this).closest("tr");
+        $(this).css({
+            "background-color": "#ff7979",
+            "color": "black"
+        });
     })
 
+
+    // Set Total
+
+    let setTotal = (value) => {
+        $('#inputTotalLWF').val(value);
+    }
 </script>
 </body>
 </html>
