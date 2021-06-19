@@ -501,6 +501,23 @@
                     View All Payments
                 </button>
 
+                <label for="txtBookingID">
+                    <input id="txtBookingID" style="" type="text">
+                </label>
+                <label for="custNICNumber">
+                    <input id="custNICNumber" style="" type="text">
+                </label>
+                <label for="rentDate">
+                    <input id="rentDate" style="" type="text">
+                </label>
+                <label for="returnDate">
+                    <input id="returnDate" style="" type="text">
+                </label>
+                <label for="driverNICNumber">
+                    <input id="driverNICNumber" style="" type="text">
+                </label>
+
+
             </div>
         </div>
         </div>
@@ -512,6 +529,19 @@
 <script src="controller/DashboardController.js"></script>
 
 <script>
+    $('#btnCalculatefinal').click(function () {
+        let bookingID = $("#txtBookingID").val()
+        let custNICNumber = $("#custNICNumber").val()
+        let rentDate = $("#rentDate").val()
+        let returnDate = $("#returnDate").val()
+        let driverNICNumber = $("#driverNICNumber").val()
+        console.log(bookingID)
+        console.log(custNICNumber)
+        console.log(rentDate)
+        console.log(returnDate)
+        console.log(driverNICNumber)
+    })
+
     function showAdminDashboardForm() {
         $('#adminHome').css("display", "block");
         $('#carDetailsForm').css("display","none");
@@ -621,6 +651,7 @@
 
     function updateDetailsCar(id) {
         console.log("update")
+        console.log(id)
 
         var carUpdate = ($(id).attr('id'));
         console.log(carUpdate)
@@ -754,6 +785,9 @@
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/"
         })
     })
+
+/* ---------------------------------------------------------   Pending Reques Form ------------------------------------------------*/
+
 
 </script>
 </body>

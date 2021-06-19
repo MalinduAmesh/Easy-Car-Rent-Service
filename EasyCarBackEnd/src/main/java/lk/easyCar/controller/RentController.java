@@ -27,6 +27,7 @@ public class RentController {
             throw new NotFoundException("Rent id Cannot to be null");
 
         }
+        System.out.println("Save the Rent ");
         rentService.addRent(rentDTO);
 
         return new ResponseEntity(new StandardResponse("201","Done",rentDTO), HttpStatus.CREATED);

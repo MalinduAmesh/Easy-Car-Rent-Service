@@ -222,7 +222,6 @@
                 type="button">ID
         </button>
 
-
     </div>
 </div>
 
@@ -431,7 +430,56 @@
 
     })
 
+    /* -----------------------------------------------Delete an Item From the Cart ----------------------------------------------------------*/
+
+    let selectedRowOfCart;
+    let carDetailsArr = [];
+    let carID1;
+    let lostWavFee1;
+    $('#carDetailsAddCars > tbody').on("click", "tr", function () {
+        $("#carDetailsAddCars > tbody > tr").css({
+            "background-color": "initial",
+            "color": "initial"
+        });
+        let getSelectRow = $(this).closest("tr");
+        selectedRowOfCart = $(this).closest("tr");
+        $(this).css({
+            "background-color": "#ff7979",
+            "color": "black"
+        });
+
+        carID1 = getSelectRow.find("td:eq(1)").text();
+        lostWavFee1 = getSelectRow.find("td:eq(3)").text();
+        carDetailsArr.push(carID1,lostWavFee1);
+
+        for (let i=0;i < getSelectRow.length;i++){
+            var carID2 = carDetailsArr[0];
+        }
+        console.log("Car Duwal ID "+carID2)
+
+    })
+
+
+
     $('#btnPlaceOrder').click(function () {
+
+        let carArray = [];
+        let carLostWF = [];
+        let table1 = document.getElementById("tblAddCar");
+
+        let count1 = table1.rows.length;
+
+        for (let i=0;i<count1;i++){
+            carArray+= table1.rows[i].cells[1].innerText;
+            carLostWF+= table1.rows[i].cells[3].innerText;
+
+        }
+        console.log("Car Arryyyyy"+carArray)
+        console.log("Car Arryyyyy Lostttttt"+carLostWF)
+
+        carDetailsArr.push(carID1,lostWavFee1);
+        var car11 = carDetailsArr[0];
+        console.log("Car Duwal ID "+car11)
 
         // Rent Values
         let rentID = $('#inputrentID').val();
@@ -443,6 +491,8 @@
 
         // Rent Details
         // let rentDetailID = $('#inputRentDet').val();
+
+        let rentDropOffDate = $('#inputDropOffDate').val();
         let rentDriverID = $('#inputDriverID').val();
         let rentLWDFee = $('#inputImageLWF').val();
         let rentTotal = $('#inputTotalLWF').val();
@@ -450,6 +500,7 @@
         // Get The Data in Car cart
         let table = document.getElementById('tblAddCar');
         let count = table.rows.length;
+
 
         for (let i = 0; i < count; i++) {
             var rentDetID = table.rows[i].cells[0].innerText;
@@ -480,28 +531,17 @@
                     "cusNicID": rentCusID,
                 },
 
-                "rentDetails": [{
-                    "rentDetailID": rentDetID,
+                "rentDetails": [
+                    {
+                    "fk":{
+                        "rentID":rentID,
+                        "driver_NIC":rentDriverID,
+                        "carID":carID
+                    },
+                    "rentDetReturnDate": rentDropOffDate,
                     "rentLosWaiver": lostWavFee,
                     "rentLosWaiverRecipt": rentLWDFee,
                     "rentTotal": rentTotal,
-
-                    // "rID": {
-                    //     "rentID": rentID,
-                    //     "rentLosWaiver": lostWavFee,
-                    //     "rentStatus": rentReqStatus,
-                    //
-                    //     "cusID": {
-                    //         "cusNicID": rentCusID,
-                    //     },
-                    // },
-                    "cID": {
-                        "carID": carID,
-                    },
-                    "dNIC": {
-                        "driver_NIC": rentDriverID,
-                    },
-
 
                 }
                 ]
@@ -518,22 +558,6 @@
     });
 
 
-    /* -----------------------------------------------Delete an Item From the Cart ----------------------------------------------------------*/
-
-    let selectedRowOfCart;
-
-    $('#carDetailsAddCars > tbody').on("click", "tr", function () {
-        $("#carDetailsAddCars > tbody > tr").css({
-            "background-color": "initial",
-            "color": "initial"
-        });
-        selectedRowOfCart = $(this).closest("tr");
-        $(this).css({
-            "background-color": "#ff7979",
-            "color": "black"
-        });
-    })
-
 
     // Set Total
 
@@ -543,3 +567,27 @@
 </script>
 </body>
 </html>
+
+let carDetailsArr = [];
+
+$('#carDetailsAddCars > tbody').on("click","tr",function () {
+$('#carDetailsAddCars > tbody >tr' ).css({
+"background-color" : "initial",
+"color" : "initial"
+});
+
+let getSelectRow = $(this).closest("tr");
+$(this).css({
+"background-color" : "#95a5a6",
+"color" : "white"
+})
+
+let carID1 = getSelectRow.find("td:eq(0)").text();
+let lostWavFee1 = getSelectRow.find("td:eq(3)").text();
+
+carDetailsArr.push(carID1,lostWavFee1);
+
+console.log(carID1)
+
+
+})

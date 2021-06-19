@@ -15,20 +15,18 @@ import java.util.List;
 @Entity
 public class Rent {
 
-
-    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String rentID;
     private String rentDate;
     private String rentStatus;
-    private String rentLosWaiverRecipt;
-    private String rentTotal;
+
 
     @ManyToOne
     @JoinColumn(name = "cusID",referencedColumnName = "cusNicID")
     private User cusID;
 
-    @OneToMany(mappedBy = "rID",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rentID",cascade = CascadeType.ALL)
     private List<RentDetails> rentDetails = new ArrayList<>();
 
 }
