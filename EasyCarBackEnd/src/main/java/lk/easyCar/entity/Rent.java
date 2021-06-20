@@ -18,15 +18,12 @@ public class Rent {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private String rentID;
-    private String rentDate;
-    private String rentStatus;
-
 
     @ManyToOne
     @JoinColumn(name = "cusID",referencedColumnName = "cusNicID")
     private User cusID;
 
-    @OneToMany(mappedBy = "rentID",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rID",cascade = CascadeType.ALL)
     private List<RentDetails> rentDetails = new ArrayList<>();
 
 }

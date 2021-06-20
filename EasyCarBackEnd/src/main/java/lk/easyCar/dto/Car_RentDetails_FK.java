@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Car_RentDetails_FK implements Serializable {
     private String rentID;
     private String carID;
-    private String driver_NIC;
+
 
 
 }

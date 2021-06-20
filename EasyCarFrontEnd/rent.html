@@ -169,35 +169,35 @@
                     </tbody>
                 </table>
 
-                            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
+<!--                            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
 
-                                <div class="form-group col-md-6" style=" margin-right: 10px;" >
-                                    <label for="inputCarIDRent">  Car ID</label>
-                                    <input class="form-control" id="inputCarIDRent" type="text">
-                                </div>
-                                <div class="form-group col-md-6" style=" margin-right: 10px;" >
-                                    <label for="inputCarCarNameRent"> Car Name</label>
-                                    <input class="form-control" id="inputCarCarNameRent" type="text">
-                                </div>
+<!--                                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+<!--                                    <label for="inputCarIDRent">  Car ID</label>-->
+<!--                                    <input class="form-control" id="inputCarIDRent" type="text">-->
+<!--                                </div>-->
+<!--                                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+<!--                                    <label for="inputCarCarNameRent"> Car Name</label>-->
+<!--                                    <input class="form-control" id="inputCarCarNameRent" type="text">-->
+<!--                                </div>-->
 
-                            </div>
+<!--                            </div>-->
 
-                            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
+<!--                            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
 
-                                <div class="form-group col-md-6" style=" margin-right: 10px;" >
-                                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>
-                                    <input class="form-control" id="inputCarLoseFeeRent" type="text">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputCarPassengerRent"> Passengers</label>
-                                    <input class="form-control" id="inputCarPassengerRent" type="text">
-                                </div>
+<!--                                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
+<!--                                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>-->
+<!--                                    <input class="form-control" id="inputCarLoseFeeRent" type="text">-->
+<!--                                </div>-->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label for="inputCarPassengerRent"> Passengers</label>-->
+<!--                                    <input class="form-control" id="inputCarPassengerRent" type="text">-->
+<!--                                </div>-->
 
-                            </div>
+<!--                            </div>-->
 
-                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
-                                    type="button">Search Car
-                            </button>
+<!--                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
+<!--                                    type="button">Search Car-->
+<!--                            </button>-->
 
                 <table class="table" id="carDetailsAddCars">
                     <thead>
@@ -237,7 +237,8 @@
     $('#btnorderID').click(function () {
 
 
-        console.log("Sjhow ID ")
+        // console.log("Show ID ")
+
         $.ajax({
             method: 'get',
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
@@ -463,45 +464,77 @@
 
 
 
-        // set Values to the VehicDTO
-        let vehicleDTO = new VehicleDTO(carID,carNme);
+        // // set Values to the VehicDTO
+        // let vehicleDTO = new VehicleDTO(carID,carNme);
         // var carID3 = vehicleDTO.getCarID();
         // let carName = vehicleDTO.getcarNme();
         //
         // console.log("VehicleDto Arry" + carID3)
         // console.log("VehicleDto Arry" + carName)
+        //
+        // let vehicleTable = [];
+        //
+        // vehicleTable.push(vehicleDTO);
+        //
+        // console.log("Vehicle Table arrya"+ vehicleTable)
+        //
+        // function getVehicle(){
+        //     return vehicleTable;
+        // }
+        //
+        // let myCart = getVehicle();
+        // let  testData = myCart.values();
+        // var cartData = [];
+        //
+        // for (const value of testData){
+        //     cartData.push({
+        //         CarID:value.getCarID()
+        //     })
+        //     console.log("Get Cart DAta ID" +carID )
+        //
+        // }
 
-        let table2 = document.getElementById("tblAddCar");
-        var tablArry = [];
-        var carNewID;
-        for (var i =0;i<table2.rows.length;i++){
-            tablArry.push({
-                carId2:table2.rows[i].cells[1].innerHTML,
-                lostFee2:table2.rows[i].cells[3].innerHTML,
 
+        // get successs
 
-            })
-        }
-
-        console.log(tablArry)
-
-        function getAllVe(){
-            return tablArry;
-        }
-
-        let myCart = getAllVe();
-        const  testData = myCart.values();
-        var cartData =[];
-
-        for (const value of testData){
-            cartData.push({
-                "CarID":value.carId2,
-
-            })
-
-        }
-        console.log("Hwloow Array Print "+);
-
+        // let table2 = document.getElementById("tblAddCar");
+        // var tablArry = [];
+        //
+        // for (var i =0;i<table2.rows.length;i++){
+        //     tablArry.push({
+        //         carId2:table2.rows[i].cells[1].innerHTML,
+        //         lostFee2:table2.rows[i].cells[3].innerHTML,
+        //
+        //
+        //     })
+        // }
+        //
+        // console.log("Print Table"+JSON.stringify(tablArry) )
+        //
+        // var  newCarID = tablArry[0].carId2
+        // var  newCarID2 = tablArry[1].carId2
+        //
+        // console.log("CarID 1" +newCarID);
+        // console.log("CarID 2" +newCarID2);
+        //
+        //
+        // function getAllVe(){
+        //     return tablArry;
+        // }
+        //
+        // let myCart = getAllVe();
+        // const  testData = myCart.values();
+        // var cartData =[];
+        //
+        // for (const value of testData){
+        //     cartData.push({
+        //         "CarID":value.carId2,
+        //
+        //     })
+        //
+        // }
+        // console.log("Hwloow Array Print ");
+        //
 
 
 
@@ -569,6 +602,36 @@
 
     $('#btnPlaceOrder').click(function () {
 
+        let table2 = document.getElementById("tblAddCar");
+        var tablArry = [];
+
+        for (var i =0;i<table2.rows.length;i++){
+            tablArry.push({
+                rentDetailsID:table2.rows[i].cells[0].innerHTML,
+                carId2:table2.rows[i].cells[1].innerHTML,
+                lostFee2:table2.rows[i].cells[3].innerHTML,
+
+
+            })
+        }
+
+        console.log("Print Table"+JSON.stringify(tablArry) )
+
+        // Get Rent Details ID
+
+        var rID1 = tablArry[0].rentDetailsID
+        var rID2 = tablArry[1].rentDetailsID
+        var rID3 = tablArry[2].rentDetailsID
+        // Get Car ID
+        var  newCarID = tablArry[0].carId2
+        var  newCarID2 = tablArry[1].carId2
+        var  newCarID3 = tablArry[2].carId2
+
+        console.log(newCarID)
+        console.log(newCarID2)
+
+
+
         let carArray = [];
         let carLostWF = [];
         let table1 = document.getElementById("tblAddCar");
@@ -596,9 +659,11 @@
 
 
         // Rent Details
-        // let rentDetailID = $('#inputRentDet').val();
+        let rentDetailID = $('#inputRentDet').val();
 
         let rentDropOffDate = $('#inputDropOffDate').val();
+        let rentPickUpDate = $('#inputPickUpDate').val();
+
         let rentDriverID = $('#inputDriverID').val();
         let rentLWDFee = $('#inputImageLWF').val();
         let rentTotal = $('#inputTotalLWF').val();
@@ -632,22 +697,71 @@
             contentType: "application/json",
             data: JSON.stringify({
                 "rentID": rentID,
-                "rentDate": rentDate,
-                "rentStatus": rentReqStatus,
                 "cusID": {
                     "cusNicID": rentCusID,
                 },
 
                 "rentDetails": [
                     {
-                    "fk":car,
-                    "rentDetReturnDate": rentDropOffDate,
+                        "rentDetailID":rID1,
+                        "pickUpDate": rentPickUpDate,
+                        "returnDate":rentDropOffDate,
+                        "rentStatus":rentReqStatus,
                     "rentLosWaiver": lostWavFee,
                     "rentLosWaiverRecipt": rentLWDFee,
                     "rentTotal": rentTotal,
+                        "dic": {
+                            "driver_NIC":rentDriverID
+                    },
+                        "rid": {
+                            "rentID":rentID,
+                    },
+                        "cid":  {
+                            "carID":newCarID
+                    }
 
-                }
+                },
+                    {
+                        "rentDetailID":rID2,
+                        "pickUpDate": rentPickUpDate,
+                        "returnDate":rentDropOffDate,
+                        "rentStatus":rentReqStatus,
+                        "rentLosWaiver": lostWavFee,
+                        "rentLosWaiverRecipt": rentLWDFee,
+                        "rentTotal": rentTotal,
+                        "dic": {
+                            "driver_NIC":rentDriverID
+                        },
+                        "rid": {
+                            "rentID":rentID,
+                        },
+                        "cid":  {
+                            "carID":newCarID2
+                        }
+
+                    },
+                    {
+                        "rentDetailID":rID3,
+                        "pickUpDate": rentPickUpDate,
+                        "returnDate":rentDropOffDate,
+                        "rentStatus":rentReqStatus,
+                        "rentLosWaiver": lostWavFee,
+                        "rentLosWaiverRecipt": rentLWDFee,
+                        "rentTotal": rentTotal,
+                        "dic": {
+                            "driver_NIC":rentDriverID
+                        },
+                        "rid": {
+                            "rentID":rentID,
+                        },
+                        "cid":  {
+                            "carID":newCarID3
+                        }
+
+                    }
+
                 ]
+
 
             }),
 

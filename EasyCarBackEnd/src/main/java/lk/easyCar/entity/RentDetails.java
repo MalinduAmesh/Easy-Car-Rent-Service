@@ -12,30 +12,31 @@ import javax.persistence.EmbeddedId;
 @Data
 public class RentDetails {
 
-    @EmbeddedId
-    private Car_RentDetails_FK fk;
-
-
-//    @Id
+//    @EmbeddedId
+//    private Car_RentDetails_FK fk;
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private String rentDetailID;
+
+    @Id
+    private String rentDetailID;
 
     private String rentLosWaiver;
-    private String rentDetReturnDate;
+    private String pickUpDate;
+    private String returnDate;
     private String rentLosWaiverRecipt;
     private String rentTotal;
+    private String rentStatus;
 
 
     @ManyToOne
-    @JoinColumn(name = "rentID",referencedColumnName = "rentID",insertable = false,updatable = false)
-    private Rent rentID;
+    @JoinColumn(name = "rID",referencedColumnName = "rentID")
+    private Rent rID;
 
     @ManyToOne
-    @JoinColumn(name = "carID",referencedColumnName = "carID",insertable = false,updatable = false)
-    private Vehicle carID;
+    @JoinColumn(name = "cID",referencedColumnName = "carID")
+    private Vehicle cID;
 
     @ManyToOne
-    @JoinColumn(name = "driver_NIC",referencedColumnName = "driver_NIC",insertable = false,updatable = false)
-     private Driver driver_NIC;
+    @JoinColumn(name = "dIC",referencedColumnName = "driver_NIC")
+     private Driver dIC;
 
 }

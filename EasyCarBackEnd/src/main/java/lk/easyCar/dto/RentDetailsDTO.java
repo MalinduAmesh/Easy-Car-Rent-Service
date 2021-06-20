@@ -12,12 +12,17 @@ import lombok.NoArgsConstructor;
 @Data
 public class RentDetailsDTO {
 
-//    private String rentDetailID;
+    private String rentDetailID;
 
-    private Car_RentDetails_FK fk;
     private String rentLosWaiver;
-    private String rentDetReturnDate;
+    private String pickUpDate;
+    private String returnDate;
     private String rentLosWaiverRecipt;
     private String rentTotal;
+    private String rentStatus;
+
+    private Driver dIC;
+    private Rent rID;
+    private Vehicle cID;
 
 }
