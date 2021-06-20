@@ -169,35 +169,35 @@
                     </tbody>
                 </table>
 
-                <!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
+                            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
 
-                <!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
-                <!--                    <label for="inputCarIDRent">  Car ID</label>-->
-                <!--                    <input class="form-control" id="inputCarIDRent" type="text">-->
-                <!--                </div>-->
-                <!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
-                <!--                    <label for="inputCarCarNameRent"> Car Name</label>-->
-                <!--                    <input class="form-control" id="inputCarCarNameRent" type="text">-->
-                <!--                </div>-->
+                                <div class="form-group col-md-6" style=" margin-right: 10px;" >
+                                    <label for="inputCarIDRent">  Car ID</label>
+                                    <input class="form-control" id="inputCarIDRent" type="text">
+                                </div>
+                                <div class="form-group col-md-6" style=" margin-right: 10px;" >
+                                    <label for="inputCarCarNameRent"> Car Name</label>
+                                    <input class="form-control" id="inputCarCarNameRent" type="text">
+                                </div>
 
-                <!--            </div>-->
+                            </div>
 
-                <!--            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">-->
+                            <div class="form-row"  style="display: flex;flex-wrap: nowrap;justify-content: center">
 
-                <!--                <div class="form-group col-md-6" style=" margin-right: 10px;" >-->
-                <!--                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>-->
-                <!--                    <input class="form-control" id="inputCarLoseFeeRent" type="text">-->
-                <!--                </div>-->
-                <!--                <div class="form-group col-md-6">-->
-                <!--                    <label for="inputCarPassengerRent"> Passengers</label>-->
-                <!--                    <input class="form-control" id="inputCarPassengerRent" type="text">-->
-                <!--                </div>-->
+                                <div class="form-group col-md-6" style=" margin-right: 10px;" >
+                                    <label for="inputCarLoseFeeRent"> Car Lose Waire</label>
+                                    <input class="form-control" id="inputCarLoseFeeRent" type="text">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputCarPassengerRent"> Passengers</label>
+                                    <input class="form-control" id="inputCarPassengerRent" type="text">
+                                </div>
 
-                <!--            </div>-->
+                            </div>
 
-                <!--            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
-                <!--                    type="button">Search Car-->
-                <!--            </button>-->
+                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
+                                    type="button">Search Car
+                            </button>
 
                 <table class="table" id="carDetailsAddCars">
                     <thead>
@@ -229,7 +229,7 @@
 <script src="Assest/js/bootstrap.min.js"></script>
 <script src="Assest/js/rent.js"></script>
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
-
+<script src="Assest/js/VehicleDTO.js"></script>
 <script>
 
     /*Genarate Auto Rent ID */
@@ -412,23 +412,7 @@
     /*-------------------------------------------------------------check the car already in the table ---------------------------------------- */
 
 
-    $('#btnSearchCarID').click(function () {
 
-        // $('#carDetailsAddCars').empty();
-
-        let RentDetID = $('#inputRentDet').val();
-        let carID = $('#inputCarIDRent').val();
-        let carNme = $('#inputCarCarNameRent').val();
-        let LostFee = $('#inputCarLoseFeeRent').val();
-        let passenger = $('#inputCarPassengerRent').val();
-
-        console.log(RentDetID)
-
-        var row = `<tr><td>${RentDetID}</td><td>${carID}</td><td>${carNme}</td><td>${LostFee}</td><td> ${passenger}</td><td>`
-
-        $('#tblAddCar').append(row);
-
-    })
 
     /* -----------------------------------------------Delete an Item From the Cart ----------------------------------------------------------*/
 
@@ -458,6 +442,128 @@
         console.log("Car Duwal ID "+carID2)
 
     })
+
+
+
+    $('#btnSearchCarID').click(function () {
+
+        // $('#carDetailsAddCars').empty();
+
+        let RentDetID = $('#inputRentDet').val();
+        let carID = $('#inputCarIDRent').val();
+        let carNme = $('#inputCarCarNameRent').val();
+        let LostFee = $('#inputCarLoseFeeRent').val();
+        let passenger = $('#inputCarPassengerRent').val();
+
+        console.log(RentDetID)
+
+        var row = `<tr><td>${RentDetID}</td><td>${carID}</td><td>${carNme}</td><td>${LostFee}</td><td> ${passenger}</td><td>`
+
+        $('#tblAddCar').append(row);
+
+
+
+        // set Values to the VehicDTO
+        let vehicleDTO = new VehicleDTO(carID,carNme);
+        // var carID3 = vehicleDTO.getCarID();
+        // let carName = vehicleDTO.getcarNme();
+        //
+        // console.log("VehicleDto Arry" + carID3)
+        // console.log("VehicleDto Arry" + carName)
+
+        let table2 = document.getElementById("tblAddCar");
+        var tablArry = [];
+        var carNewID;
+        for (var i =0;i<table2.rows.length;i++){
+            tablArry.push({
+                carId2:table2.rows[i].cells[1].innerHTML,
+                lostFee2:table2.rows[i].cells[3].innerHTML,
+
+
+            })
+        }
+
+        console.log(tablArry)
+
+        function getAllVe(){
+            return tablArry;
+        }
+
+        let myCart = getAllVe();
+        const  testData = myCart.values();
+        var cartData =[];
+
+        for (const value of testData){
+            cartData.push({
+                "CarID":value.carId2,
+
+            })
+
+        }
+        console.log("Hwloow Array Print "+);
+
+
+
+
+        // var array =[];
+        // var headers =[];
+        //
+        // $('#carDetailsAddCars th').each(function (index,item) {
+        //     headers[item] = $(item).html();
+        //
+        // });
+        // $('#carDetailsAddCars tr').has('td').each(function () {
+        //     var arrayItem = {};
+        //     $('td',$(this)).each(function (index,item) {
+        //         arrayItem[headers[item]] = $(item).html();
+        //
+        //     });
+        //     array.push(arrayItem);
+        // })
+        //
+        // console.log(JSON.stringify(array))
+
+        // set table Values to the Arry
+
+        // let table2 = document.getElementById("tblAddCar");
+        // let count1 = table2.rows.length;
+        //
+        // let carArray ;
+        // let carLostWF ;
+        //
+        // let vehicleTable = [];
+        // for (let i=0;i<count1;i++){
+        //     // vehicleTable.push({
+        //         carArray = table2.rows[i].cells[1].innerText;
+        //         carLostWF = table2.rows[i].cells[3].innerText;
+        //     // })
+        // }
+        //
+        // let myCart = getAllVehicle();
+        // const testData = myCart.values();
+        //
+        //
+        // var cartData = [];
+        //
+        // for (const value of testData){
+        //     cartData.push({
+        //
+        //
+        //     })
+        // }
+
+        // for (let i=0;i<count1;i++){
+        //     cartData.push({
+        //         // table2.rows[i].cells[1].innerText;
+        //         // table2.rows[i].cells[3].innerText;
+        //
+        //     })
+
+        // }
+        // console.log("Cart Data Array"+ cartData[0])
+    })
+
+    /* -----------------------------------------------------Dual Add Array ----------------------------------------------------------------*/
 
 
 
@@ -503,6 +609,7 @@
 
 
         for (let i = 0; i < count; i++) {
+
             var rentDetID = table.rows[i].cells[0].innerText;
             var carID = table.rows[i].cells[1].innerText;
             var lostWavFee = table.rows[i].cells[3].innerText;
@@ -533,11 +640,7 @@
 
                 "rentDetails": [
                     {
-                    "fk":{
-                        "rentID":rentID,
-                        "driver_NIC":rentDriverID,
-                        "carID":carID
-                    },
+                    "fk":car,
                     "rentDetReturnDate": rentDropOffDate,
                     "rentLosWaiver": lostWavFee,
                     "rentLosWaiverRecipt": rentLWDFee,
@@ -564,6 +667,14 @@
     let setTotal = (value) => {
         $('#inputTotalLWF').val(value);
     }
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
