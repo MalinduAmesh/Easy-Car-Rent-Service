@@ -791,17 +791,17 @@
                 console.log("all Data "+ res)
                 console.log("Print Pendinr Request" + res.data[0].rentID)
 
-                console.log("Print Pendinr Request CAr ID" + res.data[0].rentDetails[0].cID[0].)
+                console.log("Print Pendinr Request CAr ID" + res.data[0].rentDetails[0].cID.carID)
 
                 for (var i in res.data) {
-
+                // for (var x in res.data) {
                     let rentID = res.data[i].rentID;
                     let cusID = res.data[i].cusID.cusNicID;
                     let cusName = res.data[i].cusID.name;
 
-                for (var x in res.data) {
-                        let carID = res.data[i].carID;
-                        let carName = res.data[i].rentDetails[x].rentDetailID;
+
+                        let carID = res.data[i].rentDetails[1].cID.carID;
+                        let reqDet = res.data[i].rentDetails[1].rentDetailID;
 
                         let dID = res.data[i].driver_NIC;
                         let dStatus = "Avliable";
@@ -810,19 +810,120 @@
                         let reqStatus = res.data[i].rentStatus;
 
 
-                        var row = `<tr><td>${rentID}</td><td>${carID}</td><td>${carName}</td><td>${cusID}</td><td> ${cusName}</td>
-    <td> ${dID}</td><td> ${dStatus}</td><td> ${pickDate}</td><td> ${dropDate}</td><td> ${reqStatus}</td><td><button  class="btn btn-warning fff" id="${carID}" onclick="updateDetailsCar(this)">OK</button>
+                        var row = `<tr><td>${rentID}</td><td>${carID}</td><td>${reqDet}</td><td>${cusID}</td><td> ${cusName}</td>
+    <td> ${dID}</td><td> ${dStatus}</td><td> ${pickDate}</td><td> ${dropDate}</td><td> ${reqStatus}</td><td><button  class="btn btn-warning fff" id="${carID}" onclick="updateRentStatus(this)">OK</button>
         <button class="btn btn-danger " id="${carID}" onclick="DeleteCar(this)">Delete</button></td></tr>`;
                         $('#tblAllRequest').append(row);
                     }
                 }
-            }
+            // }
         })
 
     })
+
+    /* -------------------------------------------------------- Update Rent Status -------------------------------------------------- */
+
+    function updateRentStatus() {
+
+        let table = document.getElementById("tblAllRequest");
+        let tableArry = [];
+        for (var i =0;i<table.rows.length;i++){
+            tableArry.push({
+                rentID:table.rows[i].cells[0].innerHTML,
+                cusID1:table.rows[i].cells[3].innerHTML,
+                rentDetID1:table.rows[i].cells[2].innerHTML,
+                pickUpDate1:table.rows[i].cells[7].innerHTML,
+                returnDate1:table.rows[i].cells[8].innerHTML,
+                rentStatus1:table.rows[i].cells[9].innerHTML,
+                rentLostWavier1:table.rows[i].cells[i].innerHTML,
+                rentLostWavRecipt:table.rows[i].cells[i].innerHTML,
+                rentDRvID:table.rows[i].cells[i].innerHTML,
+                carID:table.rows[i].cells[i].innerHTML,
+
+            })
+            console.log(tableArry)
+        }
+        $.ajax({
+            method:'put',
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+            contentType:"application/json",
+            async: true,
+
+            // put data and update the Database and remove the Ok button in Table
+
+
+        })
+    }
 </script>
 </body>
 </html>
+
+
+<!--// let table2 = document.getElementById("tblAddCar");-->
+<!--// var tablArry = [];-->
+<!--//-->
+<!--// for (var i =0;i<table2.rows.length;i++){-->
+<!--//     tablArry.push({-->
+<!--//         carId2:table2.rows[i].cells[1].innerHTML,-->
+<!--//         lostFee2:table2.rows[i].cells[3].innerHTML,-->
+<!--//-->
+<!--//-->
+<!--//     })-->
+<!--// }-->
+
+<!--$('#btnUpdateCar').click(function () {-->
+
+<!--let updatecarID = $('#inputCarIDUpdate').val();-->
+<!--let updatecarModel = $('#inputCarModelUpdate').val();-->
+<!--let updatecarType = $('#inputcarTypeUpdate').val();-->
+<!--let updatecarImg01 = $('#carImg1Update').val();-->
+<!--let updatecarImg02 = $('#carImg2Update').val();-->
+<!--let updatecarImg03 = $('#carImg3Update').val();-->
+<!--let updatecarImg04 = $('#carImg4Update').val();-->
+<!--let updatecarTransmissionType = $('#inputcarTransmissionTypeUpdate').val();-->
+<!--let updatecarFuelType = $('#inputcarFuelTypeUpdate').val();-->
+<!--let updatecarColor = $('#inputcarColorUpdate').val();-->
+<!--let updatecarStatus = $('#inputCarStatusUpdate').val();-->
+<!--let updatepassenger = $('#inputpassengerUpdate').val();-->
+<!--let updateLostWavierFee = $('#inputCarLostWavierUpdate').val();-->
+<!--let updatecarDailyRate = $('#inputcarDailyRateUpdate').val();-->
+<!--let updatecarMonthlyRate = $('#inputcarMonthlyRateUpdate').val();-->
+<!--let updatecarFreeKmForADay = $('#inputcarFreeKmForADayUpdate').val();-->
+<!--let updatecarFreeKmForAMonth = $('#carFreeKmForAMonthUpdate').val();-->
+<!--let updatecarPriceForExtraKM = $('#inputcarPriceForExtraKMUpdate').val();-->
+
+
+<!--$.ajax({-->
+<!--method: 'put',-->
+<!--url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",-->
+<!--contentType: 'application/json',-->
+<!--data: JSON.stringify({-->
+<!--"carID": updatecarID,-->
+<!--"carModel": updatecarModel,-->
+<!--"carType": updatecarType,-->
+<!--"carImg1": updatecarImg01,-->
+<!--"carImg2": updatecarImg02,-->
+<!--"carImg3": updatecarImg03,-->
+<!--"carImg4": updatecarImg04,-->
+<!--"carTransmissionType": updatecarTransmissionType,-->
+<!--"rentLosWaiver": updateLostWavierFee,-->
+<!--"carFuelType": updatecarFuelType,-->
+<!--"carColor": updatecarColor,-->
+<!--"carStatus": updatecarStatus,-->
+<!--"passenger": updatepassenger,-->
+<!--"carDailyRate": updatecarDailyRate,-->
+<!--"carMonthlyRate": updatecarMonthlyRate,-->
+<!--"carFreeKmForADay": updatecarFreeKmForADay,-->
+<!--"carFreeKmForAMonth": updatecarFreeKmForAMonth,-->
+<!--"carPriceForExtraKM": updatecarPriceForExtraKM-->
+<!--}),-->
+<!--success: function (res) {-->
+
+<!--console.log(res);-->
+<!--alert("SuccessFully Updated !")-->
+<!--}-->
+<!--})-->
+<!--})-->
 <!--$('#tblCarDetails').empty();-->
 <!--$.ajax({-->
 <!--method: 'get',-->

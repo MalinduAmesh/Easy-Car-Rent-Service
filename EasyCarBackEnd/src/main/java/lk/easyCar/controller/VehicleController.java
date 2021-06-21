@@ -2,6 +2,7 @@ package lk.easyCar.controller;
 
 import lk.easyCar.dto.DriverDTO;
 import lk.easyCar.dto.VehicleDTO;
+import lk.easyCar.entity.Rent;
 import lk.easyCar.exception.NotFoundException;
 import lk.easyCar.service.VehicleService;
 import lk.easyCar.utill.StandardResponse;
@@ -67,6 +68,7 @@ public class VehicleController {
         return new ResponseEntity(new StandardResponse("200","Done",null), HttpStatus.NO_CONTENT);
 
     }
+
 
 
 }

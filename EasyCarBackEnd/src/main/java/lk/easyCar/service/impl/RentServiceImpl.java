@@ -94,4 +94,14 @@ public class RentServiceImpl implements RentService {
         return null;
     }
 
+    @Override
+    public List<Rent> getByRentDetails(String id) {
+//        List<Rent>rents = rentRepo.getByRentDetails(id);
+        List<Rent>rents = rentRepo.getByRentDetails(id);
+
+        return modelMapper.map(rents,new TypeToken<List<Rent>>(){
+
+        }.getType());
+    }
+
 }
