@@ -78,4 +78,10 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return false;
     }
+
+    @Override
+    public String getLastRid() {
+
+            return customerRepo.getLastID();
+    }
 }

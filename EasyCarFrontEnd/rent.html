@@ -163,6 +163,7 @@
                         <th scope="col">Car TransType</th>
                         <th scope="col">Car LostWavier</th>
                         <th scope="col">Passenger</th>
+                        <th scope="col">Get</th>
                     </tr>
                     </thead>
                     <tbody id="tblCarDetails">
@@ -195,18 +196,21 @@
 
 <!--                            </div>-->
 
-<!--                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
-<!--                                    type="button">Search Car-->
-<!--                            </button>-->
+                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
+                                    type="button">Search Car
+                            </button>
 
                 <table class="table" id="carDetailsAddCars">
                     <thead>
                     <tr>
                         <th scope="col">Rent ID</th>
+                        <th scope="col">Rent DetailID</th>
                         <th scope="col">Car ID</th>
-                        <th scope="col">Car Model</th>
-                        <th scope="col">Car LostWavier</th>
-                        <th scope="col">Passenger</th>
+                        <th scope="col">Car Name</th>
+                        <th scope="col">Rent LWDFee</th>
+                        <th scope="col">car Driver</th>
+                        <th scope="col">Delete</th>
+
                     </tr>
                     </thead>
                     <tbody id="tblAddCar">
@@ -228,50 +232,79 @@
 
 <script src="Assest/js/bootstrap.min.js"></script>
 <script src="Assest/js/rent.js"></script>
-<script src="Assest/js/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="Assest/js/VehicleDTO.js"></script>
 <script>
 
     /*Genarate Auto Rent ID */
-
-    $('#btnorderID').click(function () {
-
-
-        // console.log("Show ID ")
-
+    function genarateRentID() {
         $.ajax({
             method: 'get',
-            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/lastID/customer",
             contentType: "application/json",
             async: true,
             success: function (res) {
+                console.log(res.data)
+                try {
+                    let lastOID = res.data;
+                    let newOID = parseInt(lastOID.substring(1, 4)) + 1;
+                    if (newOID < 10) {
+                        $('#inputrentID').val("R00" + newOID);
 
-                for (var i in res.data){
-                    let rentID = res.data[i].carID
-                    console.log("Rent ID " +rentID);
-                    $('#inputrentID').val(rentID);
-
-
+                    } else if (newOID < 100) {
+                        $('#inputrentID').val("R0" + newOID);
+                    } else {
+                        $('#inputrentID').val("R" + newOID);
+                    }
+                } catch (e) {
+                    $('#inputrentID').val("R001");
                 }
-            //     try {
-            //
-            //     let lastRentID = res.data.rentID
-            //     let newRentID = parseInt(lastRentID.substring(1, 4)) + 1;
-            //
-            //     if (newRentID < 10) {
-            //         $('#inputrentID').text('#D00' + newRentID);
-            //     } else if (newRentID < 100) {
-            //         $('#inputrentID').text('#D0' + newRentID);
-            //     } else {
-            //         $('#inputrentID').text('#D' + newRentID);
-            //     }
-            // }catch (e) {
-            //         $("#inputrentID").text('#D001');
-            //     }
-        }
+
+            }
         })
+    }
+
+    genarateRentID();
+
+    function genarateRentID2() {
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/lastID/customer",
+            contentType: "application/json",
+            async: true,
+            success: function (res) {
+                console.log(res.data)
+                try {
+                    let lastOID = res.data;
+                    let newOID = parseInt(lastOID.substring(1, 4)) + 1;
+                    if (newOID < 10) {
+                        $('#inputRentDet').val("B00" + newOID);
+
+                    } else if (newOID < 100) {
+                        $('#inputRentDet').val("B0" + newOID);
+                    } else {
+                        $('#inputRentDet').val("B" + newOID);
+                    }
+                } catch (e) {
+                    $('#inputRentDet').val("B001");
+                }
+
+            }
+        })
+    }
+
+    genarateRentID2();
+
+    $('#btnorderID').click(function () {
+
+        // console.log("Show ID "
+
+        let reqIs = $('#inputrentID').val(reqID)
+        console.log(reqIs)
+
     })
 
+    console.log(reqID)
 
     $("#btn-manage-carDetails").click(function () {
         $('#tblCarDetails').empty();
@@ -305,19 +338,14 @@
 
     });
 
-    // ---------------------------------------------Add To Cart----------------------------------------------------------
 
-
-    /*-----------------------------------------------Select Item already Exist in table -------------------------------------------------*/
-
-
+    // Set Colors to the tables
     $("#carDetailsAdminTable > tbody").on("click", "tr", function () {
         $("#carDetailsAdminTable > tbody > tr").css({
             "background-color": "initial",
             "color": "initial"
         });
 
-        let selectedRow = $(this).closest("tr");
         $(this).css({
             "background-color": "#a7a7a7",
             "color": "white"
@@ -325,6 +353,7 @@
 
     })
 
+    // Add a car to the cart
 
     function getcarDetails(id) {
         console.log("fk the item")
@@ -342,16 +371,19 @@
 
                         console.log(response);
 
+                        let RentID = $('#inputrentID').val();
                         let RentDetID = $('#inputRentDet').val();
+
                         let carName = response.data.carModel;
                         let carLoseFee = response.data.rentLosWaiver;
+                        let driverID = $('#inputDriverID').val();
                         let passenger = response.data.passenger;
 
                         $('#inputCarCarNameRent').val(carName);
                         $('#inputCarLoseFeeRent').val(carLoseFee);
                         $('#inputCarPassengerRent').val(passenger);
 
-                        var row = `<tr><td>${RentDetID}</td><td>${getcar}</td><td>${carName}</td><td>${carLoseFee}</td><td> ${passenger}</td>
+                        var row = `<tr><td>${RentID}</td><td>${RentDetID}</td><td>${getcar}</td><td>${carName}</td><td>${carLoseFee}</td><td>${driverID}</td>
                         <td><button  class="btn btn-danger fff" id="${getcar}" onclick="btnRemoveCarForm()">Delete</button></td><td>`
 
                         $('#tblAddCar').append(row);
@@ -360,7 +392,7 @@
                         let table = document.getElementById('carDetailsAddCars');
                         let count = table.rows.length;
                         for (let i = 1; i < count; i++) {
-                            tot += parseInt(table.rows[i].cells[3].innerText);
+                            tot += parseInt(table.rows[i].cells[4].innerText);
                         }
                         $('#inputTotalLWF').val(tot);
 
@@ -378,6 +410,7 @@
         }
     }
 
+// Check If Car Already in the cart
 
     const isExist = function (code) {
 
@@ -385,7 +418,7 @@
         let count = table.rows.length;
 
         for (let i = 0; i < count; i++) {
-            if (table.rows[i].cells[1].innerText === code) {
+            if (table.rows[i].cells[2].innerText === code) {
                 console.log(code)
                 return true;
             }
@@ -394,33 +427,7 @@
     }
 
     // Remove from the cart
-
-    function btnRemoveCarForm() {
-        selectedRowOfCart.remove();
-        alert("Successfully Remove !")
-
-
-        let tot = 0;
-        let table = document.getElementById('carDetailsAddCars');
-        let count = table.rows.length;
-        for (let i = 1; i < count; i++) {
-            tot += parseInt(table.rows[i].cells[3].innerText);
-        }
-        $('#inputTotalLWF').val(tot);
-
-    }
-
-    /*-------------------------------------------------------------check the car already in the table ---------------------------------------- */
-
-
-
-
-    /* -----------------------------------------------Delete an Item From the Cart ----------------------------------------------------------*/
-
     let selectedRowOfCart;
-    let carDetailsArr = [];
-    let carID1;
-    let lostWavFee1;
     $('#carDetailsAddCars > tbody').on("click", "tr", function () {
         $("#carDetailsAddCars > tbody > tr").css({
             "background-color": "initial",
@@ -433,334 +440,120 @@
             "color": "black"
         });
 
-        carID1 = getSelectRow.find("td:eq(1)").text();
-        lostWavFee1 = getSelectRow.find("td:eq(3)").text();
-        carDetailsArr.push(carID1,lostWavFee1);
+    })
+    function btnRemoveCarForm() {
+        selectedRowOfCart.remove();
+        alert("Successfully Remove !")
 
-        for (let i=0;i < getSelectRow.length;i++){
-            var carID2 = carDetailsArr[0];
+
+        let tot = 0;
+        let table = document.getElementById('carDetailsAddCars');
+        let count = table.rows.length;
+        for (let i = 1; i < count; i++) {
+            tot += parseInt(table.rows[i].cells[4].innerText);
         }
-        console.log("Car Duwal ID "+carID2)
-
-    })
+        $('#inputTotalLWF').val(tot);
 
 
 
-    $('#btnSearchCarID').click(function () {
+    }
 
-        // $('#carDetailsAddCars').empty();
-
-        let RentDetID = $('#inputRentDet').val();
-        let carID = $('#inputCarIDRent').val();
-        let carNme = $('#inputCarCarNameRent').val();
-        let LostFee = $('#inputCarLoseFeeRent').val();
-        let passenger = $('#inputCarPassengerRent').val();
-
-        console.log(RentDetID)
-
-        var row = `<tr><td>${RentDetID}</td><td>${carID}</td><td>${carNme}</td><td>${LostFee}</td><td> ${passenger}</td><td>`
-
-        $('#tblAddCar').append(row);
-
-
-
-        // // set Values to the VehicDTO
-        // let vehicleDTO = new VehicleDTO(carID,carNme);
-        // var carID3 = vehicleDTO.getCarID();
-        // let carName = vehicleDTO.getcarNme();
-        //
-        // console.log("VehicleDto Arry" + carID3)
-        // console.log("VehicleDto Arry" + carName)
-        //
-        // let vehicleTable = [];
-        //
-        // vehicleTable.push(vehicleDTO);
-        //
-        // console.log("Vehicle Table arrya"+ vehicleTable)
-        //
-        // function getVehicle(){
-        //     return vehicleTable;
-        // }
-        //
-        // let myCart = getVehicle();
-        // let  testData = myCart.values();
-        // var cartData = [];
-        //
-        // for (const value of testData){
-        //     cartData.push({
-        //         CarID:value.getCarID()
-        //     })
-        //     console.log("Get Cart DAta ID" +carID )
-        //
-        // }
-
-
-        // get successs
-
-        // let table2 = document.getElementById("tblAddCar");
-        // var tablArry = [];
-        //
-        // for (var i =0;i<table2.rows.length;i++){
-        //     tablArry.push({
-        //         carId2:table2.rows[i].cells[1].innerHTML,
-        //         lostFee2:table2.rows[i].cells[3].innerHTML,
-        //
-        //
-        //     })
-        // }
-        //
-        // console.log("Print Table"+JSON.stringify(tablArry) )
-        //
-        // var  newCarID = tablArry[0].carId2
-        // var  newCarID2 = tablArry[1].carId2
-        //
-        // console.log("CarID 1" +newCarID);
-        // console.log("CarID 2" +newCarID2);
-        //
-        //
-        // function getAllVe(){
-        //     return tablArry;
-        // }
-        //
-        // let myCart = getAllVe();
-        // const  testData = myCart.values();
-        // var cartData =[];
-        //
-        // for (const value of testData){
-        //     cartData.push({
-        //         "CarID":value.carId2,
-        //
-        //     })
-        //
-        // }
-        // console.log("Hwloow Array Print ");
-        //
-
-
-
-        // var array =[];
-        // var headers =[];
-        //
-        // $('#carDetailsAddCars th').each(function (index,item) {
-        //     headers[item] = $(item).html();
-        //
-        // });
-        // $('#carDetailsAddCars tr').has('td').each(function () {
-        //     var arrayItem = {};
-        //     $('td',$(this)).each(function (index,item) {
-        //         arrayItem[headers[item]] = $(item).html();
-        //
-        //     });
-        //     array.push(arrayItem);
-        // })
-        //
-        // console.log(JSON.stringify(array))
-
-        // set table Values to the Arry
-
-        // let table2 = document.getElementById("tblAddCar");
-        // let count1 = table2.rows.length;
-        //
-        // let carArray ;
-        // let carLostWF ;
-        //
-        // let vehicleTable = [];
-        // for (let i=0;i<count1;i++){
-        //     // vehicleTable.push({
-        //         carArray = table2.rows[i].cells[1].innerText;
-        //         carLostWF = table2.rows[i].cells[3].innerText;
-        //     // })
-        // }
-        //
-        // let myCart = getAllVehicle();
-        // const testData = myCart.values();
-        //
-        //
-        // var cartData = [];
-        //
-        // for (const value of testData){
-        //     cartData.push({
-        //
-        //
-        //     })
-        // }
-
-        // for (let i=0;i<count1;i++){
-        //     cartData.push({
-        //         // table2.rows[i].cells[1].innerText;
-        //         // table2.rows[i].cells[3].innerText;
-        //
-        //     })
-
-        // }
-        // console.log("Cart Data Array"+ cartData[0])
-    })
-
-    /* -----------------------------------------------------Dual Add Array ----------------------------------------------------------------*/
-
-
+    // Place Booking Detail
 
     $('#btnPlaceOrder').click(function () {
 
-        let table2 = document.getElementById("tblAddCar");
-        var tablArry = [];
+        // Get The Data in Car cart And set To rentDetails
+        let table3 = document.getElementById('tblAddCar');
+        let count1 = table3.rows.length;
 
-        for (var i =0;i<table2.rows.length;i++){
-            tablArry.push({
-                rentDetailsID:table2.rows[i].cells[0].innerHTML,
-                carId2:table2.rows[i].cells[1].innerHTML,
-                lostFee2:table2.rows[i].cells[3].innerHTML,
+        var table123 = [];
+        for (let i = 0; i < count1; i++) {
+            table123.push({
+                rentIDFromTable : table3.rows[i].cells[0].innerHTML,
+                rentDetailIDFromTable :table3.rows[i].cells[1].innerHTML,
+                carIDFromTable :table3.rows[i].cells[2].innerHTML,
+                carNameFromTable :table3.rows[i].cells[3].innerHTML,
+                LWDFee1FromTable:table3.rows[i].cells[4].innerHTML,
+                driverID1FromTable:table3.rows[i].cells[5].innerHTML
+            })
 
 
+        }
+
+        var cartData =[];
+        const testdata = table123.values();
+        for (const value of testdata){
+            cartData.push({
+                "rentDetailID":value.rentDetailIDFromTable,
+                "rentLosWaiver": value.LWDFee1FromTable,
+                "dIC": {
+                    "driver_NIC":value.driverID1FromTable
+                },
+                "rID": {
+                    "rentID":value.rentIDFromTable
+                },
+                "cID":  {
+                    "carID":value.carIDFromTable
+                }
             })
         }
 
-        console.log("Print Table"+JSON.stringify(tablArry) )
 
-        // Get Rent Details ID
-
-        var rID1 = tablArry[0].rentDetailsID
-        var rID2 = tablArry[1].rentDetailsID
-        var rID3 = tablArry[2].rentDetailsID
-        // Get Car ID
-        var  newCarID = tablArry[0].carId2
-        var  newCarID2 = tablArry[1].carId2
-        var  newCarID3 = tablArry[2].carId2
-
-        console.log(newCarID)
-        console.log(newCarID2)
-
-
-
-        let carArray = [];
-        let carLostWF = [];
-        let table1 = document.getElementById("tblAddCar");
-
-        let count1 = table1.rows.length;
-
-        for (let i=0;i<count1;i++){
-            carArray+= table1.rows[i].cells[1].innerText;
-            carLostWF+= table1.rows[i].cells[3].innerText;
-
-        }
-        console.log("Car Arryyyyy"+carArray)
-        console.log("Car Arryyyyy Lostttttt"+carLostWF)
-
-        carDetailsArr.push(carID1,lostWavFee1);
-        var car11 = carDetailsArr[0];
-        console.log("Car Duwal ID "+car11)
+        console.log("Show cart data"+JSON.stringify(cartData));
 
         // Rent Values
-        let rentID = $('#inputrentID').val();
-        let rentDate = $('#inputPickUpDate').val();
         let rentReqStatus = $('#inputreqStatus').val();
-
         let rentCusID = $('#inputRentCusID').val();
+        let rentLWDFeeRecipt = $('#inputImageLWF').val();
 
 
         // Rent Details
-        let rentDetailID = $('#inputRentDet').val();
-
         let rentDropOffDate = $('#inputDropOffDate').val();
         let rentPickUpDate = $('#inputPickUpDate').val();
-
-        let rentDriverID = $('#inputDriverID').val();
-        let rentLWDFee = $('#inputImageLWF').val();
         let rentTotal = $('#inputTotalLWF').val();
 
         // Get The Data in Car cart
-        let table = document.getElementById('tblAddCar');
-        let count = table.rows.length;
+        let table2 = document.getElementById('tblAddCar');
+        let count = table2.rows.length;
 
-
+        var rentIDFromTable;
+        var rentDetailIDFromTable;
+        var carIDFromTable;
+        var carNameFromTable;
+        var LWDFee1FromTable;
+        var driverID1FromTable;
         for (let i = 0; i < count; i++) {
 
-            var rentDetID = table.rows[i].cells[0].innerText;
-            var carID = table.rows[i].cells[1].innerText;
-            var lostWavFee = table.rows[i].cells[3].innerText;
+             rentIDFromTable = table2.rows[i].cells[0].innerHTML;
+                rentDetailIDFromTable =table2.rows[i].cells[1].innerHTML;
+                 carIDFromTable =table2.rows[i].cells[2].innerHTML;
+                 carNameFromTable =table2.rows[i].cells[3].innerHTML;
+                 LWDFee1FromTable=table2.rows[i].cells[4].innerHTML;
+                 driverID1FromTable=table2.rows[i].cells[5].innerHTML;
 
         }
 
-        console.log(rentID)
-        console.log(rentDate)
-        console.log(rentReqStatus)
-        console.log("menna ID " + rentCusID)
-        console.log(rentDriverID)
-        console.log(carID)
-        console.log(rentDetID)
-        console.log(lostWavFee)
-        console.log("total" + rentTotal)
-        console.log(rentLWDFee)
+        // console.log("rentIDfrom"+rentIDFromTable)
+        // console.log("rrent"+rentDetailIDFromTable)
+
+
+
         $.ajax({
             method: 'post',
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
             contentType: "application/json",
             data: JSON.stringify({
-                "rentID": rentID,
+                "rentID": rentIDFromTable,
                 "cusID": {
                     "cusNicID": rentCusID,
-                },
-
-                "rentDetails": [
-                    {
-                        "rentDetailID":rID1,
-                        "pickUpDate": rentPickUpDate,
-                        "returnDate":rentDropOffDate,
-                        "rentStatus":rentReqStatus,
-                    "rentLosWaiver": lostWavFee,
-                    "rentLosWaiverRecipt": rentLWDFee,
+                    "pickUpDate": rentPickUpDate,
+                    "returnDate":rentDropOffDate,
+                    "rentStatus":rentReqStatus,
+                    "rentLosWaiverRecipt": rentLWDFeeRecipt,
                     "rentTotal": rentTotal,
-                        "dIC": {
-                            "driver_NIC":rentDriverID
-                    },
-                        "rID": {
-                            "rentID":rentID,
-                    },
-                        "cID":  {
-                            "carID":newCarID
-                    }
-
                 },
-                    {
-                        "rentDetailID":rID2,
-                        "pickUpDate": rentPickUpDate,
-                        "returnDate":rentDropOffDate,
-                        "rentStatus":rentReqStatus,
-                        "rentLosWaiver": lostWavFee,
-                        "rentLosWaiverRecipt": rentLWDFee,
-                        "rentTotal": rentTotal,
-                        "dic": {
-                            "driver_NIC":rentDriverID
-                        },
-                        "rid": {
-                            "rentID":rentID,
-                        },
-                        "cid":  {
-                            "carID":newCarID2
-                        }
 
-                    },
-                    {
-                        "rentDetailID":rID3,
-                        "pickUpDate": rentPickUpDate,
-                        "returnDate":rentDropOffDate,
-                        "rentStatus":rentReqStatus,
-                        "rentLosWaiver": lostWavFee,
-                        "rentLosWaiverRecipt": rentLWDFee,
-                        "rentTotal": rentTotal,
-                        "dic": {
-                            "driver_NIC":rentDriverID
-                        },
-                        "rid": {
-                            "rentID":rentID,
-                        },
-                        "cid":  {
-                            "carID":newCarID3
-                        }
-
-                    }
-
-                ]
+                "rentDetails": cartData
 
 
             }),
@@ -775,44 +568,251 @@
     });
 
 
-
-    // Set Total
-
-    let setTotal = (value) => {
-        $('#inputTotalLWF').val(value);
-    }
-
-
-
-
-
-
-
-
 </script>
 </body>
 </html>
 
-let carDetailsArr = [];
+<!--let carDetailsArr = [];-->
 
-$('#carDetailsAddCars > tbody').on("click","tr",function () {
-$('#carDetailsAddCars > tbody >tr' ).css({
-"background-color" : "initial",
-"color" : "initial"
-});
+<!--$('#carDetailsAddCars > tbody').on("click","tr",function () {-->
+<!--$('#carDetailsAddCars > tbody >tr' ).css({-->
+<!--"background-color" : "initial",-->
+<!--"color" : "initial"-->
+<!--});-->
 
-let getSelectRow = $(this).closest("tr");
-$(this).css({
-"background-color" : "#95a5a6",
-"color" : "white"
-})
+<!--let getSelectRow = $(this).closest("tr");-->
+<!--$(this).css({-->
+<!--"background-color" : "#95a5a6",-->
+<!--"color" : "white"-->
+<!--})-->
 
-let carID1 = getSelectRow.find("td:eq(0)").text();
-let lostWavFee1 = getSelectRow.find("td:eq(3)").text();
+<!--let carID1 = getSelectRow.find("td:eq(0)").text();-->
+<!--let lostWavFee1 = getSelectRow.find("td:eq(3)").text();-->
 
-carDetailsArr.push(carID1,lostWavFee1);
+<!--carDetailsArr.push(carID1,lostWavFee1);-->
 
-console.log(carID1)
+<!--console.log(carID1)-->
 
 
-})
+<!--})-->
+
+<!--// $('#carDetailsAddCars').empty();-->
+<!--//-->
+<!--// let RentDetID = $('#inputRentDet').val();-->
+<!--// let carID = $('#inputCarIDRent').val();-->
+<!--// let carNme = $('#inputCarCarNameRent').val();-->
+<!--// let LostFee = $('#inputCarLoseFeeRent').val();-->
+<!--// let passenger = $('#inputCarPassengerRent').val();-->
+<!--// let pickupDate = $('#inputCarPassengerRent').val();-->
+<!--//-->
+<!--// console.log(RentDetID)-->
+<!--//-->
+<!--// var row = `<tr><td>${RentDetID}</td><td>${carID}</td><td>${carNme}</td><td>${LostFee}</td><td> ${pickupDate}</td><td> ${passenger}</td><td>`-->
+<!--    //-->
+<!--    // $('#tblAddCar').append(row);-->
+
+
+
+<!--    // // set Values to the VehicDTO-->
+<!--    // let vehicleDTO = new VehicleDTO(carID,carNme);-->
+<!--    // var carID3 = vehicleDTO.getCarID();-->
+<!--    // let carName = vehicleDTO.getcarNme();-->
+<!--    //-->
+<!--    // console.log("VehicleDto Arry" + carID3)-->
+<!--    // console.log("VehicleDto Arry" + carName)-->
+<!--    //-->
+<!--    // let vehicleTable = [];-->
+<!--    //-->
+<!--    // vehicleTable.push(vehicleDTO);-->
+<!--    //-->
+<!--    // console.log("Vehicle Table arrya"+ vehicleTable)-->
+<!--    //-->
+<!--    // function getVehicle(){-->
+<!--    //     return vehicleTable;-->
+<!--    // }-->
+<!--    //-->
+<!--    // let myCart = getVehicle();-->
+<!--    // let  testData = myCart.values();-->
+<!--    // var cartData = [];-->
+<!--    //-->
+<!--    // for (const value of testData){-->
+<!--    //     cartData.push({-->
+<!--    //         CarID:value.getCarID()-->
+<!--    //     })-->
+<!--    //     console.log("Get Cart DAta ID" +carID )-->
+<!--    //-->
+<!--    // }-->
+
+
+<!--    // get successs-->
+
+<!--    // let table2 = document.getElementById("tblAddCar");-->
+<!--    // var tablArry = [];-->
+<!--    //-->
+<!--    // for (var i =0;i<table2.rows.length;i++){-->
+<!--    //     tablArry.push({-->
+<!--    //         carId2:table2.rows[i].cells[1].innerHTML,-->
+<!--    //         lostFee2:table2.rows[i].cells[3].innerHTML,-->
+<!--    //-->
+<!--    //-->
+<!--    //     })-->
+<!--    // }-->
+<!--    //-->
+<!--    // console.log("Print Table"+JSON.stringify(tablArry) )-->
+<!--    //-->
+<!--    // var  newCarID = tablArry[0].carId2-->
+<!--    // var  newCarID2 = tablArry[1].carId2-->
+<!--    //-->
+<!--    // console.log("CarID 1" +newCarID);-->
+<!--    // console.log("CarID 2" +newCarID2);-->
+<!--    //-->
+<!--    //-->
+<!--    // function getAllVe(){-->
+<!--    //     return tablArry;-->
+<!--    // }-->
+<!--    //-->
+<!--    // let myCart = getAllVe();-->
+<!--    // const  testData = myCart.values();-->
+<!--    // var cartData =[];-->
+<!--    //-->
+<!--    // for (const value of testData){-->
+<!--    //     cartData.push({-->
+<!--    //         "CarID":value.carId2,-->
+<!--    //-->
+<!--    //     })-->
+<!--    //-->
+<!--    // }-->
+<!--    // console.log("Hwloow Array Print ");-->
+<!--    //-->
+
+
+
+<!--    // var array =[];-->
+<!--    // var headers =[];-->
+<!--    //-->
+<!--    // $('#carDetailsAddCars th').each(function (index,item) {-->
+<!--    //     headers[item] = $(item).html();-->
+<!--    //-->
+<!--    // });-->
+<!--    // $('#carDetailsAddCars tr').has('td').each(function () {-->
+<!--    //     var arrayItem = {};-->
+<!--    //     $('td',$(this)).each(function (index,item) {-->
+<!--    //         arrayItem[headers[item]] = $(item).html();-->
+<!--    //-->
+<!--    //     });-->
+<!--    //     array.push(arrayItem);-->
+<!--    // })-->
+<!--    //-->
+<!--    // console.log(JSON.stringify(array))-->
+
+<!--    // set table Values to the Arry-->
+
+<!--    // let table2 = document.getElementById("tblAddCar");-->
+<!--    // let count1 = table2.rows.length;-->
+<!--    //-->
+<!--    // let carArray ;-->
+<!--    // let carLostWF ;-->
+<!--    //-->
+<!--    // let vehicleTable = [];-->
+<!--    // for (let i=0;i<count1;i++){-->
+<!--    //     // vehicleTable.push({-->
+<!--    //         carArray = table2.rows[i].cells[1].innerText;-->
+<!--    //         carLostWF = table2.rows[i].cells[3].innerText;-->
+<!--    //     // })-->
+<!--    // }-->
+<!--    //-->
+<!--    // let myCart = getAllVehicle();-->
+<!--    // const testData = myCart.values();-->
+<!--    //-->
+<!--    //-->
+<!--    // var cartData = [];-->
+<!--    //-->
+<!--    // for (const value of testData){-->
+<!--    //     cartData.push({-->
+<!--    //-->
+<!--    //-->
+<!--    //     })-->
+<!--    // }-->
+
+<!--    // for (let i=0;i<count1;i++){-->
+<!--    //     cartData.push({-->
+<!--    //         // table2.rows[i].cells[1].innerText;-->
+<!--    //         // table2.rows[i].cells[3].innerText;-->
+<!--    //-->
+<!--    //     })-->
+
+<!--    // }-->
+<!--    // console.log("Cart Data Array"+ cartData[0])-->
+<!--    //-->
+<!--    // // Get The Data in Car cart-->
+<!--    // let table2 = document.getElementById('tblAddCar');-->
+<!--    // let count = table2.rows.length;-->
+<!--    //-->
+<!--    // // var rentIDFromTable;-->
+<!--    // // var rentDetailIDFromTable;-->
+<!--    // // var carIDFromTable;-->
+<!--    // // var carNameFromTable;-->
+<!--    // // var LWDFee1FromTable;-->
+<!--    // // var driverID1FromTable;-->
+<!--    // var table = [];-->
+<!--    // for (let i = 0; i < count; i++) {-->
+<!--    //     table.push({-->
+<!--    //         rentIDFromTable : table2.rows[i].cells[0].innerHTML,-->
+<!--    //         rentDetailIDFromTable :table2.rows[i].cells[1].innerHTML,-->
+<!--    //         carIDFromTable :table2.rows[i].cells[2].innerHTML,-->
+<!--    //         carNameFromTable :table2.rows[i].cells[3].innerHTML,-->
+<!--    //         LWDFee1FromTable:table2.rows[i].cells[4].innerHTML,-->
+<!--    //         driverID1FromTable:table2.rows[i].cells[5].innerHTML-->
+<!--    //     })-->
+<!--    //-->
+<!--    //-->
+<!--    // }-->
+
+<!--    // var cartData =[];-->
+<!--    // const testdata = table.values();-->
+<!--    // for (const value of testdata){-->
+<!--    //     cartData.push({-->
+<!--    //         "rentDetailID":value.rentDetailIDFromTable,-->
+<!--    //         "rentLosWaiver": value.LWDFee1FromTable,-->
+<!--    //                 "dIC": {-->
+<!--    //                     "driver_NIC":value.driverID1FromTable-->
+<!--    //                 },-->
+<!--    //                 "rID": {-->
+<!--    //                     "rentID":value.rentIDFromTable-->
+<!--    //                 },-->
+<!--    //                 "cID":  {-->
+<!--    //                     "carID":value.carIDFromTable-->
+<!--    //                 }-->
+<!--    //     })-->
+<!--    // }-->
+<!--    //-->
+<!--    //-->
+<!--    // console.log("Show cart data"+JSON.stringify(cartData));-->
+<!--    //-->
+
+<!--    })-->
+
+<!--    /* -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Dual Add Array &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;*/-->
+
+<!--    // "rentDetails": [-->
+<!--    //     {-->
+<!--    //         "rentDetailID":rentDetailIDFromTable,-->
+<!--    //-->
+<!--    //         "rentLosWaiver": LWDFee1FromTable,-->
+<!--    //-->
+<!--    //-->
+<!--    //         "dIC": {-->
+<!--    //             "driver_NIC":driverID1FromTable-->
+<!--    //         },-->
+<!--    //         "rID": {-->
+<!--    //             "rentID":rentIDFromTable,-->
+<!--    //         },-->
+<!--    //         "cID":  {-->
+<!--    //             "carID":carIDFromTable-->
+<!--    //         }-->
+<!--    //-->
+<!--    //     }-->
+<!--    //-->
+<!--    // ]-->
+
+

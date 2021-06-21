@@ -70,4 +70,10 @@ public class CustomerController {
         return new ResponseEntity(new StandardResponse("200","Done",null), HttpStatus.NO_CONTENT);
 
     }
+
+    @GetMapping(path = "/lastID/customer")
+    public ResponseEntity getLastRid() {
+        String lastRid = customerService.getLastRid();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.CREATED);
+    }
 }

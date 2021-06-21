@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="">
 
     <style>
-        .loginPanel{
+        .loginPanel {
             position: relative;
             margin-left: 268px;
             margin-top: -28px;
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <div class="form-group">
-                                <label for="inputLICImageCreateAccount">  Image Of Your
+                                <label for="inputLICImageCreateAccount"> Image Of Your
                                     Driving License</label>
                                 <input class="form-control-file" id="inputLICImageCreateAccount" type="text">
                                 <input class="form-control" id="txtCreateAccountDriving" style="margin-top: 10px"
@@ -73,13 +73,15 @@
                         </div>
                     </div>
 
-                    <button id="btnCreateNewAccount" class="btn btn-primary" style="margin-left: 10px;margin-bottom: 10px " type="button">
-                        <p  style="color: white;text-decoration: none">Create Account </p></button>
+                    <button id="btnCreateNewAccount" class="btn btn-primary"
+                            style="margin-left: 10px;margin-bottom: 10px " type="button">
+                        <p style="color: white;text-decoration: none">Create Account </p></button>
 
                 </form>
             </div>
             <div class="col-4">
-                <img style=" margin-left: -146px;margin-top: 137px;" alt="" height="auto" src="Assest/images/wallhaven-5wjqy1.jpg"  width="650px">
+                <img style=" margin-left: -146px;margin-top: 137px;" alt="" height="auto"
+                     src="Assest/images/wallhaven-5wjqy1.jpg" width="650px">
             </div>
         </div>
     </div>
@@ -90,6 +92,39 @@
 <script src="Assest/js/bootstrap.min.js"></script>
 
 <script>
+
+    function genarateRentID() {
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/customer/lastID/customer",
+            contentType: "application/json",
+            async: true,
+            success: function (res) {
+                console.log(res.data)
+                try {
+                    let lastOID = res.data;
+                    let newOID = parseInt(lastOID.substring(1, 4)) + 1;
+                    if (newOID < 10) {
+                        $('#txtCreateAccountNIC').val("C00" + newOID);
+
+                    } else if (newOID < 100) {
+                        $('#txtCreateAccountNIC').val("C0" + newOID);
+                    } else {
+                        $('#txtCreateAccountNIC').val("C" + newOID);
+                    }
+                } catch (e) {
+                    $('#txtCreateAccountNIC').val("C001");
+                }
+
+                console.log(reqID)
+
+
+            }
+        })
+    }
+
+    genarateRentID();
+
 
     $('#btnCreateNewAccount').click(function () {
 
@@ -107,27 +142,27 @@
 
 
         $.ajax({
-            method:"post",
-            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/customer",
-            contentType:"application/json",
-            async:true,
-            data:JSON.stringify({
-                "cusNicID" : NICNumber,
+            method: "post",
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/customer",
+            contentType: "application/json",
+            async: true,
+            data: JSON.stringify({
+                "cusNicID": NICNumber,
                 "name": customerName,
-                "address" : customerAddress,
-                "email" : email,
-                "password" : customerPassword,
-                "nicImage" : NICImage,
-                "licImage" : LICImage,
-                "licNo" : LICNumber,
-                "contact" : contact
+                "address": customerAddress,
+                "email": email,
+                "password": customerPassword,
+                "nicImage": NICImage,
+                "licImage": LICImage,
+                "licNo": LICNumber,
+                "contact": contact
             }),
-            success:function (res) {
-                if (res.message==='Success'){
+            success: function (res) {
+                if (res.message === 'Success') {
                     alert("Your account Created");
 
                     console.log(res)
-                }else {
+                } else {
                     console.log("Error");
                     console.log(res)
                 }
@@ -136,7 +171,6 @@
 
 
     })
-
 
 
 </script>

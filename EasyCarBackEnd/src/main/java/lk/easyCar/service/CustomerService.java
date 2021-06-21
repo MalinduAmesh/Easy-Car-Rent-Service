@@ -11,4 +11,6 @@ public interface CustomerService  {
     UserDTO searchCustomer(String id);
     ArrayList<UserDTO> getALlCustomers();
     boolean updateCustomer (UserDTO userDTO);
+
+    String getLastRid();
 }

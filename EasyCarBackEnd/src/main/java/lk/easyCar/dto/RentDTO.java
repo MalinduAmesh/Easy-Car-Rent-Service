@@ -15,29 +15,29 @@ import java.util.List;
 public class RentDTO {
 
     private String rentID;
+    private String rentStatus;
+    private String rentLosWaiverRecipt;
+    private String pickUpDate;
+    private String returnDate;
+    private String rentTotal;
 
     private User cusID;
     private List<RentDetailsDTO> rentDetails = new ArrayList<>();
 
-    public RentDTO(String rentID, User cusID, List<RentDetailsDTO> rentDetails) {
-        this.rentID = rentID;
-        this.cusID = cusID;
-        this.rentDetails = rentDetails;
-    }
 
     public RentDTO() {
     }
 
-
-//
-//    @Override
-//    public String toString() {
-//        return "RentDTO{" +
-//                "rentID='" + rentID + '\'' +
-//                ", cusID=" + cusID +
-//                ", rentDetails=" + rentDetails +
-//                '}';
-//    }
+    public RentDTO(String rentID, String rentStatus, String rentLosWaiverRecipt, String pickUpDate, String returnDate, String rentTotal, User cusID, List<RentDetailsDTO> rentDetails) {
+        this.rentID = rentID;
+        this.rentStatus = rentStatus;
+        this.rentLosWaiverRecipt = rentLosWaiverRecipt;
+        this.pickUpDate = pickUpDate;
+        this.returnDate = returnDate;
+        this.rentTotal = rentTotal;
+        this.cusID = cusID;
+        this.rentDetails = rentDetails;
+    }
 
     public String getRentID() {
         return rentID;
@@ -45,6 +45,46 @@ public class RentDTO {
 
     public void setRentID(String rentID) {
         this.rentID = rentID;
+    }
+
+    public String getRentStatus() {
+        return rentStatus;
+    }
+
+    public void setRentStatus(String rentStatus) {
+        this.rentStatus = rentStatus;
+    }
+
+    public String getRentLosWaiverRecipt() {
+        return rentLosWaiverRecipt;
+    }
+
+    public void setRentLosWaiverRecipt(String rentLosWaiverRecipt) {
+        this.rentLosWaiverRecipt = rentLosWaiverRecipt;
+    }
+
+    public String getPickUpDate() {
+        return pickUpDate;
+    }
+
+    public void setPickUpDate(String pickUpDate) {
+        this.pickUpDate = pickUpDate;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public String getRentTotal() {
+        return rentTotal;
+    }
+
+    public void setRentTotal(String rentTotal) {
+        this.rentTotal = rentTotal;
     }
 
     public User getCusID() {
@@ -62,5 +102,4 @@ public class RentDTO {
     public void setRentDetails(List<RentDetailsDTO> rentDetails) {
         this.rentDetails = rentDetails;
     }
-
 }
