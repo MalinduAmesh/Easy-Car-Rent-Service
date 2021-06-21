@@ -14,8 +14,11 @@ import javax.persistence.Id;
 public class Request {
 
     @Id
-    private String rID;
-    private int totalFee;
-    private String ReqStauts;
+    private String rentID;
+    private String rentStatus;
+    private String rentLosWaiverRecipt;
+    private String pickUpDate;
+    private String returnDate;
+    private String rentTotal;
 
 }

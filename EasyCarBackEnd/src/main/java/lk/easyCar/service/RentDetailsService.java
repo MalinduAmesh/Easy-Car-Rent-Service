@@ -5,4 +5,6 @@ import lk.easyCar.dto.RentDetailsDTO;
 public interface RentDetailsService {
 
     RentDetailsDTO searchRentDet(String id);
+
+
 }

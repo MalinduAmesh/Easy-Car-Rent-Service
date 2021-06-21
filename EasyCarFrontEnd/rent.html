@@ -240,7 +240,7 @@
     function genarateRentID() {
         $.ajax({
             method: 'get',
-            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/lastID/customer",
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/lastID/rentID",
             contentType: "application/json",
             async: true,
             success: function (res) {
@@ -294,17 +294,71 @@
     }
 
     genarateRentID2();
+    // Check The Radio Button and Call the Random method
+    function checkButton() {
+        if (document.getElementById('withDriverID').checked == true){
 
-    $('#btnorderID').click(function () {
+            $('#inputDriverID').css('display','block');
+            console.log("hello")
 
-        // console.log("Show ID "
+            randomInputDriver();
+        }else{
 
-        let reqIs = $('#inputrentID').val(reqID)
-        console.log(reqIs)
+            $('#inputDriverID').css('display','none');
+        }
+    }
+    checkButton()
+        $('#btnorderID').click(function () {
+
+        // let val = $("input[name ='A']:checked").val();
+        // console.log(val)
+        //
+        // // With Driver
+        // if (val == 'option1'){
+        //     $('#inputDriverID').css('display','block');
+        //     randomInputDriver();
+        // }
+        // if (val == 'option2'){
+        //     $('#inputDriverID').css('display','none');
+        //
+        // }
+
 
     })
 
-    console.log(reqID)
+    // Add a driver Randomly
+
+    function  randomInputDriver(){
+
+        $.ajax({
+            method:'get',
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/driver",
+            contentType:"application/json",
+            success:function (res) {
+                let firstDriver ;
+
+                for (let i=0;i<res.data.length;i++){
+                    if (res.data[i].driver_Stauts == "avalible"){
+                        console.log("Avliable")
+                        firstDriver = res.data[i].driver_NIC;
+
+                    }else {
+                        console.log("UnAvilable");
+                    }
+                }
+                console.log("avl firstDriver"+firstDriver);
+                console.log("Drivers Length" +res.data.length)
+
+                let lengthNumber = res.data.length -1;
+                let x = Math.floor(Math.random() * lengthNumber) +1;
+                console.log("Print Random X"+x)
+
+                let driverID = firstDriver;
+                $('#inputDriverID').val(driverID);
+            }
+        })
+    }
+
 
     $("#btn-manage-carDetails").click(function () {
         $('#tblCarDetails').empty();

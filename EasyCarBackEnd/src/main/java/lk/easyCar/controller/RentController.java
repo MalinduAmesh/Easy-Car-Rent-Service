@@ -73,8 +73,9 @@ public class RentController {
 
     }
 
-    @GetMapping(path = "/seo/{id}")
-    public ArrayList<Rent>getByRentDID(@PathVariable String id){
-       return (ArrayList<Rent>) rentService.getByRentDetails(id);
+    @GetMapping(path = "/lastID/rentID")
+    public ResponseEntity getLastRid() {
+        String lastRid = rentService.getLastRid();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.CREATED);
     }
 }

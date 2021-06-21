@@ -19,4 +19,6 @@ public interface RentService {
     RentDTO searchRent(String id);
 
     List<Rent> getByRentDetails(String id);
+
+    String getLastRid();
 }

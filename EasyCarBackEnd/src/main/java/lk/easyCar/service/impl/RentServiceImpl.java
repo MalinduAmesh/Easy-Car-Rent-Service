@@ -104,4 +104,9 @@ public class RentServiceImpl implements RentService {
         }.getType());
     }
 
+    @Override
+    public String getLastRid() {
+        return rentRepo.getLastID();
+    }
+
 }
