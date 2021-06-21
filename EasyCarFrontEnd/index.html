@@ -64,7 +64,7 @@
     </nav>
 </div>
 
-<div class="col-10" id="adminHome" >
+<div class="col-10" id="adminHome">
     <h2>DashBoad</h2>
     <hr>
     <div class="col-12 adminHomeBoxModel">
@@ -79,7 +79,7 @@
         </div>
 
         <div>
-            <h3 >Total Booking For
+            <h3>Total Booking For
                 Today</h3>
             <hr style="margin-top: 5px;margin-bottom: -15px">
 
@@ -89,7 +89,7 @@
         </div>
 
         <div>
-            <h3 >Pendding
+            <h3>Pendding
                 Request</h3>
             <hr style="margin-top: 5px;margin-bottom: -15px">
 
@@ -158,7 +158,7 @@
 </section>
 
 <section class="container" id="UpdateCar" style="display: none">
-    <div class="updateCar2"  >
+    <div class="updateCar2">
         <h3>Update Car</h3>
         <hr>
         <div class="updateForm">
@@ -394,15 +394,14 @@
 
         <div id="viewAllRequests">
             <div>
-                <table class="table">
+                <table class="table" id="viewPendingTable">
                     <thead>
                     <tr>
-                        <th scope="col">Request ID</th>
-                        <th scope="col">Requested Date</th>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Customer Contact</th>
-                        <th scope="col">Request CarID</th>
+                        <th scope="col">Rent ID</th>
+                        <th scope="col">Car ID</th>
                         <th scope="col">Request Car Name</th>
+                        <th scope="col">Customer NIC</th>
+                        <th scope="col">Customer Name</th>
                         <th scope="col">Driver ID</th>
                         <th scope="col">Driver Status</th>
                         <th scope="col">PickUp Date</th>
@@ -413,8 +412,6 @@
                     </tr>
                     </thead>
                     <tbody id="tblAllRequest">
-                    <tr>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -460,7 +457,8 @@
                         <input class="form-control" id="txtQtyKM" type="number">
                     </div>
                     <div class="form-group col-md-2">
-                        <button class="btn btn-info" id="calExtraKM" style="margin-top: 27px;margin-left: 10px;height: 40px;    font-size: 14px;">
+                        <button class="btn btn-info" id="calExtraKM"
+                                style="margin-top: 27px;margin-left: 10px;height: 40px;    font-size: 14px;">
                             Get Extra KM Price
                         </button>
                     </div>
@@ -520,7 +518,7 @@
 
             </div>
         </div>
-        </div>
+    </div>
 </section>
 
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
@@ -544,37 +542,32 @@
 
     function showAdminDashboardForm() {
         $('#adminHome').css("display", "block");
-        $('#carDetailsForm').css("display","none");
+        $('#carDetailsForm').css("display", "none");
         $('#adminRequest').css("display", "none");
-        $('#AddCar').css("display","none");
+        $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
-
-
 
 
     }
 
     function showCarDetailsForm() {
-        $('#carDetailsForm').css("display","block");
+        $('#carDetailsForm').css("display", "block");
         $('#adminRequest').css("display", "none");
         $('#adminHome').css("display", "none");
-        $('#AddCar').css("display","none");
-        $('#viewAllCars').css("display","block");
+        $('#AddCar').css("display", "none");
+        $('#viewAllCars').css("display", "block");
         $('#adminPayment').css("display", "none");
-
-
-
 
 
     }
 
     $('#AddCarNav').click(function () {
 
-        $('#AddCar').css("display","block");
+        $('#AddCar').css("display", "block");
         $('#adminRequest').css("display", "none");
         $('#adminHome').css("display", "none");
-        $('#carDetailsForm').css("display","none");
+        $('#carDetailsForm').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
 
@@ -591,13 +584,11 @@
 
     function loadPendingRequestForm() {
         $('#adminRequest').css("display", "block");
-        $('#carDetailsForm').css("display","none");
+        $('#carDetailsForm').css("display", "none");
         $('#adminHome').css("display", "none");
-        $('#AddCar').css("display","none");
+        $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
-
-
 
 
     }
@@ -606,9 +597,9 @@
 
         $('#adminPayment').css("display", "block");
         $('#adminRequest').css("display", "none");
-        $('#carDetailsForm').css("display","none");
+        $('#carDetailsForm').css("display", "none");
         $('#adminHome').css("display", "none");
-        $('#AddCar').css("display","none");
+        $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
     }
 
@@ -656,12 +647,12 @@
         var carUpdate = ($(id).attr('id'));
         console.log(carUpdate)
 
-        $('#UpdateCar').css("display","block");
-        $('#viewAllCars').css("display","none");
-        $('#adminRequest').css("display","none");
-        $('#carDetailsForm').css("display","none");
-        $('#adminHome').css("display","none");
-        $('#AddCar').css("display","none");
+        $('#UpdateCar').css("display", "block");
+        $('#viewAllCars').css("display", "none");
+        $('#adminRequest').css("display", "none");
+        $('#carDetailsForm').css("display", "none");
+        $('#adminHome').css("display", "none");
+        $('#AddCar').css("display", "none");
 
         $("#inputCarIDUpdate").val(carUpdate);
 
@@ -786,9 +777,79 @@
         })
     })
 
-/* ---------------------------------------------------------   Pending Reques Form ------------------------------------------------*/
+    /* ---------------------------------------------------------   Pending Reques Form ------------------------------------------------*/
+
+    $('#btn-manage-pendingReq').click(function () {
+        $('#tblAllRequest').empty();
+        console.log("Hellow Pendin Admin")
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+            contentType: "application/json",
+            async:true,
+            success: function (res) {
+                console.log("all Data "+ res)
+                console.log("Print Pendinr Request" + res.data[0].rentID)
+
+                console.log("Print Pendinr Request CAr ID" + res.data[0].rentDetails[0].cID[0].)
+
+                for (var i in res.data) {
+
+                    let rentID = res.data[i].rentID;
+                    let cusID = res.data[i].cusID.cusNicID;
+                    let cusName = res.data[i].cusID.name;
+
+                for (var x in res.data) {
+                        let carID = res.data[i].carID;
+                        let carName = res.data[i].rentDetails[x].rentDetailID;
+
+                        let dID = res.data[i].driver_NIC;
+                        let dStatus = "Avliable";
+                        let pickDate = res.data[i].pickUpDate;
+                        let dropDate = res.data[i].returnDate;
+                        let reqStatus = res.data[i].rentStatus;
 
 
+                        var row = `<tr><td>${rentID}</td><td>${carID}</td><td>${carName}</td><td>${cusID}</td><td> ${cusName}</td>
+    <td> ${dID}</td><td> ${dStatus}</td><td> ${pickDate}</td><td> ${dropDate}</td><td> ${reqStatus}</td><td><button  class="btn btn-warning fff" id="${carID}" onclick="updateDetailsCar(this)">OK</button>
+        <button class="btn btn-danger " id="${carID}" onclick="DeleteCar(this)">Delete</button></td></tr>`;
+                        $('#tblAllRequest').append(row);
+                    }
+                }
+            }
+        })
+
+    })
 </script>
 </body>
 </html>
+<!--$('#tblCarDetails').empty();-->
+<!--$.ajax({-->
+<!--method: 'get',-->
+<!--url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",-->
+<!--contentType: "application/json",-->
+<!--success: function (res) {-->
+<!--console.log(res)-->
+
+<!--for (var i in res.data) {-->
+<!--let carID = res.data[i].carID;-->
+<!--let carModel = res.data[i].carModel;-->
+<!--let carType = res.data[i].carType;-->
+<!--let carColor = res.data[i].carColor;-->
+<!--let carTransmissionType = res.data[i].carTransmissionType;-->
+<!--let carStatus = res.data[i].carStatus;-->
+<!--let passengers = res.data[i].passenger;-->
+
+
+<!--var row = `<tr><td>${carID}</td><td>${carModel}</td><td>${carType}</td><td>${carColor}</td><td> ${carTransmissionType}</td>-->
+<!--    <td> ${carStatus}</td><td> ${passengers}</td><td><button  class="btn btn-warning fff" id="${carID}" onclick="updateDetailsCar(this)">Update</button>-->
+<!--        <button class="btn btn-danger " id="${carID}" onclick="DeleteCar(this)">Delete</button></td></tr>`;-->
+<!--$('#tblCarDetails').append(row);-->
+
+<!--console.log("END" + i);-->
+<!--}-->
+<!--}-->
+<!--})-->
+
+
+<!--})-->

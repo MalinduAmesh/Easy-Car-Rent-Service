@@ -7,6 +7,7 @@ import lk.easyCar.service.RentService;
 import lk.easyCar.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,8 +35,11 @@ public class RentController {
 
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity allRents(){
+
+//    return rentService.getAllRents();
+
         ArrayList<RentDTO> allRents = rentService.getAllRents();
         return new ResponseEntity(new StandardResponse("200","Done",allRents),  HttpStatus.CREATED);
 

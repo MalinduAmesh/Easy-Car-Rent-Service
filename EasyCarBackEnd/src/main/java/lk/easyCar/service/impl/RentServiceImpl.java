@@ -53,10 +53,15 @@ public class RentServiceImpl implements RentService {
         return true;
     }
 
-
     @Override
     public ArrayList<RentDTO> getAllRents() {
 
+//        ArrayList<RentDTO> allRentsDet = new ArrayList<>();
+//        List<Rent> all = rentRepo.findAll();
+//        for (Rent rent:all){
+//            allRentsDet.add(new RentDTO(rent.getRentID(),rent.getCusID(),rent.getRentDetails() ));
+//        }
+//        return allRentsDet;
         List<Rent> all = rentRepo.findAll();
 
       return   modelMapper.map(all,new TypeToken<ArrayList<RentDTO>>(){
