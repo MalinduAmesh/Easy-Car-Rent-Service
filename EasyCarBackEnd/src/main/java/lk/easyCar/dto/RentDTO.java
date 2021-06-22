@@ -21,14 +21,14 @@ public class RentDTO {
     private String returnDate;
     private String rentTotal;
 
-    private User cusID;
+    private UserDTO cusID;
     private List<RentDetailsDTO> rentDetails = new ArrayList<>();
 
 
     public RentDTO() {
     }
 
-    public RentDTO(String rentID, String rentStatus, String rentLosWaiverRecipt, String pickUpDate, String returnDate, String rentTotal, User cusID, List<RentDetailsDTO> rentDetails) {
+    public RentDTO(String rentID, String rentStatus, String rentLosWaiverRecipt, String pickUpDate, String returnDate, String rentTotal, UserDTO cusID, List<RentDetailsDTO> rentDetails) {
         this.rentID = rentID;
         this.rentStatus = rentStatus;
         this.rentLosWaiverRecipt = rentLosWaiverRecipt;
@@ -87,11 +87,11 @@ public class RentDTO {
         this.rentTotal = rentTotal;
     }
 
-    public User getCusID() {
+    public UserDTO getCusID() {
         return cusID;
     }
 
-    public void setCusID(User cusID) {
+    public void setCusID(UserDTO cusID) {
         this.cusID = cusID;
     }
 
