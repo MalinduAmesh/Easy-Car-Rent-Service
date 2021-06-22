@@ -17,14 +17,14 @@ public class RentDetailsDTO {
     private String rentLosWaiver;
 
 
-    private DriverDTO dIC;
-    private RentDTO rID;
-    private VehicleDTO cID;
+    private Driver dIC;
+    private Rent rID;
+    private Vehicle cID;
 
     public RentDetailsDTO() {
     }
 
-    public RentDetailsDTO(String rentDetailID, String rentLosWaiver, DriverDTO dIC, RentDTO rID, VehicleDTO cID) {
+    public RentDetailsDTO(String rentDetailID, String rentLosWaiver, Driver dIC, Rent rID, Vehicle cID) {
         this.rentDetailID = rentDetailID;
         this.rentLosWaiver = rentLosWaiver;
         this.dIC = dIC;
@@ -48,27 +48,27 @@ public class RentDetailsDTO {
         this.rentLosWaiver = rentLosWaiver;
     }
 
-    public DriverDTO getdIC() {
+    public Driver getdIC() {
         return dIC;
     }
 
-    public void setdIC(DriverDTO dIC) {
+    public void setdIC(Driver dIC) {
         this.dIC = dIC;
     }
 
-    public RentDTO getrID() {
+    public Rent getrID() {
         return rID;
     }
 
-    public void setrID(RentDTO rID) {
+    public void setrID(Rent rID) {
         this.rID = rID;
     }
 
-    public VehicleDTO getcID() {
+    public Vehicle getcID() {
         return cID;
     }
 
-    public void setcID(VehicleDTO cID) {
+    public void setcID(Vehicle cID) {
         this.cID = cID;
     }
 }

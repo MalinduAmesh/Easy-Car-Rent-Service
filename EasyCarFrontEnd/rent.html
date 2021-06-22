@@ -38,6 +38,7 @@
 
     <div class="row col-md-11" style="    margin-left: 175px;">
         <h2>Rent Details</h2>
+
         <hr>
         <div class="col-md-6">
             <h4>Customer Details</h4>
@@ -308,23 +309,23 @@
         }
     }
     checkButton()
-        $('#btnorderID').click(function () {
-
-        // let val = $("input[name ='A']:checked").val();
-        // console.log(val)
-        //
-        // // With Driver
-        // if (val == 'option1'){
-        //     $('#inputDriverID').css('display','block');
-        //     randomInputDriver();
-        // }
-        // if (val == 'option2'){
-        //     $('#inputDriverID').css('display','none');
-        //
-        // }
-
-
-    })
+    //     $('#btnorderID').click(function () {
+    //
+    //     // let val = $("input[name ='A']:checked").val();
+    //     // console.log(val)
+    //     //
+    //     // // With Driver
+    //     // if (val == 'option1'){
+    //     //     $('#inputDriverID').css('display','block');
+    //     //     randomInputDriver();
+    //     // }
+    //     // if (val == 'option2'){
+    //     //     $('#inputDriverID').css('display','none');
+    //     //
+    //     // }
+    //
+    //
+    // })
 
     // Add a driver Randomly
 
@@ -376,13 +377,17 @@
                     let carColor = res.data[i].carColor;
                     let carTransmissionType = res.data[i].carTransmissionType;
                     let carStatus = res.data[i].rentLosWaiver;
+                    let carStatusReal = res.data[i].carStatus;
                     let passengers = res.data[i].passenger;
 
-
-                    var row = `<tr><td>${carID}</td><td>${carModel}</td><td>${carType}</td><td>${carColor}</td><td> ${carTransmissionType}</td>
+                    if (carStatusReal == 'avalible'){
+                        console.log("If this logic Wrong")
+                        var row = `<tr><td>${carID}</td><td>${carModel}</td><td>${carType}</td><td>${carColor}</td><td> ${carTransmissionType}</td>
                     <td> ${carStatus}</td><td> ${passengers}</td><td>
                     <button  class="btn btn-warning fff" id="${carID}" onclick="getcarDetails(this)">Get</button></td></tr>`;
-                    $('#tblCarDetails').append(row);
+                        $('#tblCarDetails').append(row);
+                    }
+
 
                     console.log("END" + i);
                 }
@@ -600,12 +605,13 @@
                 "rentID": rentIDFromTable,
                 "cusID": {
                     "cusNicID": rentCusID,
+                },
                     "pickUpDate": rentPickUpDate,
                     "returnDate":rentDropOffDate,
                     "rentStatus":rentReqStatus,
                     "rentLosWaiverRecipt": rentLWDFeeRecipt,
                     "rentTotal": rentTotal,
-                },
+
 
                 "rentDetails": cartData
 
@@ -619,8 +625,105 @@
         })
 
 
+
+        getVehicleStatus();
+
     });
 
+
+    $('#btnorderID').click(function () {
+
+
+    })
+
+
+    function getVehicleStatus() {
+
+        // Get The Data in Car cart
+        let table2 = document.getElementById('tblAddCar');
+        let count = table2.rows.length;
+
+
+        let carIDFromTable;
+        for (let i = 0; i < count; i++) {
+            carIDFromTable =table2.rows[i].cells[2].innerHTML;
+            console.log("Car ID from cart"+carIDFromTable)
+            setVehicleStatus(carIDFromTable)
+        }
+
+    }
+
+    function setVehicleStatus(carIDFromTable) {
+
+        var getRentID = carIDFromTable;
+        console.log("Hellow ID"+getRentID)
+
+        $.ajax({
+            method:'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/"+getRentID,
+            contentType: "application/json",
+            success:function (res) {
+                console.log("Car ID"+res.data.carStatus)
+
+                let carID = res.data.carID;
+                let carModel = res.data.carModel;
+                let carType = res.data.carType;
+                let carTransmissionType = res.data.carTransmissionType;
+                let carFuelType = res.data.carFuelType;
+                let carColor = res.data.carColor;
+                let carStatus = res.data.carStatus;
+                let rentLosWaiver = res.data.rentLosWaiver;
+                let passenger = res.data.passenger;
+
+                let carImg1 = res.data.carImg1;
+                let carImg2 = res.data.carImg2;
+                let carImg3 = res.data.carImg3;
+                let carImg4 = res.data.carImg4;
+
+                let carDailyRate = res.data.carDailyRate;
+                let carMonthlyRate = res.data.carMonthlyRate;
+                let carFreeKmForDay = res.data.carFreeKmForADay;
+                let carFreeKmForMonth = res.data.carFreeKmForAMonth;
+                let carPriceForExtraKm = res.data.carPriceForExtraKM;
+
+
+                updateCarStatus(carID,carModel,carType,carTransmissionType,carFuelType,carColor,carStatus,rentLosWaiver,passenger,carImg1,carImg2,carImg3,carImg4,carDailyRate,carMonthlyRate,carFreeKmForDay,carFreeKmForMonth,carPriceForExtraKm)
+            }
+        })
+
+    }
+
+    function updateCarStatus(carID,carModel,carType,carTransmissionType,carFuelType,carColor,carStatus,rentLosWaiver,passenger,carImg1,carImg2,carImg3,carImg4,carDailyRate,carMonthlyRate,carFreeKmForDay,carFreeKmForMonth,carPriceForExtraKm) {
+
+        carStatus ="UnAvailable";
+        $.ajax({
+
+            method: 'put',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "carID":carID,
+                "carColor":carColor,
+                "carDailyRate":carDailyRate,
+                "carFreeKmForDay":carFreeKmForDay,
+                "carFreeKmForMonth":carFreeKmForMonth,
+                "rentLosWaiver":rentLosWaiver,
+                "carFuelType":carFuelType,
+                "carModel" : carModel,
+                "carMonthlyRate":carMonthlyRate,
+                "carPriceForExtraKm":carPriceForExtraKm,
+                "carStatus":carStatus,
+                "carTransmissionType":carTransmissionType,
+                "carType":carType,
+                "passenger":passenger
+            }),
+            success: function (res) {
+
+                console.log(res);
+                alert("SuccessFully Updated !")
+            }
+        })
+    }
 
 </script>
 </body>

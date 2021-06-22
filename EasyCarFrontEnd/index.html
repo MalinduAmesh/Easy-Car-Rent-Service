@@ -398,12 +398,8 @@
                     <thead>
                     <tr>
                         <th scope="col">Rent ID</th>
-                        <th scope="col">Car ID</th>
-                        <th scope="col">Request Car Name</th>
                         <th scope="col">Customer NIC</th>
                         <th scope="col">Customer Name</th>
-                        <th scope="col">Driver ID</th>
-                        <th scope="col">Driver Status</th>
                         <th scope="col">PickUp Date</th>
                         <th scope="col">DropOff Date</th>
                         <th scope="col">Request Status</th>
@@ -786,73 +782,137 @@
             method: 'get',
             url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
             contentType: "application/json",
-            async:true,
+            async: true,
             success: function (res) {
-                console.log("all Data "+ res)
-                console.log("Print Pendinr Request" + res.data[0].rentID)
-
-                console.log("Print Pendinr Request CAr ID" + res.data[0].rentDetails[0].cID.carID)
 
                 for (var i in res.data) {
-                // for (var x in res.data) {
                     let rentID = res.data[i].rentID;
                     let cusID = res.data[i].cusID.cusNicID;
                     let cusName = res.data[i].cusID.name;
+                    let pickUpDate = res.data[i].pickUpDate;
+                    let returnDate = res.data[i].returnDate;
+                    let rentStatus = res.data[i].rentStatus;
 
 
-                        let carID = res.data[i].rentDetails[1].cID.carID;
-                        let reqDet = res.data[i].rentDetails[1].rentDetailID;
-
-                        let dID = res.data[i].driver_NIC;
-                        let dStatus = "Avliable";
-                        let pickDate = res.data[i].pickUpDate;
-                        let dropDate = res.data[i].returnDate;
-                        let reqStatus = res.data[i].rentStatus;
-
-
-                        var row = `<tr><td>${rentID}</td><td>${carID}</td><td>${reqDet}</td><td>${cusID}</td><td> ${cusName}</td>
-    <td> ${dID}</td><td> ${dStatus}</td><td> ${pickDate}</td><td> ${dropDate}</td><td> ${reqStatus}</td><td><button  class="btn btn-warning fff" id="${carID}" onclick="updateRentStatus(this)">OK</button>
-        <button class="btn btn-danger " id="${carID}" onclick="DeleteCar(this)">Delete</button></td></tr>`;
-                        $('#tblAllRequest').append(row);
-                    }
+                    var row = `<tr><td>${rentID}</td><td>${cusID}</td><td>${cusName}</td><td>${pickUpDate}</td><td> ${returnDate}</td>
+    <td> ${rentStatus}</td><td><button  class="btn btn-warning fff" id="${rentID}" onclick="updateRentStatus(this)">OK</button>
+        <button class="btn btn-danger " id="${rentID}" onclick="DeleteCar(this)">Delete</button></td></tr>`;
+                    $('#tblAllRequest').append(row);
                 }
-            // }
+            }
         })
 
     })
 
+
     /* -------------------------------------------------------- Update Rent Status -------------------------------------------------- */
 
-    function updateRentStatus() {
+    function updateRentStatus(id) {
 
-        let table = document.getElementById("tblAllRequest");
-        let tableArry = [];
-        for (var i =0;i<table.rows.length;i++){
-            tableArry.push({
-                rentID:table.rows[i].cells[0].innerHTML,
-                cusID1:table.rows[i].cells[3].innerHTML,
-                rentDetID1:table.rows[i].cells[2].innerHTML,
-                pickUpDate1:table.rows[i].cells[7].innerHTML,
-                returnDate1:table.rows[i].cells[8].innerHTML,
-                rentStatus1:table.rows[i].cells[9].innerHTML,
-                rentLostWavier1:table.rows[i].cells[i].innerHTML,
-                rentLostWavRecipt:table.rows[i].cells[i].innerHTML,
-                rentDRvID:table.rows[i].cells[i].innerHTML,
-                carID:table.rows[i].cells[i].innerHTML,
+        var getRentID = ($(id).attr('id'));
+        console.log(getRentID)
+        let rentID;
+        let rentStauts;
+        let rentLostRecipt;
+        let pickUpDate;
+        let returnDate;
+        let rentTotal;
+        let cusID;
 
-            })
-            console.log(tableArry)
-        }
+        let rentDetID;
+        let rentLostFee;
+        let rentIDMap;
+        let carID;
+        let driverID;
+
         $.ajax({
-            method:'put',
-            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
-            contentType:"application/json",
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/"+getRentID,
+            contentType: "application/json",
             async: true,
+            success: function (res) {
 
-            // put data and update the Database and remove the Ok button in Table
+                // console.log(res.data.cusID.cusNicID)
+                // console.log("RentDetail ID"+res.data.rentDetails[0].rentDetailID)
+
+                var count = res.data;
+                console.log(res)
+
+                // var count = res.data[0].rentDetails[0].dIC.driver_NIC;
+
+                var tableArr =[];
+                console.log("Welcome to the jungle")
+
+                     rentID = res.data.rentID;
+                     cusID = res.data.cusID.cusNicID
+                     rentStauts = res.data.rentStatus;
+                     rentLostRecipt = res.data.rentLosWaiverRecipt;
+                     pickUpDate = res.data.pickUpDate;
+                     returnDate = res.data.returnDate;
+                     rentTotal = res.data.rentTotal;
+                    console.log("Welcome To the Middle Jingle"+rentID)
+                for (var i = 0; i < count.rentDetails.length; i++) {
+                    tableArr.push({
+                        rentDetID :res.data.rentDetails[i].rentDetailID,
+                        rentLostFee : res.data.rentDetails[i].rentLosWaiver,
+                        rentIDMap : res.data.rentDetails[i].rID.rentID,
+                        carID : res.data.rentDetails[i].cID.carID,
+                        driverID :res.data.rentDetails[i].dIC.driver_NIC,
+                    })
+
+                    console.log("Table Array"+JSON.stringify(tableArr))
+
+                    var bookingTable =[];
+                    const testData = tableArr.values();
+                    for (const value of testData){
+                        bookingTable.push({
+                            "bookDetailID":value.rentDetID,
+                            "bookLoseWFee":value.rentLostFee,
+                            "bID":{
+                                "bookID":value.rentIDMap
+                            },
+                            "cID":{
+                                "carID":value.carID
+                            },
+                            "dIC":{
+                                "driver_NIC":value.driverID
+                            }
+                        })
+                    }
+                    console.log("Booking Table"+JSON.stringify(bookingTable))
+
+                }
+                $.ajax({
+                    method:'post',
+                    url:"http://localhost:8080/EasyCarBackEnd_war_exploded/booking",
+                    contentType: "application/json",
+                    async: true,
+                    data: JSON.stringify({
+
+                        "bookID":rentID,
+                        "cusID": {
+                            "cusNicID": cusID,
+                        },
+                        "bookStatus":rentStauts,
+                        "bookLosWaiverRecipt":rentLostRecipt,
+                        "bookPickUpDate":pickUpDate,
+                        "bookReturnDate":returnDate,
+                        "bookRentTotal":rentTotal,
+
+                        "bookingDetails":bookingTable
+
+
+
+
+                    })
+                })
+            }
 
 
         })
+
+
+
     }
 </script>
 </body>

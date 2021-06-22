@@ -1,6 +1,8 @@
 package lk.easyCar.dto;
 
 
+import lk.easyCar.entity.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,21 +15,22 @@ public class BookingDTO {
     private String bookReturnDate;
     private String bookRentTotal;
 
-    private UserDTO userDTO;
-    private List<BookingDetailsDTO> bookingDetailsDTOS =  new ArrayList<>();
+    private User cusID;
+    private List<BookingDetailsDTO> bookingDetails = new ArrayList<>();
 
     public BookingDTO() {
     }
 
-    public BookingDTO(String bookID, String bookStatus, String bookLosWaiverRecipt, String bookPickUpDate, String bookReturnDate, String bookRentTotal, UserDTO userDTO, List<BookingDetailsDTO> bookingDetailsDTOS) {
+
+    public BookingDTO(String bookID, String bookStatus, String bookLosWaiverRecipt, String bookPickUpDate, String bookReturnDate, String bookRentTotal, User cusID, List<BookingDetailsDTO> bookingDetails) {
         this.bookID = bookID;
         this.bookStatus = bookStatus;
         this.bookLosWaiverRecipt = bookLosWaiverRecipt;
         this.bookPickUpDate = bookPickUpDate;
         this.bookReturnDate = bookReturnDate;
         this.bookRentTotal = bookRentTotal;
-        this.userDTO = userDTO;
-        this.bookingDetailsDTOS = bookingDetailsDTOS;
+        this.cusID = cusID;
+        this.bookingDetails = bookingDetails;
     }
 
     public String getBookID() {
@@ -78,19 +81,19 @@ public class BookingDTO {
         this.bookRentTotal = bookRentTotal;
     }
 
-    public UserDTO getUserDTO() {
-        return userDTO;
+    public User getCusID() {
+        return cusID;
     }
 
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
+    public void setCusID(User cusID) {
+        this.cusID = cusID;
     }
 
-    public List<BookingDetailsDTO> getBookingDetailsDTOS() {
-        return bookingDetailsDTOS;
+    public List<BookingDetailsDTO> getBookingDetails() {
+        return bookingDetails;
     }
 
-    public void setBookingDetailsDTOS(List<BookingDetailsDTO> bookingDetailsDTOS) {
-        this.bookingDetailsDTOS = bookingDetailsDTOS;
+    public void setBookingDetails(List<BookingDetailsDTO> bookingDetails) {
+        this.bookingDetails = bookingDetails;
     }
 }

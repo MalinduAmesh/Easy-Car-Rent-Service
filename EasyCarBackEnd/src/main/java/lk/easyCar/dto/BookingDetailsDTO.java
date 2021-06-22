@@ -1,62 +1,67 @@
 package lk.easyCar.dto;
 
+import lk.easyCar.entity.Booking;
+import lk.easyCar.entity.Driver;
+import lk.easyCar.entity.Vehicle;
+
 public class BookingDetailsDTO {
 
-    private String bookingDetailID;
-    private String rentLosWaiver;
+    private String bookDetailID;
+    private String bookLoseWFee;
 
-    private DriverDTO driverDTO;
-    private BookingDTO bookingDTO;
-    private VehicleDTO vehicleDTO;
+    private Booking bID;
+    private Vehicle cID;
+    private Driver dIC;
+
 
     public BookingDetailsDTO() {
     }
 
-    public BookingDetailsDTO(String bookingDetailID, String rentLosWaiver, DriverDTO driverDTO, BookingDTO bookingDTO, VehicleDTO vehicleDTO) {
-        this.bookingDetailID = bookingDetailID;
-        this.rentLosWaiver = rentLosWaiver;
-        this.driverDTO = driverDTO;
-        this.bookingDTO = bookingDTO;
-        this.vehicleDTO = vehicleDTO;
+    public BookingDetailsDTO(String bookDetailID, String bookLoseWFee, Booking bID, Vehicle cID, Driver dIC) {
+        this.bookDetailID = bookDetailID;
+        this.bookLoseWFee = bookLoseWFee;
+        this.bID = bID;
+        this.cID = cID;
+        this.dIC = dIC;
     }
 
-    public String getBookingDetailID() {
-        return bookingDetailID;
+    public String getBookDetailID() {
+        return bookDetailID;
     }
 
-    public void setBookingDetailID(String bookingDetailID) {
-        this.bookingDetailID = bookingDetailID;
+    public void setBookDetailID(String bookDetailID) {
+        this.bookDetailID = bookDetailID;
     }
 
-    public String getRentLosWaiver() {
-        return rentLosWaiver;
+    public String getBookLoseWFee() {
+        return bookLoseWFee;
     }
 
-    public void setRentLosWaiver(String rentLosWaiver) {
-        this.rentLosWaiver = rentLosWaiver;
+    public void setBookLoseWFee(String bookLoseWFee) {
+        this.bookLoseWFee = bookLoseWFee;
     }
 
-    public DriverDTO getDriverDTO() {
-        return driverDTO;
+    public Booking getbID() {
+        return bID;
     }
 
-    public void setDriverDTO(DriverDTO driverDTO) {
-        this.driverDTO = driverDTO;
+    public void setbID(Booking bID) {
+        this.bID = bID;
     }
 
-    public BookingDTO getBookingDTO() {
-        return bookingDTO;
+    public Vehicle getcID() {
+        return cID;
     }
 
-    public void setBookingDTO(BookingDTO bookingDTO) {
-        this.bookingDTO = bookingDTO;
+    public void setcID(Vehicle cID) {
+        this.cID = cID;
     }
 
-    public VehicleDTO getVehicleDTO() {
-        return vehicleDTO;
+    public Driver getdIC() {
+        return dIC;
     }
 
-    public void setVehicleDTO(VehicleDTO vehicleDTO) {
-        this.vehicleDTO = vehicleDTO;
+    public void setdIC(Driver dIC) {
+        this.dIC = dIC;
     }
 }

@@ -33,10 +33,12 @@ public class RentDetails {
     private Rent rID;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "cID",referencedColumnName = "carID")
     private Vehicle cID;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "dIC",referencedColumnName = "driver_NIC")
      private Driver dIC;
 
