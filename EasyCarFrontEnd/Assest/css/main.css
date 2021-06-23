@@ -396,7 +396,7 @@ body {
 }
 
 
-.input-2 {
+.penddingReqID {
     width: 272px;
     height: 15px;
     background: #1C1B22;
@@ -410,11 +410,11 @@ body {
     font-size: 15px;
 }
 
-.input-2:hover {
+.penddingReqID:hover {
     box-shadow: 0 0 0 2px #0060DF;
 }
 
-.btn-2 {
+.penddingReqID-btn-2 {
     width: 90px;
     height: 40px;
     background: #1C1B22;
@@ -425,11 +425,11 @@ body {
     cursor: default;
     font-size: 15.5px;
 }
-.btn-2:hover {
+.penddingReqID-btn-2:hover {
     box-shadow: 0 0 0 2px #0060DF;
     transform: scale(1.05);
 }
-.btn-2:focus {
+.penddingReqID-btn-2:focus {
     transform: scale(0.95);
 }
 
@@ -444,6 +444,44 @@ body {
     margin-left: 268px;
     position: relative;
     top: 91px;
+}
+
+.payBillID {
+    width: 272px;
+    height: 15px;
+    background: #1C1B22;
+    border: 1px solid #1C1B22;
+    border-radius: 8px;
+    padding: 15px;
+    color: #B3C1C3;
+    font-family: Roboto;
+    margin-left: 23px;
+    transition: .1s;
+    cursor: default;
+    font-size: 15px;
+}
+
+.payBillID:hover {
+    box-shadow: 0 0 0 2px #0060DF;
+}
+
+.payBillID-btn-2 {
+    width: 90px;
+    height: 40px;
+    background: #1C1B22;
+    border-radius: 5px;
+    color: #B3C1C3;
+    font-family: Roboto;
+    transition: .1s;
+    cursor: default;
+    font-size: 15.5px;
+}
+.payBillID-btn-2:hover {
+    box-shadow: 0 0 0 2px #0060DF;
+    transform: scale(1.05);
+}
+.payBillID-btn-2:focus {
+    transform: scale(0.95);
 }
 
 

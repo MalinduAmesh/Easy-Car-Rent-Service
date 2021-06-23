@@ -50,10 +50,7 @@ public class BookingServiceImpl implements BookingService {
     public boolean updateBooking(BookingDTO bookingDTO) {
         if (bookingRepo.existsById(bookingDTO.getBookID())){
             Booking map = modelMapper.map(bookingDTO, Booking.class);
-
-
             bookingRepo.save(map);
-
             return true;
         }
         return false;

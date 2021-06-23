@@ -52,6 +52,7 @@ public class BookingController {
             throw new NotFoundException("No ID Provider Update");
 
         }
+        System.out.println(bookingDTO);
         bookingService.updateBooking(bookingDTO);
         return new ResponseEntity(new StandardResponse("200","Done",null), HttpStatus.NO_CONTENT);
 

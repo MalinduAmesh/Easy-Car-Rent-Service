@@ -385,8 +385,8 @@
         <h2>Pending Request Details</h2>
         <div class="col-4">
             <div class="ui fluid action input">
-                <input class="input-2" placeholder="Search...">
-                <button class="btn-2">Search</button>
+                <input class="penddingReqID" placeholder="Search...">
+                <button class="penddingReqID-btn-2">Search</button>
             </div>
         </div>
         <hr>
@@ -416,103 +416,153 @@
 </section>
 
 <section class="adminPaymentForm col-10" id="adminPayment">
-    <div class="">
-        <div id="addPaymentMain">
-            <h2 style="font-size: 24px;margin-left: 22px;font-weight: bold">Pay Your Bill</h2>
-            <hr>
+    <div class="container">
+        <div class="row col-md-12">
+            <div class="col-6" style="    margin-left: 28px;">
+                <div id="addPaymentMain">
+                    <h2 style="font-size: 24px;margin-left: 22px;font-weight: bold">Pay Your Bill</h2>
+                    <div class="col-8">
+                        <div class="ui fluid action input">
+                            <input id="payBillID" class="payBillID" placeholder="Booking ID...">
+                            <button id="payBillID-btn-2" class="payBillID-btn-2">Search</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-row" style="display: flex;flex-direction: row;justify-content: space-between ">
 
-            <div class="col-9" style="    margin-left: 28px;">
-                <div class="form-row" style="display: flex;flex-direction: row;justify-content: space-between">
-                    <div class="form-group col-md-3">
-                        <label for="txtPaymentDate">Date of Payemnt</label>
-                        <input class="form-control" id="txtPaymentDate" type="date">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="txtSearchBookingID">Put Your Booking
-                            ID</label>
-                        <input class="form-control" id="txtSearchBookingID" type="text">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="txtFillEstimateTotal">Estimated
-                            Total
-                            when Your Booking</label>
-                        <input class="form-control" id="txtFillEstimateTotal" type="text">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <p>Those are your Extra Payment</p>
-                </div>
-                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
-                    <div class="form-group col-md-3">
-                        <label for="txtPayExtraKM">Extra KM</label>
-                        <input class="form-control" id="txtPayExtraKM" type="text">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="txtPriceForExtraKM">QTY of KM
-                        </label>
-                        <input class="form-control" id="txtQtyKM" type="number">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <button class="btn btn-info" id="calExtraKM"
-                                style="margin-top: 27px;margin-left: 10px;height: 40px;    font-size: 14px;">
-                            Get Extra KM Price
-                        </button>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="txtPriceForExtraKM">Total Price For Extra KM
-                        </label>
-                        <input class="form-control" id="txtPriceForExtraKM" type="number">
+                        <!--                    <div class="form-group col-md-3">-->
+                        <!--                        <label for="txtPaymentDate">Date of Payemnt</label>-->
+                        <!--                        <input class="form-control" id="txtPaymentDate" type="date">-->
+                        <!--                    </div>-->
+
+                        <div class="form-group col-md-4">
+                            <label for="txtCusID">Customer ID</label>
+                            <input class="form-control" id="txtCusID" type="text">
+                        </div>
+
+                        <div class="form-group col-md-4" style="margin-right: 201px;margin-left: 10px">
+                            <label for="txtCusName">Customer Name</label>
+                            <input class="form-control" id="txtCusName" type="text">
+                        </div>
                     </div>
 
-                </div>
-                <div class="form-row" style="display: flex;    flex-direction: row;">
-                    <div class="form-group col-md-4" style="margin-right: 10px">
-                        <label for="txtDamageDesc">Damage Desc
-                        </label>
-                        <input class="form-control" id="txtDamageDesc" type="text">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="txtDamageTotal"> Damage Total</label>
-                        <input class="form-control" id="txtDamageTotal" type="number">
+                    <div class="form-row" style="display: flex;    flex-direction: row;">
+                        <div class="form-group col-md-4" style="margin-right: 10px">
+                            <label for="pickUpDate1">Pick up date</label>
+                            <input class="form-control" id="pickUpDate1" type="date">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="txtReturnDate1"> Return Date</label>
+                            <input class="form-control" id="txtReturnDate1" type="date">
+                        </div>
+
                     </div>
 
-                </div>
-                <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
-                    <div class="form-group col-md-5">
-                        <label for="txtFinalTotal"> Final Total</label>
-                        <input class="form-control" id="txtFinalTotal" type="number">
+                    <div class="form-row" style="display: flex;    flex-direction: row;">
+                        <div class="form-group col-md-4" style="margin-right: 10px">
+                            <label for="paymentDate">Payment date</label>
+                            <input class="form-control" id="paymentDate" type="date">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="paymentPastDays">Late Date count</label>
+                            <input class="form-control" id="paymentPastDays" type="number">
+                        </div>
+
+                    </div>
+
+                    <!--                <div class="form-row">-->
+                    <!--                    <p>Those are your Extra Payment</p>-->
+                    <!--                </div>-->
+
+                    <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
+
+                        <div class="form-group col-md-3">
+                            <label for="txtPayExtraKM">Extra KM</label>
+                            <input class="form-control" id="txtPayExtraKM" type="text">
+                        </div>
+
+                        <div class="form-group col-md-3" style=" position: relative;right: 254px;">
+                            <label for="txtPriceForExtraKM">Price for KM</label>
+                            <input class="form-control" id="txtQtyKM" type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
+
+                        <div class="form-group col-md-2">
+                            <button class="btn btn-info" id="calExtraKM"
+                                    style="margin-top: 27px;margin-left: 10px;height: 40px;    font-size: 14px;">
+                                Get Extra KM Price
+                            </button>
+                        </div>
+
+                        <div class="form-group col-md-3" style=" position: relative;right: 254px;">
+                            <label for="txtPriceForExtraKM">Total Price For Extra KM </label>
+                            <input class="form-control" id="txtPriceForExtraKM" type="number">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row" style="display: flex;flex-direction: row;">
+                        <div class="form-group col-md-4" style="margin-right: 10px">
+                            <label for="txtDamageDesc">Damage Desc
+                            </label>
+                            <input class="form-control" id="txtDamageDesc" type="text">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="txtDamageTotal"> Damage Total</label>
+                            <input class="form-control" id="txtDamageTotal" type="text">
+
+                        </div>
+
+                    </div>
+                    <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: space-between">
+
+                        <div class="form-group col-md-4">
+                            <label for="txtRentWavieTotal"> Rent Wavier Total</label>
+                            <input class="form-control" id="txtRentWavieTotal" type="text">
+                        </div>
+                        <div class="form-group col-md-4" style="right: 202px;position: relative;">
+                            <label for="txtFinalTotal"> Final Total</label>
+                            <input class="form-control" id="txtFinalTotal" type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-8" style="display: flex;flex-direction: row;margin-left: 28px;margin-top: 10px">
+
+                        <button class="btn btn-success" id="btnCalculatefinal">Calculate Date payment</button>
+                        <button class="btn btn-warning" id="btnPayBill" style="margin-left: 20px" type="button">   Calculate the lWDf</button>
+                        <button class="btn btn-info" id="btnViewAllPaymentDetails" style="margin-left: 20px" type="button">Cal date between payment</button>
+                        <button class="btn btn-info" id="placeOrderBtn" style="margin-left: 20px" type="button">Pay the Payments</button>
+
                     </div>
                 </div>
 
             </div>
-
-            <div class="col-8" style="display: flex;flex-direction: row;margin-left: 28px;margin-top: 10px">
-                <button class="btn btn-success" id="btnCalculatefinal">Calculate Final Payment</button>
-                <button class="btn btn-warning" id="btnPayBill" style="margin-left: 20px" type="button">Pay the
-                    Recipt
-                </button>
-                <button class="btn btn-info" id="btnViewAllPaymentDetails" style="margin-left: 20px" type="button">
-                    View All Payments
-                </button>
-
-                <label for="txtBookingID">
-                    <input id="txtBookingID" style="" type="text">
-                </label>
-                <label for="custNICNumber">
-                    <input id="custNICNumber" style="" type="text">
-                </label>
-                <label for="rentDate">
-                    <input id="rentDate" style="" type="text">
-                </label>
-                <label for="returnDate">
-                    <input id="returnDate" style="" type="text">
-                </label>
-                <label for="driverNICNumber">
-                    <input id="driverNICNumber" style="" type="text">
-                </label>
-
-
+            <div class="col-5">
+                <div id="viewAllRequests1">
+                    <div>
+                        <table class="table" id="viewPendingTable1">
+                            <thead>
+                            <tr>
+                                <th scope="col">Car Booking ID</th>
+                                <th scope="col">Car ID</th>
+                                <th scope="col">Car Name</th>
+                                <th scope="col">Car Type</th>
+                                <th scope="col">Car Daily Price</th>
+                                <th scope="col">For Extra KM</th>
+                                <th scope="col">LW Fee</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblAllRequest1">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -773,7 +823,7 @@
         })
     })
 
-    /* ---------------------------------------------------------   Pending Reques Form ------------------------------------------------*/
+    /* ---------------------------------------------------------   Pending Request Form ------------------------------------------------*/
 
     $('#btn-manage-pendingReq').click(function () {
         $('#tblAllRequest').empty();
@@ -784,6 +834,7 @@
             contentType: "application/json",
             async: true,
             success: function (res) {
+                console.log("Print Status " + res.data[0].rentStatus);
 
                 for (var i in res.data) {
                     let rentID = res.data[i].rentID;
@@ -792,12 +843,15 @@
                     let pickUpDate = res.data[i].pickUpDate;
                     let returnDate = res.data[i].returnDate;
                     let rentStatus = res.data[i].rentStatus;
+                    let RealStatus = res.data[i].rentStatus
 
+                    if (RealStatus == 'avalible') {
 
-                    var row = `<tr><td>${rentID}</td><td>${cusID}</td><td>${cusName}</td><td>${pickUpDate}</td><td> ${returnDate}</td>
+                        var row = `<tr><td>${rentID}</td><td>${cusID}</td><td>${cusName}</td><td>${pickUpDate}</td><td> ${returnDate}</td>
     <td> ${rentStatus}</td><td><button  class="btn btn-warning fff" id="${rentID}" onclick="updateRentStatus(this)">OK</button>
-        <button class="btn btn-danger " id="${rentID}" onclick="DeleteCar(this)">Delete</button></td></tr>`;
-                    $('#tblAllRequest').append(row);
+        <button class="btn btn-danger " id="${rentID}" onclick="DeleteRentRow(this)">Delete</button></td></tr>`;
+                        $('#tblAllRequest').append(row);
+                    }
                 }
             }
         })
@@ -825,9 +879,10 @@
         let carID;
         let driverID;
 
+
         $.ajax({
             method: 'get',
-            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/"+getRentID,
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/" + getRentID,
             contentType: "application/json",
             async: true,
             success: function (res) {
@@ -840,68 +895,66 @@
 
                 // var count = res.data[0].rentDetails[0].dIC.driver_NIC;
 
-                var tableArr =[];
+                var tableArr = [];
                 console.log("Welcome to the jungle")
 
-                     rentID = res.data.rentID;
-                     cusID = res.data.cusID.cusNicID
-                     rentStauts = res.data.rentStatus;
-                     rentLostRecipt = res.data.rentLosWaiverRecipt;
-                     pickUpDate = res.data.pickUpDate;
-                     returnDate = res.data.returnDate;
-                     rentTotal = res.data.rentTotal;
-                    console.log("Welcome To the Middle Jingle"+rentID)
+                rentID = res.data.rentID;
+                cusID = res.data.cusID.cusNicID
+                rentStauts = res.data.rentStatus;
+                rentLostRecipt = res.data.rentLosWaiverRecipt;
+                pickUpDate = res.data.pickUpDate;
+                returnDate = res.data.returnDate;
+                rentTotal = res.data.rentTotal;
+                console.log("Welcome To the Middle Jingle" + rentID)
                 for (var i = 0; i < count.rentDetails.length; i++) {
                     tableArr.push({
-                        rentDetID :res.data.rentDetails[i].rentDetailID,
-                        rentLostFee : res.data.rentDetails[i].rentLosWaiver,
-                        rentIDMap : res.data.rentDetails[i].rID.rentID,
-                        carID : res.data.rentDetails[i].cID.carID,
-                        driverID :res.data.rentDetails[i].dIC.driver_NIC,
+                        rentDetID: res.data.rentDetails[i].rentDetailID,
+                        rentLostFee: res.data.rentDetails[i].rentLosWaiver,
+                        rentIDMap: res.data.rentDetails[i].rID.rentID,
+                        carID: res.data.rentDetails[i].cID.carID,
+                        driverID: res.data.rentDetails[i].dIC.driver_NIC,
                     })
 
-                    console.log("Table Array"+JSON.stringify(tableArr))
+                    console.log("Table Array" + JSON.stringify(tableArr))
 
-                    var bookingTable =[];
+                    var bookingTable = [];
                     const testData = tableArr.values();
-                    for (const value of testData){
+                    for (const value of testData) {
                         bookingTable.push({
-                            "bookDetailID":value.rentDetID,
-                            "bookLoseWFee":value.rentLostFee,
-                            "bID":{
-                                "bookID":value.rentIDMap
+                            "bookDetailID": value.rentDetID,
+                            "bookLoseWFee": value.rentLostFee,
+                            "bID": {
+                                "bookID": value.rentIDMap
                             },
-                            "cID":{
-                                "carID":value.carID
+                            "cID": {
+                                "carID": value.carID
                             },
-                            "dIC":{
-                                "driver_NIC":value.driverID
+                            "dIC": {
+                                "driver_NIC": value.driverID
                             }
                         })
                     }
-                    console.log("Booking Table"+JSON.stringify(bookingTable))
+                    console.log("Booking Table" + JSON.stringify(bookingTable))
 
                 }
                 $.ajax({
-                    method:'post',
-                    url:"http://localhost:8080/EasyCarBackEnd_war_exploded/booking",
+                    method: 'post',
+                    url: "http://localhost:8080/EasyCarBackEnd_war_exploded/booking",
                     contentType: "application/json",
                     async: true,
                     data: JSON.stringify({
 
-                        "bookID":rentID,
+                        "bookID": rentID,
                         "cusID": {
                             "cusNicID": cusID,
                         },
-                        "bookStatus":rentStauts,
-                        "bookLosWaiverRecipt":rentLostRecipt,
-                        "bookPickUpDate":pickUpDate,
-                        "bookReturnDate":returnDate,
-                        "bookRentTotal":rentTotal,
+                        "bookStatus": rentStauts,
+                        "bookLosWaiverRecipt": rentLostRecipt,
+                        "bookPickUpDate": pickUpDate,
+                        "bookReturnDate": returnDate,
+                        "bookRentTotal": rentTotal,
 
-                        "bookingDetails":bookingTable
-
-
+                        "bookingDetails": bookingTable
 
 
                     })
@@ -912,24 +965,347 @@
         })
 
 
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/" + getRentID,
+            contentType: "application/json",
+            async: true,
+            success: function (res) {
+
+                // console.log(res.data.cusID.cusNicID)
+                // console.log("RentDetail ID"+res.data.rentDetails[0].rentDetailID)
+
+                var count = res.data;
+                console.log(res)
+
+                // var count = res.data[0].rentDetails[0].dIC.driver_NIC;
+
+                var tableArr = [];
+                console.log("Welcome to the jungle")
+
+                rentID = res.data.rentID;
+                cusID = res.data.cusID.cusNicID
+                rentStauts = "Unavailable";
+                rentLostRecipt = res.data.rentLosWaiverRecipt;
+                pickUpDate = res.data.pickUpDate;
+                returnDate = res.data.returnDate;
+                rentTotal = res.data.rentTotal;
+                console.log("Welcome To the Middle Jingle" + rentID)
+                for (var i = 0; i < count.rentDetails.length; i++) {
+                    tableArr.push({
+                        rentDetID: res.data.rentDetails[i].rentDetailID,
+                        rentLostFee: res.data.rentDetails[i].rentLosWaiver,
+                        rentIDMap: res.data.rentDetails[i].rID.rentID,
+                        carID: res.data.rentDetails[i].cID.carID,
+                        driverID: res.data.rentDetails[i].dIC.driver_NIC,
+                    })
+
+                    console.log("Table Array" + JSON.stringify(tableArr))
+
+                    var bookingTable = [];
+                    const testData = tableArr.values();
+                    for (const value of testData) {
+                        bookingTable.push({
+                            "rentDetailID": value.rentDetID,
+                            "rentLosWaiver": value.rentLostFee,
+                            "dIC": {
+                                "driver_NIC": value.driverID
+                            },
+                            "rID": {
+                                "rentID": value.rentIDMap
+                            },
+                            "cID": {
+                                "carID": value.carID
+                            }
+                        })
+                    }
+                    console.log("Booking Table" + JSON.stringify(bookingTable))
+
+                }
+                $.ajax({
+                    method: 'put',
+                    url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent",
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        "rentID": rentID,
+                        "cusID": {
+                            "cusNicID": cusID,
+                        },
+                        "pickUpDate": pickUpDate,
+                        "returnDate": returnDate,
+                        "rentStatus": rentStauts,
+                        "rentLosWaiverRecipt": rentLostRecipt,
+                        "rentTotal": rentTotal,
+
+                        "rentDetails": bookingTable
+                    })
+
+                })
+            }
+        })
+    }
+
+    //
+    // function DeleteRentRow(id) {
+    //
+    //     let carDelete = ($(id).attr('id'));
+    //     console.log(carDelete)
+    //
+    //     $.ajax({
+    //         method: "delete",
+    //         url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/delete/" + carDelete,
+    //
+    //         success: function (res) {
+    //
+    //             alert("Reomoved SuccessFully");
+    //
+    //             updateRentStatus(id);
+    //
+    //         }
+    //     })
+    // }
+
+    $('#payBillID-btn-2').click(function () {
+
+        let bookingID = $('#payBillID').val();
+
+        //    Get All Booking Details
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/booking/" + bookingID,
+            success: function (res) {
+
+                let lostWFeeRecipt = res.data.bookLosWaiverRecipt;
+                let pickUpDate = res.data.bookPickUpDate;
+                let returnDate = res.data.bookReturnDate;
+                let rentTotal = res.data.bookRentTotal;
+                let bookStatus = res.data.bookStatus;
+                let customerID = res.data.cusID.cusNicID;
+                let customerName = res.data.cusID.name;
+
+                console.log("Payment Jungle")
+                console.log(res)
+
+                let count = res.data;
+                for (let i = 0; i < count.bookingDetails.length; i++) {
+
+                    let bookingDID = count.bookingDetails[i].bookDetailID;
+
+                    let bookingLostWFee = count.bookingDetails[i].bookLoseWFee;
+                    let bookingID2 = res.data.bookingDetails[i].bID.bookID;
+
+                    let carID = res.data.bookingDetails[i].cID.carID;
+                    let customerModel = res.data.bookingDetails[i].cID.carModel;
+                    let carType = res.data.bookingDetails[i].cID.carType;
+                    let carDailRate = res.data.bookingDetails[i].cID.carDailyRate;
+                    let carMonthRate = res.data.bookingDetails[i].cID.carMonthlyRate;
+                    let carFreeKM = res.data.bookingDetails[i].cID.carFreeKmForDay;
+
+                    let driverID = res.data.bookingDetails[i].dIC.driver_NIC;
+
+
+                    var row = `<tr><td> ${bookingDID}</td><td>${carID}</td><td>${customerModel}</td><td>${carType}</td><td>${carDailRate}</td>
+                    <td> ${carFreeKM}</td><td> ${bookingLostWFee}</td></tr>`;
+                    $('#tblAllRequest1').append(row);
+                }
+
+                $('#txtCusID').val(customerID);
+                $('#txtCusName').val(customerName);
+                $('#pickUpDate1').val(pickUpDate);
+                $('#txtReturnDate1').val(returnDate);
+                $('#txtRentWavieTotal').val(rentTotal);
+
+
+            }
+
+
+        })
+
+
+
+
+
+
+
+
+    })
+    function PriceForExtraKM() {
+
+        let extraKm = $('#txtPayExtraKM').val()
+        let priceForKM = $('#txtQtyKM').val()
+
+        console.log(extraKm+""+""+priceForKM)
+
+        let Total = (extraKm*priceForKM);
+        let newTotal = $('#txtPriceForExtraKM').val(Total)
+
+        let forDateFee = parseInt($('#txtFinalTotal').val());
+        let forExtraKM = parseInt($('#txtPriceForExtraKM').val());
+
+        let lastTot = (forDateFee+forExtraKM)
+        let LastTotal = parseInt($('#txtFinalTotal').val(lastTot));
 
     }
+    function calculateDatePrice() {
+        var dropdt = new Date($('#txtReturnDate1').val());
+        var pickdt = new Date($('#pickUpDate1').val());
+
+        getDifferenceInDays(dropdt,pickdt) ;
+    }
+    function getDifferenceInDays(dropdt,pickdt){
+
+        const diffInMs = Math.abs(dropdt-pickdt);
+        let newVal =diffInMs / (1000 * 60 * 60 * 24);
+        newVal*=100;
+
+        //Set the Extra Km and date between values to the final Total
+        let finalTot = $('#txtFinalTotal').val(newVal);
+
+    }
+
+// Call Extra Km Caluculation
+    $('#calExtraKM').click(function (){
+        PriceForExtraKM();
+    })
+
+    // Call Date Caluculation
+    $('#btnCalculatefinal').click(function () {
+        calculateDatePrice()
+
+    })
+
+    function paymentLostDate(){
+
+        var dropdt = new Date($('#txtReturnDate1').val());
+        var pickdt = new Date($('#paymentDate').val());
+
+        getDifferenceInDaysLate(dropdt,pickdt) ;
+
+    }
+
+    function getDifferenceInDaysLate(dropdt,pickdt) {
+
+        const diffInMs = Math.abs(pickdt-dropdt);
+        let newVal =diffInMs / (1000 * 60 * 60 * 24);
+
+        newVal*=500;
+
+        let finalTot = $('#paymentPastDays').val(newVal);
+        let finalTot1 = $('#paymentPastDays').val();
+
+
+
+       let finalTotForAll =  parseInt($('#txtFinalTotal').val());
+       let finalForAll =  parseInt($('#paymentPastDays').val());
+
+       let lastDayDif = (finalTotForAll+finalForAll)
+        $('#txtFinalTotal').val(lastDayDif);
+
+
+
+
+
+    }
+
+    $('#btnViewAllPaymentDetails').click(function () {
+
+        paymentLostDate();
+    })
+
+    function DamageForVehicle(){
+
+        let getDamage = parseInt($('#txtDamageTotal').val());
+        let lostWFee = parseInt($('#txtRentWavieTotal').val());
+
+        let incremetTheLWF = ((lostWFee-getDamage));
+
+        //Set the incremetn value to the lwf
+        let lostWfeeIncremetnTot = $('#txtRentWavieTotal').val(incremetTheLWF);
+
+        //Set the dmg value to the final
+        let finalTot = parseInt($('#txtFinalTotal').val());
+        let getDamageFromCar = parseInt($('#txtDamageTotal').val());
+
+        let setvalueToTheFinalInput = ((finalTot+getDamageFromCar))
+
+        $('#txtFinalTotal').val(setvalueToTheFinalInput);
+
+        console.log(incremetTheLWF)
+    }
+
+    $('#btnPayBill').click(function () {
+
+        DamageForVehicle();
+    });
+
+    $('#placeOrderBtn').click(function () {
+
+        let bookID = $('#payBillID').val()
+        let cusID = $('#txtCusID').val()
+        let bookStatus = "Done";
+        let lastTotalFee = $('#txtFinalTotal').val()
+        let pickUpDate = $('#pickUpDate1').val()
+        let returnDate = $('#paymentDate').val()
+
+        let table2 = document.getElementById("tblAllRequest1");
+        var tableArray = [];
+        for (var i =0;i<table2.rows.length;i++){
+            tableArray.push({
+                bookDID:table2.rows[i].cells[0].innerHTML,
+                bookLostFee:table2.rows[i].cells[6].innerHTML,
+                carId2:table2.rows[i].cells[1].innerHTML,
+                driverId2:"Not here",
+                bookID2:bookID
+            })
+            console.log(tableArray)
+        }
+
+        var bookingTable = [];
+        const testData = tableArray.values();
+        for (const value of testData) {
+                    bookingTable.push({
+                        "bookDetailID": value.bookDID,
+                        "bookLoseWFee": value.bookLostFee,
+                        "dIC": {
+                            "driver_NIC": value.driverId2
+                        },
+                        "bID": {
+                            "bookID": value.bookID2
+                        },
+                        "cID": {
+                            "carID": value.carId2
+                        }
+                    })
+                }
+
+            $.ajax({
+            method:'put',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/booking",
+            contentType: 'application/json',
+            data: JSON.stringify({
+
+                "bookID": bookID,
+                "cusID": {
+                    "cusNicID": cusID,
+                },
+                "bookPickUpDate": pickUpDate,
+                "bookReturnDate": returnDate,
+                "bookStatus": bookStatus,
+                "bookLosWaiverRecipt": "Already Got it",
+                "bookRentTotal": lastTotalFee,
+
+                "bookingDetails": bookingTable
+
+            })
+        })
+
+    })
+
 </script>
 </body>
 </html>
 
 
-<!--// let table2 = document.getElementById("tblAddCar");-->
-<!--// var tablArry = [];-->
-<!--//-->
-<!--// for (var i =0;i<table2.rows.length;i++){-->
-<!--//     tablArry.push({-->
-<!--//         carId2:table2.rows[i].cells[1].innerHTML,-->
-<!--//         lostFee2:table2.rows[i].cells[3].innerHTML,-->
-<!--//-->
-<!--//-->
-<!--//     })-->
-<!--// }-->
 
 <!--$('#btnUpdateCar').click(function () {-->
 
