@@ -47,13 +47,13 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public boolean updateBooking(BookingDTO bookingDTO) {
+    public void updateBooking(BookingDTO bookingDTO) {
         if (bookingRepo.existsById(bookingDTO.getBookID())){
             Booking map = modelMapper.map(bookingDTO, Booking.class);
             bookingRepo.save(map);
-            return true;
+
+            System.out.println("DEBUG@2"+bookingDTO);
         }
-        return false;
     }
 
     @Override

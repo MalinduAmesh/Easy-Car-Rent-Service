@@ -43,7 +43,7 @@ public class DriverController {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity searchDriver(@PathVariable String id){
-
+        System.out.println("DEBUG DRIVER @1"+id);
         DriverDTO driverDTO = driverService.searchDriver(id);
 
         return new ResponseEntity(new StandardResponse("200","Done",driverDTO), HttpStatus.OK);

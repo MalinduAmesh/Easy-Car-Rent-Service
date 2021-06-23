@@ -96,4 +96,18 @@ public class BookingDTO {
     public void setBookingDetails(List<BookingDetailsDTO> bookingDetails) {
         this.bookingDetails = bookingDetails;
     }
+
+    @Override
+    public String toString() {
+        return "BookingDTO{" +
+                "bookID='" + bookID + '\'' +
+                ", bookStatus='" + bookStatus + '\'' +
+                ", bookLosWaiverRecipt='" + bookLosWaiverRecipt + '\'' +
+                ", bookPickUpDate='" + bookPickUpDate + '\'' +
+                ", bookReturnDate='" + bookReturnDate + '\'' +
+                ", bookRentTotal='" + bookRentTotal + '\'' +
+                ", cusID=" + cusID +
+                ", bookingDetails=" + bookingDetails +
+                '}';
+    }
 }

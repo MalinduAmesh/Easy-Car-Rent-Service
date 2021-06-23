@@ -9,6 +9,6 @@ public interface BookingService {
 
     boolean addBooking(BookingDTO bookingDTO);
     ArrayList<BookingDTO>getAllBookings();
-    boolean updateBooking(BookingDTO bookingDTO);
+    void updateBooking(BookingDTO bookingDTO);
     BookingDTO seacrhBooking(String id);
 }

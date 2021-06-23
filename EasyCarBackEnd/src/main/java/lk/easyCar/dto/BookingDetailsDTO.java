@@ -14,6 +14,7 @@ public class BookingDetailsDTO {
     private Driver dIC;
 
 
+
     public BookingDetailsDTO() {
     }
 
@@ -63,5 +64,16 @@ public class BookingDetailsDTO {
 
     public void setdIC(Driver dIC) {
         this.dIC = dIC;
+    }
+
+    @Override
+    public String toString() {
+        return "BookingDetailsDTO{" +
+                "bookDetailID='" + bookDetailID + '\'' +
+                ", bookLoseWFee='" + bookLoseWFee + '\'' +
+                ", bID=" + bID +
+                ", cID=" + cID +
+                ", dIC=" + dIC +
+                '}';
     }
 }

@@ -53,11 +53,14 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public DriverDTO searchDriver(String id) {
         Optional<Driver> byId = driverRepo.findById(id);
+        System.out.println("DEBUG DRIVER ID 2"+byId);
+
         if (byId.isPresent()) {
             Driver driver = byId.get();
             return modelMapper.map(driver, DriverDTO.class);
 
         }
+
         return null;
     }
 

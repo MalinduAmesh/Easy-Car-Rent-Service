@@ -7,6 +7,7 @@ import lk.easyCar.service.BookingService;
 import lk.easyCar.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,15 +47,17 @@ public class BookingController {
 
     }
 
-    @PutMapping
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateBooking(@RequestBody BookingDTO bookingDTO){
         if (bookingDTO.getBookID().trim().length()<=0){
             throw new NotFoundException("No ID Provider Update");
 
         }
-        System.out.println(bookingDTO);
+        System.out.println("Debug 1"+bookingDTO);
         bookingService.updateBooking(bookingDTO);
-        return new ResponseEntity(new StandardResponse("200","Done",null), HttpStatus.NO_CONTENT);
+        System.out.println("Debug 3"+bookingDTO);
+
+        return new ResponseEntity(new StandardResponse("200","Done",bookingDTO), HttpStatus.OK);
 
 
     }
