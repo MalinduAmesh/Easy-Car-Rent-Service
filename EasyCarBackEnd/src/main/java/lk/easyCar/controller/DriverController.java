@@ -1,12 +1,14 @@
 package lk.easyCar.controller;
 
 import lk.easyCar.dto.DriverDTO;
+import lk.easyCar.dto.RentDTO;
 import lk.easyCar.exception.NotFoundException;
 import lk.easyCar.service.DriverService;
 import lk.easyCar.service.impl.DriverServiceImpl;
 import lk.easyCar.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,9 +45,9 @@ public class DriverController {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity searchDriver(@PathVariable String id){
-        System.out.println("DEBUG DRIVER @1"+id);
+//        System.out.println(+id);
         DriverDTO driverDTO = driverService.searchDriver(id);
-
+        System.out.println("DEBUG DRIVER @1"+driverDTO);
         return new ResponseEntity(new StandardResponse("200","Done",driverDTO), HttpStatus.OK);
 
     }

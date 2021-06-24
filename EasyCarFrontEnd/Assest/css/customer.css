@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body,
+html{
+    height: 100%;
+    background-color: #2f0050;
+}
+
+.form-group input{
+    color: white;
+}
+
+.loginPanal{
+    background-image: url("../Images/Car/login/back.jpg");
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0.8;
+    z-index: 1;
+
+}
+
+#loginForm{
+    position: relative;
+    z-index: 2;
+    color: white;
+    border: white 3px groove;
+    border-radius: 50px;
+    padding:  20px 20px 20px 20px;
+
+
+}
+
+#btnLogin2{
+    margin-left: 0px;
+    align-items: center;
+}
+
+#btnCreateAccount2:hover{
+    color: cornflowerblue;
+    text-decoration: underline cornflowerblue;
+}
+
+hr{
+    background-color: white;
+}
+
+.col-lg-3 label{
+    font-family:sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+form{
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-lg-3 input{
+
+    background-color: transparent;
+}
+
+.col-lg-3::selection{
+    background-color: transparent;
+}
+
+#frmCreateAccount label{
+    color: white;
+}
+
+#frmCreateAccount input{
+    background-color: transparent;
+    color: white;
+}
+
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+       margin-bottom: $form-group-margin-bottom;
+   }
+
+.form-text {
+    display: block;
+    margin-top: $form-text-margin-top;
+}
+
+
+
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -$form-grid-gutter-width / 2;
+    margin-left: -$form-grid-gutter-width / 2;
+
+> .col,
+> [class*="col-"] {
+    padding-right: $form-grid-gutter-width / 2;
+    padding-left: $form-grid-gutter-width / 2;
+}
+}
+

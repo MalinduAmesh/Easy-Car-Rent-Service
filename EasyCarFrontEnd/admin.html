@@ -1322,10 +1322,10 @@
             })
             console.log("DriverID"+vTableArray[i].driverID)
 
-            var driverIdForStatus = vTableArray[i].driverID;
+            var driver_NIC = vTableArray[i].driverID;
 
 
-            var driver_NIC;
+
             var driver_name;
             var driver_Address;
             var driver_contact;
@@ -1336,25 +1336,50 @@
 
             $.ajax({
                 method:'get',
-                url:"http://localhost:8080/EasyCarBackEnd_war_exploded/driver/"+driverIdForStatus,
+                url:"http://localhost:8080/EasyCarBackEnd_war_exploded/driver/"+driver_NIC,
+                crossDomain : true,
+                async:true,
+                origin: "*",
                 success: function (res){
                     console.log(res)
-                    // driver_NIC = res.data.dr;
-                    // driver_name = res.data.driver_name;
-                    // driver_Address = res.data.driver_Address;
-                    // driver_contact = res.data.driver_contact;
-                    // driver_Stauts = "avalible";
-                    // driver_ShecduleDec = res.data.driver_ShecduleDec;
-                    // userName = res.data.userName;
-                    // password = res.data.password;
+                    // driver_NIC = res.data.driver_NIC;
+                    driver_name = res.data.driver_name;
+                    driver_Address = res.data.driver_Address;
+                    driver_contact = res.data.driver_contact;
+                    driver_Stauts = "avalible";
+                    driver_ShecduleDec = res.data.driver_ShecduleDec;
+                    userName = res.data.userName;
+                    password = res.data.password;
 
 
 
-                    // updateDriver(driver_NIC,driver_name,driver_Address,driver_contact,driver_Stauts,driver_ShecduleDec,userName,password,passenger,carDailyRate,carMonthlyRate,carFreeKmForDay,carFreeKmForMonth,carPriceForExtraKm)
+                    // updateDriver(driver_NIC,driver_name,driver_Address,driver_contact,driver_Stauts,driver_ShecduleDec,userName,password)
                 }
             })
         }
+    }
 
+
+    function  updateDriver(driver_NIC,driver_name,driver_Address,driver_contact,driver_Stauts,driver_ShecduleDec,userName,password)
+    {
+        $.ajax({
+            method:'put',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/driver",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "driver_NIC":driver_NIC,
+                "driver_name":driver_name,
+                "driver_Address":driver_Address,
+                "driver_contact":driver_contact,
+                "driver_Stauts":driver_Stauts,
+                "driver_ShecduleDec":driver_ShecduleDec,
+                "userName":userName,
+                "password":password,
+            }),
+            success:function (res) {
+                alert("Hooray Vehcile Updated !")
+            }
+        })
     }
     function getAllCarToUpdate() {
 
@@ -1409,7 +1434,7 @@
                     carPriceForExtraKm = res.data.carPriceForExtraKm;
 
 
-                    // updateCar(carID,carModel,carType,carTransmissionType,carFuelType,carColor,carStatus,rentLosWaiver,passenger,carDailyRate,carMonthlyRate,carFreeKmForDay,carFreeKmForMonth,carPriceForExtraKm)
+                    updateCar(carID,carModel,carType,carTransmissionType,carFuelType,carColor,carStatus,rentLosWaiver,passenger,carDailyRate,carMonthlyRate,carFreeKmForDay,carFreeKmForMonth,carPriceForExtraKm)
                 }
             })
         }

@@ -2,9 +2,210 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="Assest/css/style.css">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- END Google Fonts  -->
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+
+    <title>Login</title>
 </head>
 <body>
 
+<section class="landingPage">
+
+    <!-- Navigation Start -->
+
+    <main class="main">
+        <header class="header">
+            <div class="wrap d-flex">
+                <h1 class="logo">Easy Car Rent
+<!--                    <a href=""><img src="Assest/img/" alt=""></a>-->
+                </h1>
+                <nav class="menu" >
+                    <ul>
+                        <li><a href="#home1">Home</a></li>
+                        <li><a href="#about1">About</a></li>
+                        <li><a href="#service1">BLOG</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#my-skills">+94773942821</a></li>
+
+
+                    </ul>
+                </nav>
+            </div>
+            <a href="javascript:void(0);" class="sidemenu-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </a>
+
+            <div class="sidemenu">
+                <a href="javascript:void(0);" class="close"></a>
+                <nav>
+                    <ul>
+                        <li><a href="home1">Home</a></li>
+                        <li><a href="about1">About</a></li>
+                        <li><a href="#service1">Skills</a></li>
+                        <li><a href="#my-skills">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+    </main>
+
+    <main>
+    <div class="mainImg">
+        <div class="clipPathForMainImg" >
+            <img style="position: absolute;top: 0;" src="Assest/img/ks-rental.jpg" alt="">
+        </div>
+    </div>
+    </main>
+
+    <main>
+        <div class="mainContentField">
+            <h1>BOOK A CAR TODAY!<br><span>FOR AS LOW AS $10 A DAY PLUS 15% DISCOUNT</span><br></h1>
+            <h4 class="mainSpan2">FOR OUR RETURNING CUSTOMERS</h4>
+        </div>
+    </main>
+
+    <div class="mainLoginPage">
+            <div class="content">
+                <header>Login Form</header>
+                <form action="#">
+                    <div class="field">
+<!--                        <span class="fa fa-user"></span>-->
+                        <input id="usrName" class="usrName" type="text" required placeholder="User Name">
+                    </div>
+                    <div class="field space">
+<!--                        <span class="fa fa-lock"></span>-->
+                        <input id="pass-key" type="password" class="pass-key" required placeholder="Password">
+                        <span class="show">SHOW</span>
+                    </div>
+                    <div class="pass">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <div class="field">
+                        <input id="login-btn" class="login-btn" type="submit" value="LOGIN">
+                    </div>
+                </form>
+                <div class="signup">Don't have account?
+                    <a  href="addCustomer.html">Signup Now</a>
+                </div>
+            </div>
+    </div>
+
+</section>
+
+<section class="aboutUS">
+
+    <section class="about" id="about1">
+        <div class="container">
+            <div class="row" style="position: relative;left: -47px;">
+                <div class="col-md-5 text-white gap">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div style="margin-bottom: 10px;">
+                        <h2 style="display: inline; color: rgb(0, 255, 170); ">  </h2>
+                        <h2 style="display: inline;color: #1a1e21 ">Easy Car Rent </h2>
+                        <br>
+                    </div>
+                    <p style="color: #bdc3c7">
+                        Obviously I'm a Software Engineer student who completing the first sem in GDSE programme in IJSE. Experienced with all stages of the development cycle for dynamic web projects. The as opposed to using 'Content here, content here', making it look like readable English<br><br>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+                    </p>
+                    <br>
+                    <div class="tag">
+                        <img src="Assests/signature (1).png" alt="">
+                    </div>
+                    <br>
+
+                    <div class=""download-button>
+                        <a href="" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6  heroGot">
+                     <img src="" alt="">
+                    <article class="myPhoto">
+                        <img src="Assest/img/car2-5.png" alt="">
+                        <div class="myphotoborder"></div>
+                    </article>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+</section>
+
+<script src="Assest/js/jquery-3.6.0.min.js"></script>
+<script>
+
+
+    $('#login-btn').click(function () {
+        getUserName();
+    })
+    
+    function getUserName() {
+
+        let user  = $('#usrName').val();
+        let pass  = $('#pass-key').val();
+        // console.log(user)
+
+
+        $.ajax({
+            method:'get',
+            url: 'http://localhost:8080/EasyCarBackEnd_war_exploded/customer',
+            async: true,
+            contentType:"application/json",
+            success:function (res) {
+
+                for (var i in res.data) {
+
+                    let userName = res.data[i].name;
+                    let password = res.data[i].password;
+
+                    console.log(userName)
+                    console.log(password)
+                    if ((user == userName) && (pass == password)) {
+alert("Login was successful")
+                        window.location.href ="rent.html";
+return true;
+                    }
+                    else {
+                        alert ("Login was unsuccessful, please check your username and password");
+                        return false;
+                    }
+                }
+            }
+        })
+
+    }
+    
+</script>
 </body>
 </html>
