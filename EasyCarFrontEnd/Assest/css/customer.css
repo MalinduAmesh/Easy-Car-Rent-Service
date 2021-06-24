@@ -3,15 +3,47 @@
 body,
 html{
     height: 100%;
-    background-color: #2f0050;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*background-image: url("../img/addCusBack.jpg");*/
+    /*background: #4f5050;*/
+    /*background-image: linear-gradient(90deg, rgb(61,58,58) 0%,transparent 59%),repeating-linear-gradient(45deg, rgba(168, 168, 168,0.1) 0px, rgba(168, 168, 168,0.1) 1px,transparent 1px, transparent 13px),repeating-linear-gradient(135deg, rgba(168, 168, 168,0.1) 0px, rgba(168, 168, 168,0.1) 1px,transparent 1px, transparent 13px),linear-gradient(90deg, rgb(61,58,58),rgb(61,58,58));*/
+
+}
+.topBar{
+    position: absolute;
+    top: 0;
+    background: #4f5050;
+    width: 100vw;
+    height: 58px;
 }
 
 .form-group input{
     color: white;
 }
+.loginPanalFormMain{
 
+    position: relative;
+    background-image: url("../img/addCusBack2.jpg");
+    bottom: 42px;
+    width: 100vw;
+    height: 100vh;
+}
+.logMainPhoto{
+    position: relative;
+    z-index: -111;
+}
+.loginPanel {
+    z-index: 100;
+    position: relative;
+    margin-left: 269px;
+    margin-top: 0px;
+    width: 67vw;
+    top: 52px;
+}
 .loginPanal{
-    background-image: url("../Images/Car/login/back.jpg");
+
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -78,33 +110,20 @@ form{
     color: white;
 }
 
-// Form groups
-//
-// Designed to help with the organization and spacing of vertical forms. For
-// horizontal forms, use the predefined grid classes.
-
-.form-group {
-       margin-bottom: $form-group-margin-bottom;
-   }
-
-.form-text {
-    display: block;
-    margin-top: $form-text-margin-top;
-}
-
-
-
-
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -$form-grid-gutter-width / 2;
-    margin-left: -$form-grid-gutter-width / 2;
-
-> .col,
-> [class*="col-"] {
-    padding-right: $form-grid-gutter-width / 2;
-    padding-left: $form-grid-gutter-width / 2;
+    margin-right: -5px;
+    margin-top: 13px;
+    margin-bottom: 22px;
+    margin-left: -3px;
 }
+.Create-Acc-img{
+    margin-left: 17px;
+    margin-top: 62px;
+    opacity: 1;
+    /* height: 198px; */
+    width: 344px;
+    height: 27em;
+    border-radius: 13px;
 }
-

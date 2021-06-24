@@ -24,43 +24,55 @@
 
     <!-- END Google Fonts  -->
 
+    <link rel="stylesheet" href="themify-icons.css">
+
+    <link href="http://yoursite.com/themify-icons.css" rel="stylesheet">
+
 </head>
 <body>
 
 <div class="wrp">
+    <div class="navbar-width">
+        <h1 class="header-title">Easy Car <span>Rental</span><i style="    position: relative;    left: 16px;    top: 5px;" class="ti-menu-alt"></i></h1>
+    </div>
     <nav class="navbar-nav">
-        <div class="navbar-width"></div>
-        <div class="logo">
-            <img alt="logo" class="icon" src="asserts/icons/icon%20-%20hut.png">
-            <h1 class="header-title">Easy Car <span>Rental</span></h1>
-        </div>
+
+<!--        <div class="logo">-->
+<!--            <h1 class="header-title">Easy Car <span>Rental</span></h1>-->
+<!--        </div>-->
         <nav class="side-nav">
             <button id="btn-manage-home" onclick="showAdminDashboardForm()">
-                <i class="fas fa-hamburger"></i>
+                <i class="ti-home"></i>
                 <a href="#">Home</a>
             </button>
+
             <button id="btn-manage-carDetails" onclick="showCarDetailsForm()">
-                <i class="fas fa-cart-arrow-down"></i>
+                <i class="ti-car"></i>
                 <a href="#">Car Details</a>
             </button>
+
             <button id="btn-manage-customers" onclick="showManageCustomerForm()">
-                <i class="fas fa-user"></i>
+                <i class="ti-user"></i>
                 <a href="#">Customer Details</a>
             </button>
+
             <button id="btn-manage-driverDet" onclick="showDriverForm()">
-                <i class="fas fa-user"></i>
+                <i class="ti-id-badge"></i>
                 <a href="#">Driver Details</a>
             </button>
+
             <button id="btn-manage-pendingReq" onclick="loadPendingRequestForm()">
-                <i class="fas fa-user"></i>
+                <i class="ti-bell"></i>
                 <a href="#">Pending Requests</a>
             </button>
+
             <button id="btn-manage-maintaince" onclick="loadMaintainceForm()">
-                <i class="fas fa-user"></i>
+                <i class="ti-settings"></i>
                 <a href="#">Maintenance</a>
             </button>
+
             <button id="btn-manage-Payment" onclick="showPaymentForm()">
-                <i class="fas fa-user"></i>
+                <i class="ti-money"></i>
                 <a href="#"> Payment</a>
             </button>
 
@@ -107,8 +119,12 @@
 
 <section class="carDetailsFormSec">
 
-    <div id="carDetailsForm" class="container" style="display: none">
+    <div id="carDetailsForm" class="container" style="display: none;position: relative;top: -75px;left: -82px;">
 
+        <div class="carDetailsForm">
+            <h3>Car Details</h3>
+        </div>
+        <hr>
         <div class="col-10" style="display: flex;flex-direction: row;">
 
             <button class="btn btn-danger" id="btnSearchCarID" style="margin-left:20px;width: 150px"
@@ -119,8 +135,7 @@
                    placeholder="Car ID" style="margin-left: 20px;margin-top: 10px"
                    type="text">
 
-            <button class="btn btn-info" id="AddCarNav" style="margin-left: 144px;width: 150px" type="button">Add
-                Car
+            <button class="btn btn-info" id="AddCarNav" style="margin-left: 144px;width: 150px" type="button">Add Car
             </button>
 
         </div>
@@ -128,7 +143,7 @@
         <div class="col-10" id="viewAllCars" style="margin-top: 64px;">
             <div>
                 <table class="table" id="carDetailsAdminTable">
-                    <thead>
+                    <thead>asdasdasd
                     <tr>
 
                         <th scope="col">Car ID</th>
@@ -416,7 +431,7 @@
         <div class="row col-md-12">
             <div class="col-6" style="    margin-left: 28px;">
                 <div id="addPaymentMain">
-                    <h2 style="font-size: 24px;margin-left: 22px;font-weight: bold">Pay Your Bill</h2>
+                    <h2 style="font-size: 24px;margin-left: 3px;font-weight: bold">Pay Your Bill</h2>
                     <div class="col-8">
                         <div class="ui fluid action input">
                             <input id="payBillID" class="payBillID" placeholder="Booking ID...">
@@ -564,6 +579,50 @@
     </div>
 </section>
 
+<section id="DriverDetailsForm" class="DriverDetailsForm "style="display: none">
+
+    <div class="container" style="margin-left: 273px;margin-top: 21px;">
+        <div class="row">
+            <div class="col-11">
+
+                <h3>Driver Details</h3>
+                <hr>
+                <button class="btn btn-danger" id="btnSearchDriverID" style="margin-left:20px;width: 120px"
+                        type="button">Search Driver
+                </button>
+
+                <input class="form-control" id="inputSearchDriverId" placeholder="Driver ID" style="margin-left: 156px;width: 489px;margin-top: -35px" type="text">
+
+                <button class="btn btn-info" id="AddDriverNav" style="margin-left: 67em;width: 116px;margin-top: -67px;" type="button">Add Driver
+                </button>
+
+            </div>
+
+            <div class="col-10" id="viewAllDrivers" style="margin-top: 34px;">
+                <div>
+                    <table class="table" id="DriverDetailsAdminTable">
+                        <thead>
+                        <tr>
+
+                            <th scope="col">Driver ID</th>
+                            <th scope="col">Driver Name</th>
+                            <th scope="col">Driver Contact</th>
+                            <th scope="col">Driver Address</th>
+                            <th scope="col">Driver Schedule</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="tblDriverDetails">
+                        <tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
 <script src="Assest/js/bootstrap.min.js"></script>
 <script src="Assest/js/main.js"></script>
@@ -590,6 +649,7 @@
         $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
+        $('#DriverDetailsForm ').css("display", "none");
 
 
     }
@@ -601,6 +661,7 @@
         $('#AddCar').css("display", "none");
         $('#viewAllCars').css("display", "block");
         $('#adminPayment').css("display", "none");
+        $('#DriverDetailsForm ').css("display", "none");
 
 
     }
@@ -613,6 +674,7 @@
         $('#carDetailsForm').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
+        $('#DriverDetailsForm ').css("display", "none");
 
     })
 
@@ -622,7 +684,13 @@
     }
 
     function showDriverForm() {
-
+        $('#DriverDetailsForm').css("display", "block");
+        $('#adminRequest').css("display", "none");
+        $('#carDetailsForm').css("display", "none");
+        $('#adminHome').css("display", "none");
+        $('#AddCar').css("display", "none");
+        $('#UpdateCar').css("display", "none");
+        $('#adminPayment').css("display", "none");
     }
 
     function loadPendingRequestForm() {
@@ -632,6 +700,7 @@
         $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
+        $('#DriverDetailsForm ').css("display", "none");
 
 
     }
@@ -644,6 +713,8 @@
         $('#adminHome').css("display", "none");
         $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
+        $('#DriverDetailsForm ').css("display", "none");
+
     }
 
     $("#btn-manage-carDetails").click(function () {
@@ -831,7 +902,7 @@
             contentType: "application/json",
             async: true,
             success: function (res) {
-                console.log("Print Status " + res.data[0].rentStatus);
+                // console.log("Print Status " + res.data[0].rentStatus);
 
                 for (var i in res.data) {
                     let rentID = res.data[i].rentID;
@@ -1467,6 +1538,37 @@
        })
    }
 
+   $('#btn-manage-driverDet').click(function () {
+       console.log("Hellow Driver");
+
+       $.ajax({
+           method:'get',
+           url:"http://localhost:8080/EasyCarBackEnd_war_exploded/driver",
+           async:true,
+           success:function (res) {
+
+               console.log(res)
+               let count = res.data.length;
+
+               for(let i =0;i<count;i++){
+
+                   let driverID=res.data[i].driver_NIC;
+                   let driverName = res.data[i].driver_name;
+                   let driverContact = res.data[i].driver_contact;
+                   let driverAddress = res.data[i].driver_Address;
+                   let driverSchedule = res.data[i].driver_ShecduleDec;
+
+                   var row = `<tr><td>${driverID}</td><td>${driverName}</td><td>${driverContact}</td><td>${driverAddress}</td><td> ${driverSchedule}</td>
+                    <td><button  class="btn btn-warning fff" id="${driverID}" onclick="updateDriverDetails(this)">Update</button></td>
+                    <td><button  class="btn btn-danger fff" id="${driverID}" onclick="DeleteDriverDetails(this)">Delete</button></td></tr>`;
+                   $('#tblDriverDetails').append(row);
+
+               }
+
+           }
+       })
+
+   })
 
 </script>
 </body>

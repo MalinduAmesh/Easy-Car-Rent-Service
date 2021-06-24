@@ -52,8 +52,8 @@ body {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    background: #F5F5F5;
-    width: 267px;
+    background: #26292f;
+    width: 255px;
     min-height: 100vh;
 }
 
@@ -73,20 +73,20 @@ body {
     transform: translateX(-50%);
 }
 
-.navbar-nav > .logo > .header-title {
+.header-title {
     position: absolute;
     max-width: max-content;
     font-family: "Montserrat", sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 700;
     bottom: 0;
-    top: 9px;
+    top: 15px;
     left: 0;
-    right: 0;
+    right: 54em;
     margin: auto;
 }
 
-.navbar-nav > .logo > .header-title > span {
+.header-title > span {
     color: #1abc9c;
 }
 
@@ -100,12 +100,12 @@ body {
 .navbar-nav > .side-nav > button {
     position: absolute;
     cursor: pointer;
-    width: 240px;
+    width: 100%;
     height: 50px;
     left: 0;
     right: 0;
     margin: auto;
-    border-radius: 36px;
+    border-radius: 0px;
     border: none;
     transition: all 0.6s ease;
 }
@@ -119,14 +119,15 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-home {
-    top: 0;
-    background: #F5F5F5;
+    top:-6.1em;
+    background: #26292f;
     margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    color: white;
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
 }
 
 .navbar-nav > .side-nav > #btn-manage-home:hover {
-    background: #95a5a6;
+    background: #54575d;
 }
 
 .navbar-nav > .side-nav > #btn-manage-home:hover > a {
@@ -138,14 +139,14 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-carDetails{
-    top: 70px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 22px;
+    background: #26292f;
+    /*margin-top: 70px;*/
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
 }
 
 .navbar-nav > .side-nav > #btn-manage-carDetails:hover {
-    background: #95a5a6;
+    background: #54575d;
 
 }
 
@@ -158,14 +159,14 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-customers {
-    top: 140px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 72px;
+    background: #26292f;
+    /*margin-top: 70px;*/
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
 }
 
 .navbar-nav > .side-nav > #btn-manage-customers:hover {
-    background: #95a5a6;
+    background: #54575d;
 }
 
 .navbar-nav > .side-nav > #btn-manage-customers:hover > a {
@@ -177,14 +178,14 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-driverDet{
-    top: 210px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 122px;
+    background: #26292f;
+    /*margin-top: 70px;*/
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
 }
 
 .navbar-nav > .side-nav > #btn-manage-driverDet:hover {
-    background: #95a5a6;
+    background: #54575d;
 
 }
 
@@ -197,14 +198,14 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-pendingReq{
-    top: 279px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 171px;
+    background: #26292f;
+    /*margin-top: 70px;*/
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
 }
 
 .navbar-nav > .side-nav > #btn-manage-pendingReq:hover {
-    background: #95a5a6;
+    background: #54575d;
 
 }
 
@@ -217,14 +218,24 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-Payment{
-    top: 347px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 271px;
+    background: #26292f;
+    /*margin-top: 70px;*/
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
 }
 
 .navbar-nav > .side-nav > #btn-manage-Payment:hover {
-    background: #95a5a6;
+    background: #54575d;
+
+}.navbar-nav > .side-nav > #btn-manage-maintaince{
+    top: 221px;
+    background: #26292f;
+    /*margin-top: 70px;*/
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
+}
+
+.navbar-nav > .side-nav > #btn-manage-maintaince:hover {
+    background: #54575d;
 
 }
 
@@ -238,8 +249,8 @@ body {
 
 .navbar-nav > .side-nav > #btn-new-order {
     top: 350px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
-    background: #E41151;
+    /*box-shadow: 3px 2px 7px 1px #c3c3c3;*/
+    background: #26292f;
 }
 
 .navbar-nav > .side-nav > #btn-new-order:hover {
@@ -283,8 +294,9 @@ body {
 .navbar-nav > .side-nav > button > a {
     position: absolute;
     text-decoration: none;
-    color: black;
-    left: 80px;
+    color: white;
+    font-size: 18px;
+    left: 63px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -325,11 +337,12 @@ body {
 
 .navbar-width{
     position: relative;
-    width: 82.6vw;
+    width: 100vw;
     color: #0c4128;
-    background-color: #2c3e50;
+    background-color:#ffffff ;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
     height: 64px;
-    margin-left: 267px;
+    /*margin-left: 267px;*/
 }
 
 /*----------------------------------------------------------------------*/
@@ -341,7 +354,7 @@ body {
     display: block;
     margin-left: 279px;
     position: relative;
-    top: 87px;
+    top: 28px;
 }
 
 .adminHomeBoxModel{
@@ -391,7 +404,7 @@ body {
 
 .pendingReqFormAdmn{
     position: relative;
-    top: 83px;
+    top: 22px;
     left: 281px;
 }
 
@@ -441,9 +454,9 @@ body {
 
 .adminPaymentForm{
     display: none;
-    margin-left: 268px;
+    margin-left: 245px;
     position: relative;
-    top: 91px;
+    top: 25px;
 }
 
 .payBillID {
@@ -455,7 +468,7 @@ body {
     padding: 15px;
     color: #B3C1C3;
     font-family: Roboto;
-    margin-left: 23px;
+    margin-left: 2px;
     transition: .1s;
     cursor: default;
     font-size: 15px;
@@ -502,5 +515,13 @@ body {
 }
 
 .updateForm{
+
+}
+
+
+/*Driver Deatail Form*/
+
+.DriverDetailsForm{
+    position: relative;
 
 }

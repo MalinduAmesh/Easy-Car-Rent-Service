@@ -18,5 +18,18 @@ public class UserDTO {
     private String licImage;
     private String contact;
 
-
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "cusNicID='" + cusNicID + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", nicImage='" + nicImage + '\'' +
+                ", licNo='" + licNo + '\'' +
+                ", licImage='" + licImage + '\'' +
+                ", contact='" + contact + '\'' +
+                '}';
+    }
 }

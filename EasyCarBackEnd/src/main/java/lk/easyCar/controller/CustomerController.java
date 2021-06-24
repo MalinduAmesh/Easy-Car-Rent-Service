@@ -6,9 +6,17 @@ import lk.easyCar.service.CustomerService;
 import lk.easyCar.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.annotation.MultipartConfig;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 @RestController
@@ -75,5 +83,28 @@ public class CustomerController {
     public ResponseEntity getLastRid() {
         String lastRid = customerService.getLastRid();
         return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.CREATED);
+    }
+
+    @PostMapping(path = "/uplodedImg",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity uploadPhotos(@RequestPart("image")MultipartFile multipartFile){
+
+        try{
+            String fileName = multipartFile.getOriginalFilename();
+
+            InputStream inputStream = multipartFile.getInputStream();
+            Path path = Paths.get("/Users/amesh/IdeaProjects/CarPhotos/");
+
+            if (!Files.exists(path)){
+                Files.createDirectories(path);
+
+            }
+            Files.copy(inputStream,path.resolve(fileName));
+            return new ResponseEntity(new StandardResponse("200", "Image Uploaded", null), HttpStatus.CREATED);
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+            return new ResponseEntity(new StandardResponse("200", "Error", null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

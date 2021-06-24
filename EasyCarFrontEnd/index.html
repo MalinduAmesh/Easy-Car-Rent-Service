@@ -20,7 +20,8 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <title>Login</title>
 </head>
 <body>
@@ -161,9 +162,70 @@
 
 
 </section>
+<br>
+<br>
+<br>
+<br>
+<section class="redirectRentForm">
 
+            <div class="slider owl-carousel">
+                <div class="card">
+                    <div class="img">
+                        <img src="#" alt=""></div>
+                    <div class="content">
+                        <div class="title">
+                            Briana Tozour</div>
+                        <div class="sub-title">Graphic Designer</div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                        <div class="btn">
+                            <button>Read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="img">
+                        <img src="#" alt=""></div>
+                    <div class="content">
+                        <div class="title">
+                            Pricilla Preez</div>
+                        <div class="sub-title">
+                            Web Developer</div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                        <div class="btn">
+                            <button>Read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="img">
+                        <img src="#" alt=""></div>
+                    <div class="content">
+                        <div class="title">
+                            Eliana Maia</div>
+                        <div class="sub-title">
+                            App Developer</div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                        <div class="btn">
+                            <button>Read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
 <script>
+// Owl Craowsoul
+$(".slider").owlCarousel({
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 2000, //2000ms = 2s;
+    autoplayHoverPause: true,
+});
+
 
 
     $('#login-btn').click(function () {
@@ -193,7 +255,7 @@
                     console.log(password)
                     if ((user == userName) && (pass == password)) {
 alert("Login was successful")
-                        window.location.href ="rent.html";
+                        window.location.href = "rent.html";
 return true;
                     }
                     else {

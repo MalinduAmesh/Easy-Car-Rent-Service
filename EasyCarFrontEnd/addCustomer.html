@@ -7,34 +7,34 @@
     <link rel="stylesheet" href="Assest/css/bootstrap.min.css">
     <link rel="stylesheet" href="Assest/css/customer.css">
 
-    <style>
-        .loginPanel {
-            position: relative;
-            margin-left: 268px;
-            margin-top: -28px;
-            width: 67vw;
-        }
-    </style>
 </head>
 <body>
+<div class="topBar">
+<h3 style="color: white;position: relative; top: 11px;left: 33px;">Easy Car Rent</h3>
+</div>
 
-
+<section class="loginPanalFormMain">
+<!--    <img class="logMainPhoto" src="Assest/img/addCusBack2.jpg" alt="">-->
 <section class="loginPanel" id="secCreateAccount">
-    <div class="container" style="margin-top: 100px;border: white 3px solid">
+    <div class="container" style="margin-top: 100px;border: white 3px solid;border-radius: 12px;">
         <div class="row">
             <div class="col-7">
-                <h1>Create Account</h1>
+                <h1 style="color: white;    font-size: 31px;">Create Account</h1>
                 <form id="frmCreateAccount">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-5">
                             <label for="txtCreateAccountUserName">User Name</label>
                             <input class="form-control" id="txtCreateAccountUserName" type="text">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-5" style="margin-left: 17px;">
                             <label for="txtCreateAccountEmail">Email</label>
                             <input class="form-control" id="txtCreateAccountEmail" type="email">
                         </div>
 
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtCreateAccountNIC">NIC Number</label>
+                        <input class="form-control" id="txtCreateAccountNIC" type="text">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="txtCreateAccountAddress">Address</label>
@@ -48,19 +48,18 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-5">
                             <div class="form-group">
                                 <label for="inputNICImageCreateAccount"> Image Of Your NIC</label>
-                                <input class="form-control-file" id="inputNICImageCreateAccount" type="text">
-                                <input class="form-control" id="txtCreateAccountNIC" style="margin-top: 10px"
+                                <input class="form-control-file" id="inputNICImageCreateAccount" type="file">
+                                <input class="form-control" id="inputNICImageCreateAccountName" style="margin-top: 10px"
                                        type="text">
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-5"style="margin-left: 17px;">
                             <div class="form-group">
-                                <label for="inputLICImageCreateAccount"> Image Of Your
-                                    Driving License</label>
-                                <input class="form-control-file" id="inputLICImageCreateAccount" type="text">
+                                <label for="inputLICImageCreateAccount"> Image Of Your Driving License</label>
+                                <input class="form-control-file" id="inputLICImageCreateAccount" type="file">
                                 <input class="form-control" id="txtCreateAccountDriving" style="margin-top: 10px"
                                        type="text">
                             </div>
@@ -74,19 +73,20 @@
                     </div>
 
                     <button id="btnCreateNewAccount" class="btn btn-primary"
-                            style="margin-left: 10px;margin-bottom: 10px " type="button">
+                            style="margin-left: 10px;margin-bottom: 10px ;    height: 40px;" type="button">
                         <p style="color: white;text-decoration: none">Create Account </p></button>
 
                 </form>
             </div>
             <div class="col-4">
-<!--                <img style=" margin-left: -146px;margin-top: 137px;" alt="" height="auto" src="Assest/img/carFront%20side.jpg" width="380px">-->
+
+                <img class="Create-Acc-img"  alt="" height="auto" src="Assest/img/frontLight.jpg" width="287px">
             </div>
         </div>
     </div>
 </section>
 
-
+</section>
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
 <script src="Assest/js/bootstrap.min.js"></script>
 
@@ -115,7 +115,7 @@
                     $('#txtCreateAccountNIC').val("C001");
                 }
 
-                console.log(reqID)
+                // console.log(reqID)
 
 
             }
@@ -133,43 +133,90 @@
         let customerAddress = $('#txtCreateAccountAddress').val();
         let email = $('#txtCreateAccountEmail').val();
         let customerPassword = $('#txtCreateAccountPassword').val();
-        let NICImage = $('#inputNICImageCreateAccount').val();
+
         let NICNumber = $('#txtCreateAccountNIC').val();
-        let LICImage = $('#inputLICImageCreateAccount').val();
         let LICNumber = $('#txtCreateAccountDriving').val();
         let contact = $('#txtCreateAccountContact').val();
 
+        // let LICImage = $('#inputLICImageCreateAccount').val();
+        // let NICImage = $('#inputNICImageCreateAccount').val();
 
-        $.ajax({
-            method: "post",
-            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/customer",
-            contentType: "application/json",
-            async: true,
-            data: JSON.stringify({
+        if ($('#inputNICImageCreateAccount').get(0).files.length > 0 && $('#inputLICImageCreateAccount').get(0).files.length >0){
+
+            // Get Customer NIC
+            let customerNicImage = $('#inputNICImageCreateAccount')[0].files[0];
+            let customerNicImageName =  "NIC Image"
+
+            // Get Customer Liscene
+            let customerLicenseImg = $('#inputLICImageCreateAccount')[0].files[0];
+            let customerLicenseImgName = "License Image"
+
+            // Add customre
+
+            let customerObject ={
                 "cusNicID": NICNumber,
                 "name": customerName,
                 "address": customerAddress,
                 "email": email,
                 "password": customerPassword,
-                "nicImage": NICImage,
-                "licImage": LICImage,
+                "nicImage": customerNicImageName,
+                "licImage": customerLicenseImgName,
                 "licNo": LICNumber,
                 "contact": contact
-            }),
-            success: function (res) {
-                if (res.message === 'Success') {
-                    alert("Your account Created");
-
-                    console.log(res)
-                } else {
-                    console.log("Error");
-                    console.log(res)
-                }
             }
-        })
+            addUser(customerObject,customerNicImage,customerNicImageName,customerLicenseImg,customerLicenseImgName)
+        }
 
 
     })
+
+    function addUser(customerObject,customerNicImage,customerNicImageName,customerLicenseImg,customerLicenseImgName) {
+
+        $.ajax({
+                 method: "post",
+                url: "http://localhost:8080/EasyCarBackEnd_war_exploded/customer",
+                contentType: "application/json",
+                dataType: 'json',
+                async: true,
+                data: JSON.stringify(customerObject),
+            success:function (res) {
+
+                     // upload user nic image
+                uploadCustomerImages('/uplodedImg',customerNicImage,customerNicImageName)
+                uploadCustomerImages('/uplodedImg',customerLicenseImg,customerLicenseImgName)
+            }
+        })
+    }
+
+    function  uploadCustomerImages(path,customerNicImage,customerNicImageName) {
+
+        let imageFile = new FormData();
+        imageFile.append("image",customerNicImage,customerNicImageName);
+
+        $.ajax({
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/customer" +path,
+            method:'post',
+            async:true,
+            processData: false,
+            contentType:false,
+            data: imageFile,
+            success:function (res) {
+
+            }
+        })
+    }
+
+    function clearAllTxt() {
+        let customerName = $('#txtCreateAccountUserName').val(" ");
+        let customerAddress = $('#txtCreateAccountAddress').val(" ");
+        let email = $('#txtCreateAccountEmail').val(" ");
+        let customerPassword = $('#txtCreateAccountPassword').val(" ");
+        let NICImage = $('#inputNICImageCreateAccount').val(" ");
+        let NICNumber = $('#txtCreateAccountNIC').val(" ");
+        let LICImage = $('#inputLICImageCreateAccount').val(" ");
+        let LICNumber = $('#txtCreateAccountDriving').val(" ");
+        let contact = $('#txtCreateAccountContact').val(" ");
+    }
 
 
 </script>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class DriverController {
     public ResponseEntity allDrivers(){
 
         ArrayList<DriverDTO> allDrivers = driverService.getAllDrivers();
+        System.out.println("DEBUG GetAll @1" +allDrivers);
 
         return new ResponseEntity(new StandardResponse("200","Done",allDrivers),  HttpStatus.CREATED);
 
@@ -65,8 +67,8 @@ public class DriverController {
         if (dto.getDriver_NIC().trim().length()<=0){
             throw new NotFoundException("No ID Provider Update");
         }
-      driverService.updateDriver(dto);
 
+        driverService.updateDriver(dto);
         return new ResponseEntity(new StandardResponse("200","Done",null), HttpStatus.NO_CONTENT);
 
     }
