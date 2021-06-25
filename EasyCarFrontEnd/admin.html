@@ -545,14 +545,14 @@
 
 <!--                        <button class="btn btn-success" id="btnCalculatefinal">Calculate Date payment</button>-->
 <!--                        <button class="btn btn-warning" id="btnPayBill" style="margin-left: 20px" type="button">   Calculate the lWDf</button>-->
-                        <button class="btn btn-info" id="btnViewAllPaymentDetails" style="margin-left: 20px" type="button">Cal date between payment</button>
-                        <button class="btn btn-info" id="placeOrderBtn" style="margin-left: 20px" type="button">Pay</button>
+<!--                        <button class="btn btn-info" id="btnViewAllPaymentDetails" style="margin-left: 20px" type="button">Cal date between payment</button>-->
+                        <button class="btn btn-info" id="placeOrderBtn" style="margin-left: 279px;margin-top: 9px;" type="button">Pay Your Bill</button>
 
                     </div>
                 </div>
 
             </div>
-            <div class="col-5">
+            <div class="col-5" style="    position: relative;    top: 108px;">
                 <div id="viewAllRequests1">
                     <div>
                         <table class="table" id="viewPendingTable1">
@@ -623,6 +623,42 @@
     </div>
 </section>
 
+<section id="MaintainceForm" class="MaintainceForm "style="display: none">
+
+    <div class="container" style="margin-left: 273px;margin-top: 21px;">
+        <div class="row">
+
+            <div class="col-11">
+
+                <h3>Maintain Details</h3>
+                <hr>
+
+            </div>
+
+            <div class="col-10" id="viewAllMaintain" style="margin-top: 34px;">
+                <div>
+                    <table class="table" id="maintainDetailsAdminTable">
+                        <thead>
+                        <tr>
+
+                            <th scope="col">Vehicle ID</th>
+                            <th scope="col">Vehicle Name</th>
+                            <th scope="col">Vehicle Type</th>
+                            <th scope="col">Vehicle Modal</th>
+                            <th scope="col">Vehicle Color</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="tblMaintainDetails">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script src="Assest/js/jquery-3.6.0.min.js"></script>
 <script src="Assest/js/bootstrap.min.js"></script>
 <script src="Assest/js/main.js"></script>
@@ -650,6 +686,7 @@
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
         $('#DriverDetailsForm ').css("display", "none");
+        $('#MaintainceForm').css("display", "none");
 
 
     }
@@ -662,6 +699,7 @@
         $('#viewAllCars').css("display", "block");
         $('#adminPayment').css("display", "none");
         $('#DriverDetailsForm ').css("display", "none");
+        $('#MaintainceForm').css("display", "none");
 
 
     }
@@ -675,6 +713,7 @@
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
         $('#DriverDetailsForm ').css("display", "none");
+        $('#MaintainceForm').css("display", "none");
 
     })
 
@@ -691,6 +730,8 @@
         $('#AddCar').css("display", "none");
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
+        $('#MaintainceForm').css("display", "none");
+
     }
 
     function loadPendingRequestForm() {
@@ -701,6 +742,7 @@
         $('#UpdateCar').css("display", "none");
         $('#adminPayment').css("display", "none");
         $('#DriverDetailsForm ').css("display", "none");
+        $('#MaintainceForm').css("display", "none");
 
 
     }
@@ -708,6 +750,19 @@
     function showPaymentForm() {
 
         $('#adminPayment').css("display", "block");
+        $('#adminRequest').css("display", "none");
+        $('#carDetailsForm').css("display", "none");
+        $('#adminHome').css("display", "none");
+        $('#AddCar').css("display", "none");
+        $('#UpdateCar').css("display", "none");
+        $('#DriverDetailsForm ').css("display", "none");
+        $('#MaintainceForm').css("display", "none");
+
+
+    }    function loadMaintainceForm() {
+
+        $('#MaintainceForm').css("display", "block");
+        $('#adminPayment').css("display", "none");
         $('#adminRequest').css("display", "none");
         $('#carDetailsForm').css("display", "none");
         $('#adminHome').css("display", "none");
@@ -913,7 +968,7 @@
                     let rentStatus = res.data[i].rentStatus;
                     let RealStatus = res.data[i].rentStatus
 
-                    if (RealStatus == 'avalible') {
+                    if (RealStatus == 'Available') {
 
                         var row = `<tr><td>${rentID}</td><td>${cusID}</td><td>${cusName}</td><td>${pickUpDate}</td><td> ${returnDate}</td>
     <td> ${rentStatus}</td><td><button  class="btn btn-warning fff" id="${rentID}" onclick="updateRentStatus(this)">OK</button>
@@ -1570,6 +1625,110 @@
 
    })
 
+    $('#btn-manage-maintaince').click(function () {
+
+        $.ajax({
+            method:'get',
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
+            async:true,
+            success:function (res) {
+
+                console.log(res)
+                let count = res.data.length;
+
+                for(let i =0;i<count;i++){
+
+                    let vehicleID=res.data[i].carID;
+                    let vehicleName = res.data[i].carModel;
+                    let vehicleType = res.data[i].carType;
+                    let vehicleModel = res.data[i].carTransmissionType;
+                    let vehicleColor = res.data[i].carColor;
+                    let vehicleColorStatus = res.data[i].carStatus;
+
+
+                    if (vehicleColorStatus == 'maintain') {
+
+                        var row = `<tr><td>${vehicleID}</td><td>${vehicleName}</td><td>${vehicleType}</td><td>${vehicleModel}</td><td> ${vehicleColor}</td>
+                    <td><button  class="btn btn-warning fff" id="${vehicleID}" onclick="updateMaintainDetails(this)">Update</button></td></tr>`;
+                        $('#tblMaintainDetails').append(row);
+                    }
+                }
+
+            }
+        })
+    })
+
+    function updateMaintainDetails(id) {
+        var carUp = ($(id).attr('id'));
+
+        // var carID;
+        // var carModel;
+        // var carType;
+        // var carTransmissionType;
+        // var carFuelType;
+        // var carColor;
+        // var carStatus;
+        // var rentLosWaiver;
+        // var passenger;
+        // var carDailyRate;
+        // var carMonthlyRate;
+        // var carFreeKmForDay;
+        // var carFreeKmForMonth;
+        // var carPriceForExtraKm;
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/" + carUp,
+            success: function (res) {
+                carID = res.data.carID;
+                carModel = res.data.carModel;
+                carType = res.data.carType;
+                carTransmissionType = res.data.carTransmissionType;
+                carFuelType = res.data.carFuelType;
+                carColor = res.data.carColor;
+                carStatus = "avalible";
+                rentLosWaiver = res.data.rentLosWaiver;
+                passenger = res.data.passenger;
+                carDailyRate = res.data.carDailyRate;
+                carMonthlyRate = res.data.carMonthlyRate;
+                carFreeKmForDay = res.data.carFreeKmForDay;
+                carFreeKmForMonth = res.data.carFreeKmForMonth;
+                carPriceForExtraKm = res.data.carPriceForExtraKm;
+
+
+                updateCarAvailable(carID,carModel,carType,carTransmissionType,carFuelType,carColor,carStatus,rentLosWaiver,passenger,carDailyRate,carMonthlyRate,carFreeKmForDay,carFreeKmForMonth,carPriceForExtraKm)
+
+
+
+            }
+        })
+
+    }
+    function updateCarAvailable() {
+        $.ajax({
+            method:'put',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "carID":carID,
+                "carModel":carModel,
+                "carType":carType,
+                "carTransmissionType":carTransmissionType,
+                "carFuelType":carFuelType,
+                "carColor":carColor,
+                "carStatus":carStatus,
+                "rentLosWaiver":rentLosWaiver,
+                "passenger":passenger,
+                "carDailyRate":carDailyRate,
+                "carMonthlyRate":carMonthlyRate,
+                "carFreeKmForDay":carFreeKmForDay,
+                "carFreeKmForMonth":carFreeKmForMonth,
+                "carPriceForExtraKm":carPriceForExtraKm,
+            }),
+            success:function (res) {
+                alert("Hooray Vehcile Updated !")
+            }
+        })
+    }
 </script>
 </body>
 </html>

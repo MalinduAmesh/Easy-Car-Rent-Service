@@ -53,15 +53,32 @@ $("#btnFinalAddNewCar").click(function () {
 
         }),
         success:function (res) {
-            if (res.message == "Success"){
-                alert("Success");
-            }else{
-                alert(res.data);
-            }
-
+                alert("Successfully Added");
+            clearAll();
         }
     })
 });
+
+function clearAll() {
+    let carID = $('#inputCarID').val(' ');
+    let carModel = $('#inputCarModel').val(' ');
+    let carType = $('#inputCarType').val(' ');
+    let carImg1 = $('#carImg01').val(' ');
+    let carImg2 = $('#carImg02').val(' ');
+    let carImg3 = $('#carImg03').val(' ');
+    let carImg4 = $('#carImg04').val(' ');
+    let carTransmissionType = $('#inputCarTransmissionType').val(' ');
+    let carFuelType = $('#inputCarFuelType').val(' ');
+    let carColor = $('#inputCarColor').val(' ');
+    let inputCarStatus = $('#inputCarStatus').val(' ');
+    let lostWavierFee =$('#inputCarLostWavier').val(' ');
+    let passenger = $('#inputPassenger').val(' ');
+    let carDailyRate = $('#inputCarDailyRate').val(' ');
+    let carMonthlyRate = $('#inputCarMonthlyRate').val(' ');
+    let carFreeKmForADay = $('#inputCarFreeKmForADay').val(' ');
+    let carFreeKmForAMonth = $('#carFreeKmForAMonth').val(' ');
+    let carPriceForExtraKM = $('#inputCarPriceForExtraKM').val(' ');
+}
 
 // $("#btn-manage-carDetails").click(function () {
 //

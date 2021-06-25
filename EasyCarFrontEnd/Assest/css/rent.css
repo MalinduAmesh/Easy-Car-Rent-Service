@@ -35,14 +35,38 @@
 body {
     overflow-x: hidden;
 }
+.navbar-width{
+    position: relative;
+    width: 100vw;
+    color: #0c4128;
+    background-color:#ffffff ;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    height: 64px;
+    /*margin-left: 267px;*/
+}
+.header-title {
+    position: absolute;
+    max-width: max-content;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    bottom: 0;
+    top: 15px;
+    left: 0;
+    right: 54em;
+    margin: auto;
+}
 
+.header-title > span {
+    color: #1abc9c;
+}
 .navbar-nav {
     position: fixed;
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    background: #F5F5F5;
-    width: 267px;
+    background: #26292f;
+    width: 255px;
     min-height: 100vh;
 }
 
@@ -58,6 +82,7 @@ body {
     width: 55px;
     height: 55px;
     left: 50%;
+    top: 82px;
     transform: translateX(-50%);
 }
 
@@ -92,7 +117,7 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    border-radius: 36px;
+    border-radius:0px;
     border: none;
     transition: all 0.6s ease;
 }
@@ -106,14 +131,14 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-home {
-    top: 0;
-    background: #F5F5F5;
+    top:-6.1em;
+    background: #26292f;
     margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    color: white;
 }
 
 .navbar-nav > .side-nav > #btn-manage-home:hover {
-    background: #95a5a6;
+    background: #54575d;
 }
 
 .navbar-nav > .side-nav > #btn-manage-home:hover > a {
@@ -125,14 +150,12 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-carDetails{
-    top: 70px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 22px;
+    background: #26292f;
 }
 
 .navbar-nav > .side-nav > #btn-manage-carDetails:hover {
-    background: #95a5a6;
+    background: #54575d;
 
 }
 
@@ -145,14 +168,12 @@ body {
 }
 
 .navbar-nav > .side-nav > #btn-manage-rent {
-    top: 140px;
-    background: #F5F5F5;
-    margin-top: 70px;
-    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    top: 72px;
+    background: #26292f;
 }
 
 .navbar-nav > .side-nav > #btn-manage-rent:hover {
-    background: #95a5a6;
+    background: #54575d;
 }
 
 .navbar-nav > .side-nav > #btn-manage-rent:hover > a {
@@ -270,9 +291,10 @@ body {
 .navbar-nav > .side-nav > button > a {
     position: absolute;
     text-decoration: none;
-    color: black;
-    left: 80px;
-    top: 50%;
+    color: white;
+    font-size: 23px;
+    left: 73px;
+    top: 43%;
     transform: translateY(-50%);
 }
 
@@ -317,7 +339,7 @@ body {
 .inputRentCusID {
     width: 272px;
     height: 15px;
-    background: #1C1B22;
+    /*background: #1C1B22;*/
     border: 1px solid #1C1B22;
     border-radius: 8px;
     padding: 15px;
@@ -335,10 +357,10 @@ body {
 .btn-1 {
     width: 90px;
     height: 40px;
-    background: #1C1B22;
+    background: #efefef;
     border: 1px solid #1C1B22;
     border-radius: 5px;
-    color: #B3C1C3;
+    color: black;
     font-family: Roboto;
     transition: .1s;
     cursor: default;
@@ -355,7 +377,7 @@ body {
 .input-2 {
     width: 272px;
     height: 15px;
-    background: #1C1B22;
+    /*background: #1C1B22;*/
     border: 1px solid #1C1B22;
     border-radius: 8px;
     padding: 15px;
@@ -373,10 +395,10 @@ body {
 .btn-2 {
     width: 90px;
     height: 40px;
-    background: #1C1B22;
+    background: efefef;
     border: 1px solid #1C1B22;
     border-radius: 5px;
-    color: #B3C1C3;
+    color: black;
     font-family: Roboto;
     transition: .1s;
     cursor: default;

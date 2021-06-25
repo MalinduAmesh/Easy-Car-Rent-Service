@@ -180,7 +180,8 @@
                 async: true,
                 data: JSON.stringify(customerObject),
             success:function (res) {
-
+                        alert("Account Created !")
+                window.location.href = "index.html";
                      // upload user nic image
                 uploadCustomerImages('/uplodedImg',customerNicImage,customerNicImageName)
                 uploadCustomerImages('/uplodedImg',customerLicenseImg,customerLicenseImgName)

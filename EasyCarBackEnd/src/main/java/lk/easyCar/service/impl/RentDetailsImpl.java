@@ -31,4 +31,9 @@ public class RentDetailsImpl implements RentDetailsService {
         }
         return  null;
     }
+
+    @Override
+    public String getLastRid() {
+        return rentDetailsRepo.getLastID();
+    }
 }

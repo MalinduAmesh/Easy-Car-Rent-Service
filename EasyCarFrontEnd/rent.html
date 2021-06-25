@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Assest/css/rent.css">
     <link rel="stylesheet" href="Assest/css/bootstrap.min.css">
+    <link rel="stylesheet" href="themify-icons.css">
+
+    <link href="http://yoursite.com/themify-icons.css" rel="stylesheet">
     <title>Rent</title>
 </head>
 <body>
 
 
 <div class="wrp">
+    <div class="navbar-width">
+        <h1 class="header-title">Easy Car <span>Rental</span><i style="    position: relative;    left: 16px;    top: 5px;" class="ti-menu-alt"></i></h1>
+    </div>
     <nav class="navbar-nav">
-        <div class="logo">
-            <img alt="logo" class="icon" src="asserts">
-            <h1 class="header-title">Easy Car <span>Rental</span></h1>
-        </div>
+
         <nav class="side-nav">
             <button id="btn-manage-home" onclick="showManageItemForm()">
-                <i class="fas fa-hamburger"></i>
+                <i class="ti-home"></i>
                 <a href="#">Home</a>
             </button>
             <button id="btn-manage-carDetails">
-                <i class="fas fa-cart-arrow-down"></i>
+                <i class="ti-car"></i>
                 <a href="#">Car Details</a>
             </button>
             <button id="btn-manage-rent" onclick="showManageCustomerForm()">
-                <i class="fas fa-user"></i>
+                <i class="ti-rss-alt"></i>
                 <a href="#">Rent Cars</a>
             </button>
 
@@ -36,11 +39,11 @@
 
 <div class="container">
 
-    <div class="row col-md-11" style="    margin-left: 175px;">
+    <div class="row col-md-11" style="    margin-left: 175px;    position: relative;    top: 13px;">
         <h2>Rent Details</h2>
 
         <hr>
-        <div class="col-md-6">
+        <div class="col-md-6" >
             <h4>Customer Details</h4>
             <input class="inputRentCusID" id="inputRentCusID" placeholder="Search Your ID">
             &nbsp;&nbsp;
@@ -68,13 +71,6 @@
                 <div class="form-group col-md-5" style=" margin-right: 10px;">
                     <label for="inputCusContact"> Customer Contact</label>
                     <input class="form-control" id="inputCusContact" type="text">
-                </div>
-
-            </div>
-            <div class="form-row" style="display: flex;flex-wrap: nowrap;justify-content: center">
-                <div class="form-group col-md-5" style=" margin-right: 10px;">
-                    <label for="inputreqStatus">Req Status</label>
-                    <input class="form-control" id="inputreqStatus" type="text">
                 </div>
 
             </div>
@@ -119,7 +115,9 @@
                         </div>
 
                     </div>
-
+                    <button class="btn btn-warning" id="btncheckDriver" style="    margin-left: 14px; width: 79px; margin-top: 61px;top: -14px; position: relative;;"
+                            type="button">Select
+                    </button>
                     <div class="col-4" id="txtWithOutdiver">
                         <br>
                         <label for="inputDriverID">
@@ -143,7 +141,7 @@
 
             </div>
 
-            <button class="btn btn-success" id="btnPlaceOrder" style="margin-left: 182px;width: 114px;margin-top: 16px;"
+            <button class="btn btn-success" id="btnPlaceOrder" style="margin-left: 403px;width: 124px;margin-top: 16px;"
                     type="button">Place Request
             </button>
         </div>
@@ -197,9 +195,9 @@
 
 <!--                            </div>-->
 
-                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
-                                    type="button">Search Car
-                            </button>
+<!--                            <button class="btn btn-danger" id="btnSearchCarID" style="margin-left: 182px;width: 114px;margin-top: 16px;"-->
+<!--                                    type="button">Search Car-->
+<!--                            </button>-->
 
                 <table class="table" id="carDetailsAddCars">
                     <thead>
@@ -221,11 +219,6 @@
 
 
         </div>
-
-
-        <button class="btn btn-success" id="btnorderID" style="margin-left: 182px;width: 114px;margin-top: 16px;"
-                type="button">ID
-        </button>
 
     </div>
 </div>
@@ -270,7 +263,7 @@
     function genarateRentID2() {
         $.ajax({
             method: 'get',
-            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rent/lastID/customer",
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/rentDetails/lastID/rentDID",
             contentType: "application/json",
             async: true,
             success: function (res) {
@@ -296,36 +289,63 @@
 
     genarateRentID2();
     // Check The Radio Button and Call the Random method
-    function checkButton() {
-        if (document.getElementById('withDriverID').checked == true){
+    // function checkButton() {
+    //     if (document.getElementById('withDriverID').checked == true){
+    //
+    //         $('#inputDriverID').css('display','block');
+    //         console.log("hello")
+    //
+    //         randomInputDriver();
+    //     }else{
+    //
+    //         $('#inputDriverID').css('display','none');
+    //     }
+    // }
+    // checkButton()
+        $('#btncheckDriver').click(function () {
 
+        let val = $("input[name ='A']:checked").val();
+        console.log(val)
+
+        // With Driver
+        if (val == 'option1'){
             $('#inputDriverID').css('display','block');
-            console.log("hello")
-
             randomInputDriver();
-        }else{
-
-            $('#inputDriverID').css('display','none');
         }
+        if (val == 'option2'){
+            $('#inputDriverID').css('display','none');
+randomDro();
+        }
+
+
+    })
+
+    function  randomDro(){
+        $.ajax({
+            method: 'get',
+            url: "http://localhost:8080/EasyCarBackEnd_war_exploded/driver",
+            contentType: "application/json",
+            success: function (res) {
+                let firstDriver;
+
+                let count =res.data.length;
+                for (let i = 0; i <count ; i++) {
+                    if (res.data[i].driver_ShecduleDec  == "erorr"){
+                        console.log(res.data[i].driver_NIC)
+                        firstDriver = res.data[i].driver_NIC;
+
+                    }
+                }
+                let lengthNumber = res.data.length -1;
+                let x = Math.floor(Math.random() * lengthNumber) +1;
+                console.log("Print Random X"+x)
+
+                let driverID = firstDriver;
+                $('#inputDriverID').val(driverID);
+            }
+        })
     }
-    checkButton()
-    //     $('#btnorderID').click(function () {
-    //
-    //     // let val = $("input[name ='A']:checked").val();
-    //     // console.log(val)
-    //     //
-    //     // // With Driver
-    //     // if (val == 'option1'){
-    //     //     $('#inputDriverID').css('display','block');
-    //     //     randomInputDriver();
-    //     // }
-    //     // if (val == 'option2'){
-    //     //     $('#inputDriverID').css('display','none');
-    //     //
-    //     // }
-    //
-    //
-    // })
+
 
     // Add a driver Randomly
 
@@ -339,7 +359,7 @@
                 let firstDriver ;
 
                 for (let i=0;i<res.data.length;i++){
-                    if (res.data[i].driver_Stauts == "avalible"){
+                    if (res.data[i].driver_Stauts == "avalible" && res.data[i].driver_ShecduleDec == "noSchedule"){
                         console.log("Avliable")
                         firstDriver = res.data[i].driver_NIC;
 
@@ -347,6 +367,7 @@
                         console.log("UnAvilable");
                     }
                 }
+
                 console.log("avl firstDriver"+firstDriver);
                 console.log("Drivers Length" +res.data.length)
 
@@ -397,6 +418,37 @@
 
     });
 
+    $('#btncheckDriver').bind('dblclick', function(e) {
+        $.ajax({
+            method:'get',
+            url:"http://localhost:8080/EasyCarBackEnd_war_exploded/driver",
+            contentType:"application/json",
+            success:function (res) {
+                let firstDriver ;
+
+                for (let i=0;i<res.data.length;i++){
+
+                    if (res.data[i].driver_Stauts == "avalible" && res.data[i].driver_name  == "kasun"){
+                        console.log("Avliable")
+                        firstDriver = res.data[i].driver_NIC;
+                    }else {
+                        console.log("UnAvilable");
+                    }
+                }
+                $('#inputDriverID').val(firstDriver);
+
+                console.log("avl firstDriver"+firstDriver);
+                console.log("Drivers Length" +res.data.length)
+
+                let lengthNumber = res.data.length;
+                let x = Math.floor(Math.random() * lengthNumber) +1;
+                console.log("Print Random X"+x)
+
+                let driverID = firstDriver;
+            }
+        })
+
+    })
 
     // Set Colors to the tables
     $("#carDetailsAdminTable > tbody").on("click", "tr", function () {
@@ -428,6 +480,7 @@
                     url: "http://localhost:8080/EasyCarBackEnd_war_exploded/vehicle/" + getcar,
                     success: function (response) {
 
+                        genarateRentID2();
                         console.log(response);
 
                         let RentID = $('#inputrentID').val();
@@ -456,7 +509,9 @@
                         $('#inputTotalLWF').val(tot);
 
                     }
+
                 })
+
             }
 
         } else {
@@ -561,7 +616,7 @@
         console.log("Show cart data"+JSON.stringify(cartData));
 
         // Rent Values
-        let rentReqStatus = $('#inputreqStatus').val();
+        let rentReqStatus ="Available"
         let rentCusID = $('#inputRentCusID').val();
         let rentLWDFeeRecipt = $('#inputImageLWF').val();
 

@@ -26,6 +26,11 @@ public class RentDetailsController {
 
 
     }
+    @GetMapping(path = "/lastID/rentDID")
+    public ResponseEntity getLastRid() {
+        String lastRid = rentDetailsService.getLastRid();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.CREATED);
+    }
 
 
 }

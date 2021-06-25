@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Assest/css/style.css">
+    <link rel="stylesheet" href="Assest/css/bootstrap.min.css">
     <!-- Google Fonts  -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -19,9 +20,88 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        html,body{
+            display: grid;
+            height: 100%;
+            place-items: center;
+            text-align: center;
+            background: #F2F2F2;
+        }
+        .slider{
+            max-width: 1100px;
+            display: flex;
+        }
+        .slider .card{
+            flex: 1;
+            margin: 0 10px;
+            background: #fff;
+            height: 29em;
+            width: 377px;
+
+        }
+        .slider .card .img{
+            height: 200px;
+            width: 100%;
+        }
+        .slider .card .img img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .slider .card .content{
+            padding: 10px 20px;
+        }
+        .card .content .title{
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .card .content .sub-title{
+            font-size: 20px;
+            font-weight: 600;
+            color: #E74C3C;
+            line-height: 20px;
+        }
+        .card .content p{
+            text-align: justify;
+            margin: 10px 0;
+        }
+        .card .content .btn{
+            display: block;
+            text-align: left;
+            margin: 10px 0;
+        }
+        .card .content .btn button{
+            background: #E74C3C;
+            color: #fff;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            padding: 5px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .card .content .btn button:hover{
+            transform: scale(0.9);
+        }
+        .content{
+            left: 48%;
+            top: 72%;
+            width: 336px;
+        }
+    </style>
     <title>Login</title>
 </head>
 <body>
@@ -74,7 +154,7 @@
     <main>
     <div class="mainImg">
         <div class="clipPathForMainImg" >
-            <img style="position: absolute;top: 0;" src="Assest/img/ks-rental.jpg" alt="">
+            <img style="position: absolute;top: 0;left: 0px;" src="Assest/img/ks-rental.jpg" alt="">
         </div>
     </div>
     </main>
@@ -87,7 +167,7 @@
     </main>
 
     <div class="mainLoginPage">
-            <div class="content">
+            <div class="content1">
                 <header>Login Form</header>
                 <form action="#">
                     <div class="field">
@@ -159,74 +239,138 @@
             </div>
         </div>
     </section>
-
-
 </section>
 <br>
 <br>
 <br>
 <br>
 <section class="redirectRentForm">
+    <div style="    position: relative;left: 13em;">
+    <div class="slider owl-carousel">
 
-            <div class="slider owl-carousel">
-                <div class="card">
-                    <div class="img">
-                        <img src="#" alt=""></div>
-                    <div class="content">
-                        <div class="title">
-                            Briana Tozour</div>
-                        <div class="sub-title">Graphic Designer</div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
-                        <div class="btn">
-                            <button>Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img">
-                        <img src="#" alt=""></div>
-                    <div class="content">
-                        <div class="title">
-                            Pricilla Preez</div>
-                        <div class="sub-title">
-                            Web Developer</div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
-                        <div class="btn">
-                            <button>Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img">
-                        <img src="#" alt=""></div>
-                    <div class="content">
-                        <div class="title">
-                            Eliana Maia</div>
-                        <div class="sub-title">
-                            App Developer</div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
-                        <div class="btn">
-                            <button>Read more</button>
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    General Cars </div>
+                <div class="sub-title">Suzuki Alto</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
                 </div>
             </div>
+        </div>
+
+        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    General Cars</div>
+                <div class="sub-title">
+                    Suzuki Alto K10</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    Luxury Cars</div>
+                <div class="sub-title">
+                    Toyota Premio </div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    Luxury Cars</div>
+                <div class="sub-title">
+                    BMW i8</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    Toyota Prius C</div>
+                <div class="sub-title">
+                    Aqua - Auto</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    Premium Cars</div>
+                <div class="sub-title">
+                    Toyota Corolla Axio</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
+                </div>
+            </div>
+        </div>        <div class="card">
+            <div class="img">
+                <img src="#" alt=""></div>
+            <div class="content">
+                <div class="title">
+                    Premium Cars</div>
+                <div class="sub-title">
+                    Perodua Bezza Prime</div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+                <div class="btn">
+                    <button>Read more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </section>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="Assest/js/jquery-3.6.0.min.js"></script>
+
 <script>
-// Owl Craowsoul
-$(".slider").owlCarousel({
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 2000, //2000ms = 2s;
-    autoplayHoverPause: true,
-});
-
-
+    $(".slider").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 2000, //2000ms = 2s;
+        autoplayHoverPause: true,
+    });
+</script>
+<script src="Assest/js/jquery-3.6.0.min.js"></script>
+<script src="Assest/js/bootstrap.min.js"></script>
+<script>
 
     $('#login-btn').click(function () {
         getUserName();
@@ -254,9 +398,9 @@ $(".slider").owlCarousel({
                     console.log(userName)
                     console.log(password)
                     if ((user == userName) && (pass == password)) {
-alert("Login was successful")
+                        alert("Login was successful")
                         window.location.href = "rent.html";
-return true;
+                        return true;
                     }
                     else {
                         alert ("Login was unsuccessful, please check your username and password");

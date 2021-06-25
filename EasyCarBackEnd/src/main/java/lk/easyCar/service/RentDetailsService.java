@@ -7,4 +7,5 @@ public interface RentDetailsService {
     RentDetailsDTO searchRentDet(String id);
 
 
+    String getLastRid();
 }
